@@ -82,12 +82,7 @@ function sellPokemon(cid, name, level, expectedPrice)
             return false
         end
         
-        -- Debug: Imprime atributos da pokebola e informações sobre o cálculo
-        local attributes = {}
-        for k, v in pairs(getItemAttributes(ball) or {}) do
-            table.insert(attributes, k.."="..tostring(v))
-        end
-        print(string.format("[NPC Sam colecionador] Pokéball attributes for %s: %s", name, table.concat(attributes, ", ")))
+        -- Debug: Imprime informações sobre o cálculo
         print(string.format("[NPC Sam colecionador] Sale of %s: basePrice=%d, level=%d, isVip=%s, bonus=%f, levelBonus=%f, finalPrice=%d",
             name, basePrice, pokeLevel, tostring(isVip), bonus, levelBonus, finalPrice))
         
@@ -250,12 +245,7 @@ function onCreatureSay(cid, type, msg)
         local levelBonus = (level - 10) * bonus
         local finalPrice = math.floor(basePrice + (basePrice * levelBonus))
         
-        -- Debug: Imprime atributos da pokebola e informações antes da confirmação
-        local attributes = {}
-        for k, v in pairs(getItemAttributes(pokeballUid) or {}) do
-            table.insert(attributes, k.."="..tostring(v))
-        end
-        print(string.format("[NPC Sam colecionador] Pokéball attributes for %s: %s", name, table.concat(attributes, ", ")))
+        -- Debug: Imprime informações antes da confirmação
         print(string.format("[NPC Sam colecionador] Confirmation of %s: basePrice=%d, level=%d, isVip=%s, bonus=%f, levelBonus=%f, finalPrice=%d",
             name, basePrice, level, tostring(isVip), bonus, levelBonus, finalPrice))
         
