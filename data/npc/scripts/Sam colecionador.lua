@@ -4,6 +4,7 @@ local conv = 0
 local cost = 0
 local pname = ""
 local plevel = 1
+<<<<<<< HEAD
 local STORAGE_VIP = 1000
 local LEVEL_BONUS_FREE = 0.015
 local LEVEL_BONUS_VIP = 0.02
@@ -12,61 +13,135 @@ local commonPokemons = {"rattata", "caterpie", "weedle", "magikarp"}
 function sellPokemon(cid, name)
     local bp = getPlayerSlotItem(cid, CONST_SLOT_BACKPACK)
     
+=======
+local STORAGE_VIP = 1000 -- Storage para verificar status VIP
+local LEVEL_BONUS_FREE = 0.015 -- BÃ´nus de 1,5% por nÃ­vel para contas Free
+local LEVEL_BONUS_VIP = 0.02 -- BÃ´nus de 2% por nÃ­vel para contas VIP
+local commonPokemons = {"rattata", "caterpie", "weedle", "magikarp"} -- PokÃ©mon comuns que nÃ£o podem ser vendidos
+
+function sellPokemon(cid, name, level, expectedPrice)
+    -- Verifica se hÃ¡ PokÃ©mon ativo
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
     if #getCreatureSummons(cid) >= 1 then
-        selfSay("Chame seu Pokémon de volta para vendê-lo!")
+        selfSay("Call your PokÃ©mon back to sell it!")
         focus = 0
         return true
     end
     
+<<<<<<< HEAD
+=======
+    -- Verifica se estÃ¡ em fly, ride ou surf
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
     local storages = {17000, 63215, 17001, 13008}
     for _, storage in ipairs(storages) do
         if getPlayerStorageValue(cid, storage) >= 1 then
-            selfSay("Você não pode vender um Pokémon enquanto está em fly, ride ou surf!")
+            selfSay("You can't sell a PokÃ©mon while in fly, ride, or surf!")
             focus = 0
             return true
         end
     end
     
+<<<<<<< HEAD
+=======
+    -- ObtÃ©m o preÃ§o base da tabela global 'prices'
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
     local basePrice = prices and prices[name]
     if not basePrice then
-        selfSay("Desculpe, eu não compro "..name.."!")
+        selfSay("Sorry, I don't buy "..name.."!")
         return false
     end
     if basePrice == 1 then
-        selfSay("Desculpe, eu não compro Pokémon lendários como "..name.."!")
+        selfSay("Sorry, I don't buy legendary PokÃ©mon like "..name.."!")
         return false
     end
     
+<<<<<<< HEAD
     local function processSale(ball, name)
+=======
+    -- FunÃ§Ã£o auxiliar para processar a venda de uma pokebola
+    local function processSale(ball, name, expectedLevel, expectedPrice)
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         local pokename = getItemAttribute(ball, "poke")
         if not pokename or string.lower(pokename) ~= string.lower(name) then
             return false
         end
+<<<<<<< HEAD
+=======
+        
+        -- Verifica se o PokÃ©mon Ã© Ãºnico
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         if getItemAttribute(ball, "unico") then
-            selfSay("Desculpe, eu não compro Pokémon únicos como "..name.."!")
+            selfSay("Sorry, I don't buy unique PokÃ©mon like "..name.."!")
             return false
         end
+<<<<<<< HEAD
+=======
+        
+        -- Verifica se o PokÃ©mon estÃ¡ bloqueado
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         local lock = getItemAttribute(ball, "lock")
         if lock and lock > os.time() then
-            selfSay("Desculpe, este "..name.." está bloqueado até "..os.date("%d/%m/%y %X", lock).."!")
+            selfSay("Sorry, this "..name.." is locked until "..os.date("%d/%m/%y %X", lock).."!")
             return false
         end
+<<<<<<< HEAD
         local level = getItemAttribute(ball, "level") or getItemAttribute(ball, "lvl") or 1
         local isVip = getPlayerStorageValue(cid, STORAGE_VIP) == 1
         local finalPrice = math.floor(basePrice * (1 + (level - 1) * (isVip and LEVEL_BONUS_VIP or LEVEL_BONUS_FREE)))
         selfSay("Uau! Obrigado por este maravilhoso "..name.." nível "..level.."! Pegue seus "..finalPrice.." dólares. Você gostaria de vender outro Pokémon, diga-me o nome!")
+=======
+        
+        -- Verifica o nÃ­vel do PokÃ©mon
+        local pokeLevel = getItemAttribute(ball, "level") or getItemAttribute(ball, "lvl") or 1
+        if pokeLevel < 10 then
+            selfSay("Sorry, I only buy PokÃ©mon from level 10 onwards!")
+            return false
+        end
+        if pokeLevel ~= expectedLevel then
+            selfSay("Error: The "..name.." level doesn't match! Try again.")
+            print(string.format("[NPC Sam colecionador] Error: Expected level=%d, found level=%d for %s", expectedLevel, pokeLevel, name))
+            return false
+        end
+        
+        -- Calcula o preÃ§o final
+        local isVip = getPlayerStorageValue(cid, STORAGE_VIP) == 1
+        local bonus = isVip and LEVEL_BONUS_VIP or LEVEL_BONUS_FREE
+        local levelBonus = (pokeLevel - 10) * bonus
+        local finalPrice = math.floor(basePrice + (basePrice * levelBonus))
+        
+        if finalPrice ~= expectedPrice then
+            selfSay("Error in price calculation for "..name.."! Please try again.")
+            print(string.format("[NPC Sam colecionador] Error: Expected price=%d, calculated price=%d for %s", expectedPrice, finalPrice, name))
+            return false
+        end
+        
+        -- Debug: Imprime informaÃ§Ãµes sobre o cÃ¡lculo
+        print(string.format("[NPC Sam colecionador] Sale of %s: basePrice=%d, level=%d, isVip=%s, bonus=%f, levelBonus=%f, finalPrice=%d",
+            name, basePrice, pokeLevel, tostring(isVip), bonus, levelBonus, finalPrice))
+        
+        selfSay("Wow! Thanks for this wonderful "..name.."! Take your "..finalPrice.." dollars. Would you like to sell another PokÃ©mon?")
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         doRemoveItem(ball, 1)
         doPlayerAddMoney(cid, finalPrice)
         doPlayerSave(cid)
         return true
     end
     
+<<<<<<< HEAD
+=======
+    -- Verifica o PokÃ©mon no slot de pernas
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
     local pokeball = getPlayerSlotItem(cid, CONST_SLOT_LEGS)
     if pokeball.uid ~= 0 and processSale(pokeball.uid, name) then
         doTransformItem(pokeball.uid, 2395)
         return true
     end
     
+<<<<<<< HEAD
+=======
+    -- Verifica o PokÃ©mon na mochila
+    local bp = getPlayerSlotItem(cid, CONST_SLOT_BACKPACK)
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
     for _, ballType in pairs(pokeballs) do
         local balls = getItemsInContainerById(bp.uid, ballType.on)
         for _, ball in pairs(balls) do
@@ -76,7 +151,11 @@ function sellPokemon(cid, name)
         end
     end
     
+<<<<<<< HEAD
     selfSay("Você não tem um "..name.." na mochila ou no slot de pernas, ou ele está desmaiado!")
+=======
+    selfSay("You don't have a "..name.." level "..level.." in your backpack or legs slot, or it's fainted!")
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
     return false
 end
 
@@ -92,7 +171,11 @@ function onCreatureSay(cid, type, msg)
     end
     
     if msgcontains(msg, 'hi') and focus == 0 and getDistanceToCreature(cid) <= 3 then
+<<<<<<< HEAD
         selfSay('Bem-vindo à minha loja!\nEu compro Pokémon de todas as espécies a partir do nível 1, exceto Pokémon únicos, bloqueados ou lendários.\nDiga o nome de um Pokémon que deseja vender.')
+=======
+        selfSay('Welcome to my shop! I buy PokÃ©mon of all species from level 10 onwards, except unique, locked, or legendary ones. Tell me the name of the PokÃ©mon you want to sell.')
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         focus = cid
         conv = 1
         talk_start = os.clock()
@@ -103,19 +186,23 @@ function onCreatureSay(cid, type, msg)
     end
     
     if msgcontains(msg, 'bye') and focus == cid then
-        selfSay('Vejo você por aí!')
+        selfSay('See you around!')
         focus = 0
         return true
     end
     
     if msgcontains(msg, 'yes') and focus == cid and conv == 4 then
+<<<<<<< HEAD
         selfSay('Diga o nome de um Pokémon que deseja vender.')
+=======
+        selfSay('Tell me the name of the PokÃ©mon you want to sell.')
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         conv = 1
         return true
     end
     
     if msgcontains(msg, 'no') and conv == 4 and focus == cid then
-        selfSay('Ok, vejo você por aí!')
+        selfSay('Okay, see you around!')
         focus = 0
         return true
     end
@@ -123,34 +210,41 @@ function onCreatureSay(cid, type, msg)
     if conv == 1 and focus == cid then
         for _, commonPoke in ipairs(commonPokemons) do
             if msgcontains(msg, commonPoke) then
-                selfSay('Eu não compro um Pokémon tão comum!')
+                selfSay("I don't buy such a common PokÃ©mon!")
                 return true
             end
         end
     end
     
     if msgcontains(msg, 'no') and conv == 3 and focus == cid then
-        selfSay('Diga o nome de outro Pokémon que deseja vender.')
+        selfSay('Tell me the name of another PokÃ©mon you want to sell.')
         conv = 1
         return true
     end
     
     if (conv == 1 or conv == 4) and focus == cid then
         local name = doCorrectPokemonName(msg)
+        
+        -- Verifica se a tabela de preÃ§os existe
         if not prices or not next(prices) then
-            selfSay("Desculpe, meu sistema de preços não está funcionando no momento. Tente novamente mais tarde!")
-            return true
-        end
-        local basePrice = prices[name]
-        if not basePrice then
-            selfSay("Desculpe, não sei de que Pokémon você está falando! Tem certeza de que escreveu corretamente?")
-            return true
-        end
-        if basePrice == 1 then
-            selfSay("Desculpe, eu não compro Pokémon lendários como "..name.."!")
+            selfSay("Sorry, my pricing system isn't working right now. Try again later!")
             return true
         end
         
+<<<<<<< HEAD
+=======
+        local basePrice = prices[name]
+        if not basePrice then
+            selfSay("Sorry, I don't know what PokÃ©mon you're talking about! Are you sure you wrote it correctly?")
+            return true
+        end
+        if basePrice == 1 then
+            selfSay("Sorry, I don't buy legendary PokÃ©mon like "..name.."!")
+            return true
+        end
+        
+        -- Busca a pokebola no slot de pernas ou mochila para obter o nÃ­vel
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         local level = 1
         local found = false
         local pokeballUid
@@ -176,32 +270,61 @@ function onCreatureSay(cid, type, msg)
         end
         
         if not found then
+<<<<<<< HEAD
             selfSay("Você não tem um "..name.." na mochila, ou ele está em sua mão, ou desmaiado!")
             return true
         end
         
+=======
+            selfSay("You don't have a "..name.." in your backpack or legs slot, or it's fainted!")
+            return true
+        end
+        
+        if level < 10 then
+            selfSay("Sorry, I only buy PokÃ©mon from level 10 onwards!")
+            return true
+        end
+        
+        -- Verifica se o PokÃ©mon Ã© Ãºnico ou bloqueado
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         if pokeballUid then
             if getItemAttribute(pokeballUid, "unico") then
-                selfSay("Desculpe, eu não compro Pokémon únicos como "..name.."!")
+                selfSay("Sorry, I don't buy unique PokÃ©mon like "..name.."!")
                 return true
             end
             local lock = getItemAttribute(pokeballUid, "lock")
             if lock and lock > os.time() then
-                selfSay("Desculpe, este "..name.." está bloqueado até "..os.date("%d/%m/%y %X", lock).."!")
+                selfSay("Sorry, this "..name.." is locked until "..os.date("%d/%m/%y %X", lock).."!")
                 return true
             end
         end
         
+<<<<<<< HEAD
         local isVip = getPlayerStorageValue(cid, STORAGE_VIP) == 1
         local bonus = isVip and LEVEL_BONUS_VIP or LEVEL_BONUS_FREE
         local finalPrice = math.floor(basePrice * (1 + (level - 1) * bonus))
         local finalPriceFree = math.floor(basePrice * (1 + (level - 1) * LEVEL_BONUS_FREE))
         local finalPriceVip = math.floor(basePrice * (1 + (level - 1) * LEVEL_BONUS_VIP))
+=======
+        -- Calcula o preÃ§o final
+        local isVip = getPlayerStorageValue(cid, STORAGE_VIP) == 1
+        local bonus = isVip and LEVEL_BONUS_VIP or LEVEL_BONUS_FREE
+        local levelBonus = (level - 10) * bonus
+        local finalPrice = math.floor(basePrice + (basePrice * levelBonus))
+        
+        -- Debug: Imprime informaÃ§Ãµes antes da confirmaÃ§Ã£o
+        print(string.format("[NPC Sam colecionador] Confirmation of %s: basePrice=%d, level=%d, isVip=%s, bonus=%f, levelBonus=%f, finalPrice=%d",
+            name, basePrice, level, tostring(isVip), bonus, levelBonus, finalPrice))
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         
         cost = finalPrice
         pname = name
         plevel = level
+<<<<<<< HEAD
         selfSay("Compro, "..name.." nível "..level.." por "..(isVip and finalPriceVip or finalPriceFree)..", você aceita?")
+=======
+        selfSay("Do you really want to sell the "..name.." level "..level.." for "..cost.." dollars?")
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         conv = 3
         return true
     end
@@ -221,10 +344,17 @@ local intervalmax = 70
 local delay = 25
 local number = 1
 local messages = {
+<<<<<<< HEAD
     "Comprando alguns Pokémon! Venha aqui para vendê-los!",
     "Quer vender Pokémons? Aqui e o lugar certo!",
     "Compro Pokémons! Com excelentes preços!",
     "Cansado de um ou mais Pokémon? Por que não me vende então?"
+=======
+    "Buying some PokÃ©mon! Come here to sell them!",
+    "Want to sell a PokÃ©mon? Come to the right place!",
+    "I buy PokÃ©mon! With excellent offers!!",
+    "Tired of a PokÃ©mon? Why don't you sell it to me then?"
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
 }
 
 function onThink()
@@ -254,13 +384,18 @@ function onThink()
         end
         
         if (os.clock() - talk_start) > 70 then
+<<<<<<< HEAD
             selfSay("Tenho outros clientes também, fale comigo quando tiver vontade de vender um Pokémon.")
             focus = 0
             return true
+=======
+            focus = 0
+            selfSay("I have other customers too, talk to me when you want to sell a PokÃ©mon.")
+>>>>>>> b9cf883cdbd765c5a3c3b396820eed73127a8719
         end
         
         if getDistanceToCreature(focus) > 3 then
-            selfSay("Até logo e obrigado!")
+            selfSay("See you later and thank you!")
             focus = 0
             return true
         end

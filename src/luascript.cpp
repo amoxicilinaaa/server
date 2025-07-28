@@ -12646,6 +12646,9 @@ int32_t LuaScriptInterface::luaGetDesMarket(lua_State* L)
         	if(market["nick"] != "")
     	    	s << " (" << market["nick"]<< ")";
 
+        	// if(market["newLevel"] != "")
+    	    	// s << " (" << market["newLevel"]<< ")";
+
         	if(market["boost"] != "")
  	        	s << " +" << market["boost"] << ".";
         	else
