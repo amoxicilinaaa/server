@@ -1,37 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <talkactions>
+	<!-- ADMINISTRADOR ID = 6 -->
+	<talkaction log="yes" access="5" words="/m" event="script" value="ADMINISTRADOR/creature.lua"/>
+	<talkaction log="yes" access="5" words="/i"  event="script" value="ADMINISTRADOR/createitem.lua"/>
+	<talkaction log="yes" access="5" words="/s" event="script" value="ADMINISTRADOR/summon.lua"/>
+	<talkaction log="yes" access="5" words="/cb" event="script" value="ADMINISTRADOR/createpokeball.lua"/>
+	<talkaction log="yes" access="5" words="/unban" event="script" value="ADMINISTRADOR/unban.lua"/>
+	<talkaction log="yes" access="5" words="/mkick" event="script" value="ADMINISTRADOR/masskick.lua"/>
+	<talkaction log="yes" access="5" words="/addvip" event="script" value="ADMINISTRADOR/addvip.lua"/>
+	<talkaction log="yes" access="5" words="/reload" event="script" value="ADMINISTRADOR/reload.lua"/>
+	<talkaction log="yes" access="5" words="/additem" event="script" value="ADMINISTRADOR/additem.lua"/>
+	<talkaction log="yes" access="5" words="/storage" event="script" value="ADMINISTRADOR/storage.lua"/>
+	<talkaction log="yes" access="5" words="/giveitem" event="script" value="ADMINISTRADOR/giveitem.lua"/>
+	<talkaction log="yes" access="5" words="/shutdown" event="script" value="ADMINISTRADOR/shutdown.lua"/>
+	<talkaction log="yes" access="5" words="/boostmachine" event="script" value="ADMINISTRADOR/boostmachine.lua"/>
+	<talkaction log="yes" access="5" words="/addpremium;/removedays;/checkdays" event="script" value="ADMINISTRADOR/premiumtalk.lua"/>
 
-	<talkaction words="!expbooster" script="mixlort/ExperienceTime.lua" />
-	<talkaction words="!shinycharm" script="mixlort/ShinyCharmTime.lua" />
-	<talkaction words="!shinystone;/shinystone" script="mixlort/shinyStone.lua" />
-    <talkaction words="!comandos;!commands;/comandos" case-sensitive="no" event="script" value="mixlort/comandos.lua"/>
-    <talkaction words="!premium" case-sensitive="no" event="script" value="mixlort/Premium.lua"/>
-    <talkaction words="!evolutionlevel" case-sensitive="no" event="script" value="mixlort/evolutionlevel.lua"/>
+	<talkaction log="yes" access="5" words="/attr" event="function" value="thingProporties"/>
+	<talkaction log="yes" access="5" words="/addskill" event="function" value="addSkill"/>
 
-    <talkaction words="/itemlist;/itemcount" case-sensitive="no" access="4" event="script" value="mixlort/ItemCount.lua"/>
+	<!-- COMMUNITY MANAGER ID = 5 -->
+	<talkaction log="yes" access="5" words="/level" event="script" value="COMMUNITY/editlvl.lua"/>
+	<talkaction log="yes" access="5" words="/writeTable" event="script" value="COMMUNITY/writeTable.lua"/>
 
-	<!-- <talkaction hide="yes" words="/test" event="script" value="mixlort/test.lua"/>	   -->
-	<talkaction words="/level" access="5" event="script" value="mixlort/editlvl.lua"/>
-	<talkaction words="/lang" event="script" value="mixlort/setLanguage.lua"/>	
+	<!-- GAME MASTER ID = 4 -->
+	<talkaction log="yes" access="4" words="/config" event="script" value="GAMEMASTER/configinfo.lua"/>
+	<talkaction log="yes" access="4" words="/raid" event="script" value="GAMEMASTER/raid.lua"/>
+	<talkaction log="yes" access="4" words="/r" event="script" value="GAMEMASTER/remove.lua"/>
+	<talkaction log="yes" access="4" words="/bc" event="script" value="GAMEMASTER/broadcastclass.lua"/>
+	<talkaction log="yes" access="4" words="!ta;/ta" event="script" value="GAMEMASTER/createitemall.lua"/>
+	<talkaction log="yes" access="4" words="/alltemple" event="script" value="GAMEMASTER/todosparaotemplo.lua"/>
+	<talkaction log="yes" access="4" words="/ccxml" event="script" value="GAMEMASTER/createcxml.lua"/>
+	<talkaction log="yes" access="4" words="/updatestats" event="script" value="GAMEMASTER/updatestatistics.lua"/>
+	<talkaction log="yes" access="4" words="/gpbm" event="script" value="GAMEMASTER/searchmove.lua"/>
+	<talkaction log="yes" access="4" words="/makemonsters" event="script" value="GAMEMASTER/makemonsters.lua"/>
+	<talkaction log="yes" access="4" words="/go" event="script" value="GAMEMASTER/t.lua"/>
+	<talkaction log="yes" access="4" words="/closeserver;/openserver" event="script" value="GAMEMASTER/closeopen.lua"/>
+	<talkaction log="yes" access="4" words="/promote;/demote" event="script" value="GAMEMASTER/promote.lua"/>
+	<talkaction log="yes" access="4" words="/mode" event="script" value="GAMEMASTER/mode.lua"/>
+	<talkaction log="yes" access="4" words="/squelch;/cliport" event="script" value="GAMEMASTER/gamemaster.lua"/>
+	<talkaction log="yes" access="4" words="/up;/down" event="script" value="GAMEMASTER/teleportfloor.lua"/>
+	<talkaction log="yes" access="4" words="/c" event="script" value="GAMEMASTER/teleporthere.lua"/>
+	<talkaction log="yes" access="4" words="/goto" event="script" value="GAMEMASTER/teleportto.lua"/>
+	<talkaction log="yes" access="4" words="/a" event="script" value="GAMEMASTER/teleporttiles.lua"/>
+	<talkaction log="yes" access="4" words="/kick" event="script" value="GAMEMASTER/kick.lua"/>
+	<talkaction log="yes" access="4" words="/send" event="script" value="GAMEMASTER/teleportsend.lua"/>
+	<talkaction log="yes" access="4" words="/town" event="script" value="GAMEMASTER/teleporttown.lua"/>
+	<talkaction log="yes" access="4" words="/save" event="script" value="GAMEMASTER/save.lua"/>
+	<talkaction log="yes" access="4" words="/clean" event="script" value="GAMEMASTER/clean.lua"/>
+	<talkaction log="yes" access="4" words="/reports" event="script" value="GAMEMASTER/reports.lua"/>
+	<talkaction log="yes" access="4" words="/mc" event="script" value="GAMEMASTER/multicheck.lua"/>
+	<talkaction log="yes" access="4" words="/wp" event="script" value="GAMEMASTER/waypoints.lua"/>
+	<talkaction log="yes" access="4" words="/notations" event="script" value="GAMEMASTER/notations.lua"/>
+	<talkaction log="yes" access="4" words="/gethouse" event="script" value="GAMEMASTER/gethouse.lua"/>
+	<talkaction log="yes" access="4" words="/rename" event="script" value="GAMEMASTER/account.lua"/>
+
+	<talkaction log="no" access="4" words="/newtype" event="script" value="GAMEMASTER/newtype.lua"/>
+	<talkaction log="no" access="4" words="/owner" event="script" value="GAMEMASTER/owner.lua"/>
+	<talkaction log="no" access="4" words="/z" event="script" value="GAMEMASTER/magiceffect.lua"/>
+	<talkaction log="no" access="4" words="/x" event="script" value="GAMEMASTER/animationeffect.lua"/>
+	<talkaction log="no" access="4" words="/y" event="script" value="GAMEMASTER/animatedtext.lua"/>
+
+	<talkaction log="yes" access="4" hide="yes" words="!pos" event="script" value="GAMEMASTER/position.lua"/>
+	<talkaction log="yes" access="4" hide="yes" words="!onlineall;/onlineall"  event="script" value="GAMEMASTER/onlineall.lua"/>
+	<talkaction log="yes" access="4" words="/itemlist;/itemcount" case-sensitive="no" event="script" value="GAMEMASTER/ItemCount.lua"/>
+
+	<talkaction log="yes" access="4" words="/baninfo" event="function" value="banishmentInfo"/>
+	<talkaction log="yes" access="4" words="/serverdiag" event="function" value="diagnostics"/>
+	<talkaction log="yes" access="4" words="/ghost" event="function" value="ghost"/>
+
+	<!-- SENIOR TUTOR ID = 3 -->
+	<talkaction log="yes" access="3" words="/info" event="script" value="SENIOR/playerinfo.lua"/>
+
+	<!-- TUTOR ID = 2 -->
+	<talkaction log="yes" access="2" words="/b" hide="yes" event="script" value="TUTOR/broadcaststaff.lua"/>
+	<talkaction log="yes" access="2" words="/t" event="script" value="TUTOR/teleportmaster.lua"/>
+	<talkaction log="yes" access="2" words="/spy;!spy" event="script" value="TUTOR/spy.lua"/>
+	<talkaction log="yes" access="2" words="/muted" event="script" value="TUTOR/mutePlayer2.lua"/>
+
+	<!-- PLAYER ID = 1 --> <!-- AINDA FALTA SEPARA AS PASTAS -->
+	<talkaction log="yes" words="!megaphone" event="script" value="broadcast.lua"/>
+	<talkaction words="/uptime" hide="yes" event="script" value="uptime.lua"/>
+	<talkaction words="!online" event="script" value="online.lua"/>
+
+	<talkaction words="!autolootadd;!autolootremove;!autolootlist" event="script" value="vk.lua"/>
+
+	<talkaction words="!uptime" event="script" value="uptime.lua"/>
+	<talkaction words="!q" event="script" value="money.lua"/>
+	<talkaction words="tn" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
+	<talkaction words="!expbooster" script="PLAYER/ExperienceTime.lua" />
+	<talkaction words="!shinycharm" script="PLAYER/ShinyCharmTime.lua" />
+	<talkaction words="!shinystone;/shinystone" script="PLAYER/shinyStone.lua" />
+	<talkaction words="/commands" event="script" value="commands.lua"/>
+    <talkaction words="!comandos;!commands;/comandos" case-sensitive="no" event="script" value="PLAYER/comandos.lua"/>
+    <talkaction words="!premium" case-sensitive="no" event="script" value="PLAYER/Premium.lua"/>
+    <talkaction words="!evolutionlevel" case-sensitive="no" event="script" value="PLAYER/evolutionlevel.lua"/>
+	<talkaction words="/lang" event="script" value="PLAYER/setLanguage.lua"/>	
 	<talkaction words="!luz" event="script" value="luz.lua"/>	
-	<talkaction words="correr;Correr;CORRER;CoRrEr;cOrReR" event="script" value="correr.lua"/>	  
-	<talkaction hide="yes" log="yes" access="2" words="/b" event="script" value="mixlort/broadcaststaff.lua"/>
-	<talkaction hide="yes" words="!antibot" event="script" value="mixlort/antibot.lua"/>
-	<talkaction hide="yes" words="77PIN" event="script" value="mixlort/pokeinfo.lua"/>
-	<talkaction hide="yes" words="77GBP" event="script" value="mixlort/gopoke.lua"/>
-	<talkaction hide="yes" words="/guardian;/card;!guardian;!card" event="script" value="mixlort/guardian.lua"/>
-	<talkaction hide="yes" words="!eventobag;/evento bag;!evento bag;/eventobag" event="script" value="evento bag.lua"/>
-	<talkaction hide="yes" words="!pokeevolve" script="mixlort/pokeevolve.lua"/>
-	<talkaction hide="yes" words="/particle;!particle;!aura;/aura" event="script" value="mixlort/particle.lua"/>	
-	<!--talkaction hide="yes" words="!autoloot;/autoloot" script="mixlort/autoloot.lua"/-->
-	<talkaction hide="yes" words="/group" event="script" value="mixlort/cargo.lua"/>
-	<talkaction hide="yes" words="!onlineall;/onlineall" access="4" event="script" value="mixlort/onlineall.lua"/>
-	<talkaction hide="yes" words="!pokestop;/pokestop;!pokeStop" script="poke/pokeStop.lua"/> 
-	<!-- <talkaction hide="yes" words="!walk" script="poke/walk.lua"/>  -->
-	<talkaction hide="yes" words="#Charmanderwiner#" event="script" value="iniciogame/charmander.lua"/>
-	<talkaction hide="yes" words="#Bulbasaurwiner#" event="script" value="iniciogame/bulbasaur.lua"/>
-	<talkaction hide="yes" words="#Squirtlewiner#" event="script" value="iniciogame/squirtle.lua"/>
+	<talkaction words="correr;Correr;CORRER;CoRrEr;cOrReR" event="script" value="correr.lua"/>
+	<talkaction log="yes" words="/ausente;/afk;!afk;!ausente" event="script" value="ausente.lua"/>  
+
+	<talkaction hide="yes" words="!antibot" event="script" value="PLAYER/antibot.lua"/>
+	<talkaction hide="yes" words="77PIN" event="script" value="PLAYER/pokeinfo.lua"/>
+	<talkaction hide="yes" words="77GBP" event="script" value="PLAYER/gopoke.lua"/>
+	<talkaction hide="yes" words="/guardian;/card;!guardian;!card" event="script" value="PLAYER/guardian.lua"/>
+	<talkaction hide="yes" words="!eventorelampago;/evento relampago;!evento relampago;/eventorelampago" event="script" value="evento relampago.lua"/>
+	<talkaction hide="yes" words="!pokeevolve" script="PLAYER/pokeevolve.lua"/>
+	<talkaction hide="yes" words="/particle;!particle;!aura;/aura" event="script" value="PLAYER/particle.lua"/>	
+	<talkaction hide="yes" words="/group" event="script" value="PLAYER/cargo.lua"/>
+
+	<talkaction hide="yes" words="!pokestop;/pokestop;!pokeStop" script="poke/pokeStop.lua"/>
 	<talkaction log="no" words="#@MOD_reedemcode@#" script="REEDEM CODES SYSTEM/Reedem MainWindow - Open.lua"/>
 	<talkaction log="no" words="#@MOD_reedemevents@#" script="REEDEM CODES SYSTEM/Reedem EventsWindow - Open.lua"/>
 	<talkaction log="no" words="#@MOD_reedemdonations@#" script="REEDEM CODES SYSTEM/Reedem DonationsWindow - Open.lua"/>
@@ -40,217 +119,32 @@
 	<talkaction words="!buyVigor" script="poke/starminaRefil.lua"/>
 	<talkaction words="/getZEventReward" script="poke/event_natal.lua" />
 	<talkaction words="!buybless;/buybless;!bless;/bless" script="bless.lua" />
-	<!-- <talkaction words="!zdex" script="poke/dex.lua"/> -->
 	<talkaction words="!@vik@" script="poke/editMode.lua"/>
-	<!--talkaction words="!viktor" script="poke/invasao.lua"/-->
-	<!--talkaction words="!dungeons" script="poke/invasao.lua"/-->
 	<talkaction words="/money;!money" event="script" value="moneychagend.lua"/>	
-
 	<talkaction words="!pokeaddon" script="pokeaddon.lua"/>
 	<talkaction hide="yes" words="@BuyDiamonds" script="poke/pontosconvert.lua"/>
 	<talkaction words="!@pokebar@" script="pokebar.lua"/>
-	<talkaction words="/writeTable" access="5" event="script" value="writeTable.lua"/> 
 	<talkaction words="!partyexp" event="script" value="partyexp.lua"/>
 	<talkaction words="/golden" event="script" value="GoldenArena.lua"/>
-	<!-- <talkaction words="!task" script="task.lua"/> -->
 	<talkaction words="!removetask" script="removetask.lua"/>
 	<talkaction words="!pokeballs" script="pokeballs.lua"/>
 	<talkaction words="!dive" event="script" value="!dive.lua"/>
 	<talkaction words="!back" event="script" value="!back.lua"/>
-	<!-- <talkaction words="!rank" script="ranking.lua" /> -->
 	<talkaction words="!salvar;/salvar;!save" script="saveyourchar.lua"/> 
-
 	<talkaction words="#getSto#" event="script" value="talkClan.lua"/> 
 	<talkaction words="#f#ightmode" event="script" value="fightMode.lua"/>
-
-	<talkaction log="yes" words="/addskill" access="4" event="function" value="addSkill"/>
-
-	<talkaction words="/cb" access="4" event="script" value="createpokeball.lua"/>
-
-	<talkaction log="yes" words="/muted" access="2" event="script" value="mutePlayer2.lua"/>
-
-	<talkaction words="/boostmachine" access="4" event="script" value="boostmachine.lua"/>
-
-	<talkaction words="/addvip" access="4" event="script" value="addvip.lua"/>
-
-	<talkaction words="/ccxml" access="4" event="script" value="createcxml.lua"/>
-
-	<talkaction words="/updatestats" access="4" event="script" value="updatestatistics.lua"/>
-
-	<talkaction words="/gpbm" access="4" event="script" value="searchmove.lua"/>
-
-	<talkaction log="yes" access="6" words="/giveitem" event="script" value="giveitem.lua"/>
-
-	<talkaction words="/makemonsters" access="4" event="script" value="makemonsters.lua"/>
-
-	<talkaction words="/go" access="4" event="script" value="t.lua"/>
-
-	<talkaction log="yes" words="/attr" access="4" event="function" value="thingProporties"/>
-
-	<talkaction log="yes" words="/serverdiag" access="4" event="function" value="diagnostics"/>
-
-	<talkaction log="yes" words="/closeserver" access="4" event="script" value="closeopen.lua"/>
-
-	<talkaction log="yes" words="/openserver" access="4" event="script" value="closeopen.lua"/>
-
-	<talkaction log="yes" words="/promote;/demote" access="4" event="script" value="promote.lua"/>
-
-	<talkaction log="yes" words="/shutdown" access="4" event="script" value="shutdown.lua"/>
-
-	<talkaction log="yes" access="4" words="/mode" event="script" value="mode.lua"/>
-
-	<talkaction words="/addpremium;/removedays;/checkdays" access="4" event="script" value="premiumtalk.lua"/>
-
 	<talkaction words="#getGym#" event="script" value="talkGym.lua"/>
-
-	<talkaction words="!ta;/ta" access="4" event="script" value="createitemall.lua"/>
-
-	<talkaction words="/alltemple" access="4" event="script" value="todosparaotemplo.lua"/>
-
-	<talkaction log="yes" words="/spy;!spy" access="2" event="script" value="spy.lua"/>
-
-	<talkaction words="/additem" access="5" event="script" value="additem.lua"/>
-
-
-
-
-	<!-- Community Managers -->
-	
-	<!-- <talkaction hide="yes" words="/test" event="script" value="test1.lua"/> removido para a base do fórum-->
-
-	<talkaction log="yes" words="/s" access="4" event="script" value="summon.lua"/>
-
-	<talkaction log="yes" words="/n" access="4" event="script" value="creature.lua"/>
-
-	<talkaction log="yes" words="/reload" access="4" event="script" value="reload.lua"/>
-
-	<talkaction log="yes" words="/raid" access="4" event="script" value="raid.lua"/>
-
-	<talkaction log="yes" words="/newtype" access="4" event="script" value="newtype.lua"/>
-
-	<talkaction log="yes" words="/r" access="4" event="script" value="remove.lua"/>
-
-	<talkaction log="yes" words="/owner" access="4" event="script" value="owner.lua"/>
-
-	<talkaction log="yes" words="/storage" access="4" event="script" value="storage.lua"/>
-
-	<talkaction log="yes" words="/config" access="4" event="script" value="configinfo.lua"/>
-
-	<talkaction log="yes" words="/i" access="4" event="script" value="createitem.lua"/>
-
-	<talkaction access="4" words="/z" event="script" value="magiceffect.lua"/>
-
-	<talkaction access="4" words="/x" event="script" value="animationeffect.lua"/>
-
-	<talkaction access="4" words="/y" event="script" value="animatedtext.lua"/>
-
-	<talkaction log="yes" words="/bc" access="4" event="script" value="broadcastclass.lua"/>
-
-	<talkaction log="yes" access="4" words="/mkick" event="script" value="masskick.lua"/>
-
-
-	<!-- Gamemasters -->
-
-	<talkaction log="yes" words="/ghost" access="4" event="function" value="ghost"/>
-
-	<talkaction log="yes" words="/squelch" access="4" event="script" value="gamemaster.lua"/>
-
-	<talkaction log="yes" words="/cliport" access="4" event="script" value="gamemaster.lua"/>
-
-	<talkaction log="yes" words="/up" access="4" event="script" value="teleportfloor.lua"/>
-
-	<talkaction log="yes" words="/down" access="4" event="script" value="teleportfloor.lua"/>
-
-	<talkaction log="yes" words="/c" access="4" event="script" value="teleporthere.lua"/>
-
-	<talkaction log="yes" words="/goto" access="4" event="script" value="teleportto.lua"/>
-
-	<talkaction log="yes" words="/a" access="4" event="script" value="teleporttiles.lua"/>
-
-	<talkaction log="yes" words="/kick" access="4" event="script" value="kick.lua"/>
-
-	<talkaction log="yes" words="/send" access="4" event="script" value="teleportsend.lua"/>
-
-	<talkaction log="yes" words="/unban" access="4" event="script" value="unban.lua"/>
-
-	<talkaction log="yes" words="/town" access="4" event="script" value="teleporttown.lua"/>
-
-
-	<talkaction log="yes" words="/save" access="4" event="script" value="save.lua"/>
-
-	<talkaction log="yes" words="/clean" access="4" event="script" value="clean.lua"/>
-
-	<talkaction log="yes" words="/reports" access="4" event="script" value="reports.lua"/>
-
-	<talkaction log="yes" words="/mc" access="4" event="script" value="multicheck.lua"/>
-
-	<talkaction log="yes" access="4" words="/wp" event="script" value="waypoints.lua"/>
-
-
-	<!-- Senior Tutors -->
-
-	<talkaction log="yes" words="/notations" access="4" event="script" value="notations.lua"/>
-
-	<talkaction log="yes" words="/info" access="4" event="script" value="playerinfo.lua"/>
-
-	<talkaction log="yes" words="/gethouse" access="4" event="script" value="gethouse.lua"/>
-
-	<!--<talkaction words="!invite" event="script" value="invitehouse.lua"/> -->
 	<talkaction words="!invite" filter="word-spaced" event="function" value="houseGuestList"/>
 	<talkaction words="!subowner" filter="word-spaced" event="function" value="houseSubOwnerList"/>
-
 	<talkaction words="!bug" event="script" value="debug.lua"/>
-
-	<!-- Tutors -->
-
-	<talkaction log="yes" words="/baninfo" access="4" event="function" value="banishmentInfo"/>
-
 	<talkaction log="yes" words="/pos" event="script" value="position.lua"/>
 
-	<talkaction log="yes" words="/t" access="2" event="script" value="teleportmaster.lua"/>
-
-	<!-- <talkaction log="yes" access="2" words="/b" event="script" value="broadcast.lua"/> -->
-
-
-
-	<!-- Players -->
-	<talkaction log="yes" words="!megaphone" event="script" value="broadcast.lua"/>
-	<talkaction words="!online" event="script" value="online.lua"/>
-
-	<talkaction words="!autolootadd" event="script" value="vk.lua"/>
-	<talkaction words="!autolootremove" event="script" value="vk.lua"/>
-	<talkaction words="!autolootlist" event="script" value="vk.lua"/>
-
-
-	<talkaction words="!uptime" event="script" value="uptime.lua"/>
-
-	<talkaction words="!q" event="script" value="money.lua"/>
-	<talkaction words="/commands" event="script" value="commands.lua"/>
-
-
-	<talkaction words="tn" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
-
-
-	<!--<talkaction words="!taunt" event="script" value="!taunt.lua"/> -->
-
-
-<!-- 	<talkaction words="t1" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
-	<talkaction words="te" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
-	<talkaction words="t2" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
-	<talkaction words="ts" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
-	<talkaction words="t3" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
-	<talkaction words="tw" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
-	<talkaction words="t4" case-sensitive="no" hide="yes" event="script" value="directions.lua"/> -->
 	<talkaction words=".h" case-sensitive="no" hide="yes" event="script" value="hold pos.lua"/>
 	<talkaction words="a0" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
 	<talkaction words="a1" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
 	<talkaction words="a2" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
 	<talkaction words="a3" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
-
-
-	<talkaction words="!h" event="script" value="tele.lua"/>
-	<talkaction words="/h" event="script" value="tele.lua"/>
-	<talkaction words="h" event="script" filter="quotation" value="tele.lua"/>
+	<talkaction words="!h;/h;h" event="script" value="tele.lua"/>
 	<talkaction words="!up" case-sensitive="no" event="script" value="flyup.lua"/>
 	<talkaction words="h1" case-sensitive="no" event="script" value="flyup.lua"/>
 	<talkaction words="!down" case-sensitive="no" event="script" value="flydown.lua"/>
@@ -272,46 +166,52 @@
 	<talkaction words="!love" case-sensitive="no" event="script" value="love.lua"/>
 	<talkaction words="!check" case-sensitive="no" event="script" value="check.lua"/>
 	<talkaction words="!doubleexp" case-sensitive="no" event="script" value="doubleexp.lua"/>
-
-	<!-- <talkaction words="/dex" case-sensitive="no" event="script" value="pokedex.lua"/> -->
-	<!--   <event type="logout" name="lfa" register = "1" event="script" value="afl.lua"/>-->
-	<!-- <talkaction words="!dex" case-sensitive="no" event="script" value="pokedex.lua"/> -->
 	<talkaction words="!code64" case-sensitive="no" event="script" value="cdbar.lua"/>
 	<talkaction words="/goaction" case-sensitive="no" event="script" value="cdbar.lua"/>
 	<talkaction words="/pokeread" case-sensitive="no" event="script" value="cdbar.lua"/>
-	<!--<talkaction words="!autoloot" event="script" value="autoloot.lua"/> -->
-	<talkaction log="yes" words="/rename" access="4" event="script" value="account.lua"/>
-	<!--<talkaction words="/aloot" hide="yes" event="script" value="aloot.lua"/>-->
 	<talkaction words="/clanshop" hide="yes" event="script" value="clan.lua"/>
 	<talkaction log = "yes" words = "!revert" hide="yes" event = "script" value = "dittorevert.lua"/>
-	<!--<talkaction words="!fly" event="script" value="flysystem.lua"/> -->
 
+	<!-- INICIO-GAME -->
+	<talkaction hide="yes" words="#Charmanderwiner#" event="script" value="INICIOGAME/charmander.lua"/>
+	<talkaction hide="yes" words="#Bulbasaurwiner#" event="script" value="INICIOGAME/bulbasaur.lua"/>
+	<talkaction hide="yes" words="#Squirtlewiner#" event="script" value="INICIOGAME/squirtle.lua"/>
 
-
-	<!-- Houses -->
-
+	<!-- HOUSES -->
 	<talkaction words="!buyhouse" filter="word-spaced" event="function" value="houseBuy"/> 
 	<talkaction words="!sellhouse" event="function" value="houseSell"/>
 	<talkaction words="!leave" filter="word-spaced" event="script" value="leavehouse.lua"/>
-	<!--<talkaction words="/m" filter="word-spaced" event="script" value="creature.lua"/>-->
-	<talkaction log="yes" words="/m" access="4" event="script" value="creature.lua"/>
-	
+
+	<!-- <talkaction hide="yes" words="/test" event="script" value="test1.lua"/> removido para a base do fórum-->
+	<!-- <talkaction words="!rank" script="ranking.lua" /> -->
+	<!--talkaction words="!viktor" script="poke/invasao.lua"/-->
+	<!--talkaction words="!dungeons" script="poke/invasao.lua"/-->
+	<!-- <talkaction words="!zdex" script="poke/dex.lua"/> -->
+	<!--talkaction hide="yes" words="!autoloot;/autoloot" script="PLAYER/autoloot.lua"/-->
+	<!-- <talkaction hide="yes" words="/test" event="script" value="PLAYER/test.lua"/>	   --> 
+	<!-- <talkaction hide="yes" words="!walk" script="poke/walk.lua"/>  -->
+	<!-- <talkaction words="!task" script="task.lua"/> -->
+	<!--<talkaction words="!invite" event="script" value="invitehouse.lua"/> -->
+	<!-- <talkaction log="yes" access="2" words="/b" event="script" value="broadcast.lua"/> -->
+	<!--<talkaction words="!taunt" event="script" value="!taunt.lua"/> -->
+	<!-- <talkaction words="t1" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
+	<talkaction words="te" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
+	<talkaction words="t2" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
+	<talkaction words="ts" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
+	<talkaction words="t3" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
+	<talkaction words="tw" case-sensitive="no" hide="yes" event="script" value="directions.lua"/>
+	<talkaction words="t4" case-sensitive="no" hide="yes" event="script" value="directions.lua"/> -->
+	<!-- <talkaction words="/dex" case-sensitive="no" event="script" value="pokedex.lua"/> -->
+	<!--   <event type="logout" name="lfa" register = "1" event="script" value="afl.lua"/>-->
+	<!-- <talkaction words="!dex" case-sensitive="no" event="script" value="pokedex.lua"/> -->
+	<!--<talkaction words="!autoloot" event="script" value="autoloot.lua"/> -->
+	<!--<talkaction words="/aloot" hide="yes" event="script" value="aloot.lua"/>-->
+	<!--<talkaction words="!fly" event="script" value="flysystem.lua"/> -->
+	<!--<talkaction words="/m" filter="word-spaced" event="script" value="creature.lua"/>-->	
 	<!-- <talkaction log="yes" words="/m" access="4" event="script" value="creature.lua"/> -->
-
-
 	<!-- Guilds -->
-
 	<!-- <talkaction words="!createguild" event="function" value="guildCreate"/> -->
-
 	<!-- <talkaction words="!joinguild" event="function" value="guildJoin"/> -->
-
-
 	<!-- (Deprecated) Redirect old '/' to '!' -->
-
-	<talkaction words="/online" hide="yes" event="script" value="online.lua"/>
-
-	<talkaction words="/uptime" hide="yes" event="script" value="uptime.lua"/>
-
-	<talkaction log="yes" access="4" hide="yes" words="!pos" event="script" value="position.lua"/>
 	
 </talkactions>

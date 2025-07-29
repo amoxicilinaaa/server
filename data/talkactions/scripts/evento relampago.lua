@@ -1,19 +1,17 @@
 local storage = 4343252
 
 function onSay(cid, words, param, item)
-
 	if getPlayerStorageValue(cid, storage) <= os.time() then
-
 		if getGlobalStorageValue(655453) == 1 then
 			if getPlayerLevel(cid) >= 50 then
 				local items = {2392, 2393, 2391, 2394, 12344, 12343, 12345, 12346, 12347, 23418, 15644, 12339}
 				local random_item = items[math.random(#items)]
 				local item_name = getItemNameById(random_item) 
 				local chancenada = 2
+				local eventorelampago = math.random(1,10)
 
-				local mixlortBag = math.random(1,10)
-				if mixlortBag <= chancenada then 
-					doPlayerSendTextMessage(cid,25,"Você não ganhou nada!")
+				if eventorelampago <= chancenada then 
+					doPlayerSendTextMessage(cid,25,"[EVENTO-RELAMPAGO]:\nVocê não ganhou nada!")
 					setPlayerStorageValue(cid, storage, os.time()+15)
 					return true
 				end
@@ -43,15 +41,13 @@ function onSay(cid, words, param, item)
 				end   
 
 				doPlayerAddItem(cid,2152,3)
-				doBroadcastMessageOld("Parabens ao jogador "..getCreatureName(cid).." ganhou "..item_name.." e um premio em dinheiro!",25)
+				doBroadcastMessageOld("[EVENTO-RELAMPAGO]:\nParabens ao jogador "..getCreatureName(cid).." ganhou "..item_name.." e um premio em dinheiro!",25)
 				setPlayerStorageValue(cid, storage, os.time()+15)
 			else
-				doPlayerSendTextMessage(cid,25,"Você precisa ser ao menos level 50 para participar do evento bag.")
+				doPlayerSendTextMessage(cid,25,"[EVENTO-RELAMPAGO]:\nVocê precisa ser ao menos level 50 para participar.")
 			end
 		else
-			doPlayerSendTextMessage(cid,25,"Evento bag esta fechado!")
+			doPlayerSendTextMessage(cid,25,"[EVENTO-RELAMPAGO]:\nestá fechado!")
 		end
-
 	end
-
 end

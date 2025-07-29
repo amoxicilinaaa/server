@@ -14,7 +14,7 @@ function isConfirmMsg(str)
 	end
 	local a = {"yes", "ok", "sure", "alright", "right",
 		   "correct", "true", "fine", "of course",
-		   "nice"}
+		   "nice", "sim", "blz"}
 	for b = 1, #a do
 		if msgcontains(str, a[b]) then
 			return true
@@ -27,7 +27,7 @@ function isNegMsg(str)
 	if string.find(str, ",") then
 	return false
 	end
-	local a = {"no", "not", "wrong"}
+	local a = {"no", "not", "wrong", "não", "nao", "fui"}
 	for b = 1, #a do
 		if msgcontains(str, a[b]) then
 			return true
@@ -40,7 +40,7 @@ function isDuelMsg(str)
 	if string.find(str, ",") then
 	return false
 	end
-	local a = {"battle", "duel", "fight", "challenge", "combat"}
+	local a = {"battle", "duel", "fight", "challenge", "combate", "batalha", "briga", "lutar", "porrada"}
 	for b = 1, #a do
 		if msgcontains(str, a[b]) then
 			return true

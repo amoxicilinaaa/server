@@ -1,14 +1,14 @@
 local base = 7500
 pokemonsStorages = {
-  isSleeping = base + 1,
-  sleepingTick = base + 2,
-  attackTick = base + 3,
-  extraDefense = base + 4,
-  transform = base + 5,
-  accuracy = base + 6,
-  isUsingSpecialSkill = base + 7,
-  isUsingHealthPotion = base + 8,
-  isUsingEnergyPotion = base + 9,
+    isSleeping = base + 1,
+    sleepingTick = base + 2,
+    attackTick = base + 3,
+    extraDefense = base + 4,
+    transform = base + 5,
+    accuracy = base + 6,
+    isUsingSpecialSkill = base + 7,
+    isUsingHealthPotion = base + 8,
+    isUsingEnergyPotion = base + 9,
     bonusAtk = base + 10, -- mastery bonus
     bonusDef = base + 11, -- mastery bonus
     lastUsedMove = base + 12,
@@ -393,9 +393,9 @@ POKELEVEL_PLUS = {
     exprate = 1,
     maxlevel = 80,
     wild_evolve = {
-        chance = 1,
-        life = 0.30,
-        enable = true,
+    chance = 1,
+    life = 0.30,
+    enable = true,
     },
 
 evolution_tab = {

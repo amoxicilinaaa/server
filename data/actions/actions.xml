@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 
+	<action itemid="17251" event="script" value="tp/tpzin.lua"/>	
+
 	<action itemid="3058;3065;19896-19899;4455;9801;4567;9081;9867;14036;14041;14046;14059;14064;14069;14074;14079;14084;14089;14094;14099;14109;14114;14119;14124;14129;14134;14139;14144;14149;14154;14160;14176;14706-14794;19281-19324;3267-3297;3553-3586;4422-4454;4568;4569;4756-4759;11838-11988;12140;12420-12571;12582;12583;12595-12604;12743;12744;12748-12825;12835;12837;12839;12841;12843;12845;12847;12849;12851;13917;13918;13931;13940;13997;13998" event="script" value="mixlort/autoLoot.lua"/>
 
 	<action itemid="23482" event="script" value="boxs/presenteDalkon.lua"/>	
@@ -602,9 +604,9 @@
 	<action itemid="11421" event="script" value="slotmachine.lua"/>
 
 	-- TV / CAM
-	<!-- <action itemid="12332" event="script" value="viktor.lua"/> -->
-	<!-- <action itemid="12330" event="script" value="poke/Tv_Cam.lua" />  -->
-	<!-- <action itemid="14583" event="script" value="poke/Tv_Canais.lua" />  -->
+	<!-- <action itemid="12332" event="script" value="cam/viktor.lua"/> -->
+	<!-- <action itemid="12330" event="script" value="cam/Tv_Cam.lua" />  -->
+	<!-- <action itemid="14583" event="script" value="cam/Tv_Canais.lua" />  -->
 
 	-- PC
 	<action itemid="11462-11469" event="script" value="computer.lua"/>

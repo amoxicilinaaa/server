@@ -5,11 +5,11 @@ function prepareShutdown(minutes)
         end
 
         if(minutes == 1) then
-                doBroadcastMessage("Server is going down in " .. minutes .. " minute for global save, please log out now!")
+                doBroadcastMessage("[SALVAMENTO-GLOBAL]:\nServer is going down in " .. minutes .. " minute for global save, please log out now!")
         elseif(minutes <= 3) then
-                doBroadcastMessage("Server is going down in " .. minutes .. " minutes for global save, please log out.")
+                doBroadcastMessage("[SALVAMENTO-GLOBAL]:\nServer is going down in " .. minutes .. " minutes for global save, please log out.")
         else
-                doBroadcastMessage("Server is going down in " .. minutes .. " minutes for global save.")
+                doBroadcastMessage("[SALVAMENTO-GLOBAL]:\nServer is going down in " .. minutes .. " minutes for global save.")
         end
 
         shutdownEvent = addEvent(prepareShutdown, 60000, minutes - 1)

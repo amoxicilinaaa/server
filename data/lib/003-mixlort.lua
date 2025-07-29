@@ -70,7 +70,6 @@ function removeReflect(cid)
 end
 
 function addMixlortPokeXp(cid, target)
-
     local posss = getCreaturePosition(cid)
     local XPMixlort = ( (pokes[getCreatureName(target)].exp) / 10 )
 
@@ -138,11 +137,9 @@ function addMixlortPokeXp(cid, target)
         doUpdatePokeInfo(cid)
         return true
     end
-
 end
 
 function pokelevelplusfunc(cid, attacker)
-
     local name2 = doCorrectPokemonName(getCreatureName(cid))
     local pevo = poevo[name2]
 
@@ -161,7 +158,6 @@ function pokelevelplusfunc(cid, attacker)
     local name = getEvolution.evolution
 
     if getEvolution then
-
         setCreatureMaxHealth(cid, 5000000) 
         doCreatureAddHealth(cid, 5000000)
 
@@ -315,7 +311,6 @@ end
 else
 doPlayerSendCancel(owner, "")
 end
-
 end
 
 function doPokeInfoAttr(cid)

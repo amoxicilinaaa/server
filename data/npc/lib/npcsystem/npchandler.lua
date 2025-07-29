@@ -437,19 +437,19 @@ if(NpcHandler == nil) then
 	-- Handles onBuy events. If you wish to handle this yourself, use the CALLBACK_ONBUY callback.
 	function NpcHandler:onBuy(cid, itemid, subType, amount, ignoreCap, inBackpacks)
 		if getPlayerItemCount(cid, 12332) >= 20 then 
-			doPlayerSendTextMessage(cid,22,"Voce ja tem o maximo de BPS com voce.")
+			doPlayerSendTextMessage(cid,22,"Você possui o limite de mochilas.")
 			return true 
 		end
 		if getPlayerItemCount(cid, 17355) >= 20 then 
-			doPlayerSendTextMessage(cid,22,"Voce ja tem o maximo de BPS com voce.")
+			doPlayerSendTextMessage(cid,22,"Você possui o limite de mochilas.")
 			return true 
 		end
 		if getPlayerItemCount(cid, 17354) >= 20 then 
-			doPlayerSendTextMessage(cid,22,"Voce ja tem o maximo de BPS com voce.")
+			doPlayerSendTextMessage(cid,22,"Você possui o limite de mochilas.")
 			return true 
 		end
 		if getPlayerItemCount(cid, 17353) >= 20 then 
-			doPlayerSendTextMessage(cid,22,"Voce ja tem o maximo de BPS com voce.")
+			doPlayerSendTextMessage(cid,22,"Você possui o limite de mochilas.")
 			return true 
 		end
 		local callback = self:getCallback(CALLBACK_ONBUY)

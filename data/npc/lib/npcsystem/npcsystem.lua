@@ -14,15 +14,15 @@ if(NpcSystem == nil) then
 	KEYWORD_BEHAVIOR = BEHAVIOR_NORMAL_EXTENDED
 
 	-- Greeting and unGreeting keywords. For more information look at the top of modules.lua
-	FOCUS_GREETWORDS = {'hi', 'hello', 'hey'}
-	FOCUS_FAREWELLWORDS = {'bye', 'farewell', 'cya'}
+	FOCUS_GREETWORDS = {'hi', 'hello', 'hey', 'ei', 'ou', 'oi', 'oie'}
+	FOCUS_FAREWELLWORDS = {'bye', 'farewell', 'cya', 'fui', 'tchau', 'xau', 'partiu'}
 
 	-- The word for requesting trade window. For more information look at the top of modules.lua
-	SHOP_TRADEREQUEST = {'offer', 'trade'}
+	SHOP_TRADEREQUEST = {'offer', 'trade', 'vender', 'trocar', 'negociar', 'ofertas'}
 
 	-- The word for accepting/declining an offer. CAN ONLY CONTAIN ONE FIELD! For more information look at the top of modules.lua
-	SHOP_YESWORD = {'yes'}
-	SHOP_NOWORD = {'no'}
+	SHOP_YESWORD = {'yes', 'sim', 'ok', 'blz'}
+	SHOP_NOWORD = {'no', 'não', 'nao'}
 
 	-- Pattern used to get the amount of an item a player wants to buy/sell.
 	PATTERN_COUNT = '%d+'

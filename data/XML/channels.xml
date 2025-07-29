@@ -833,7 +833,6 @@
 	<channel id="10251" name="251-Celebi">
 		<vocation id="9"/>
 	</channel>
-
-
+	
 	<channel id="65535" name="Private Chat Channel"/>
 </channels>
