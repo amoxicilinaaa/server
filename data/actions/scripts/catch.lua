@@ -294,8 +294,8 @@ function sendBrokesMsg(cid, str, ball, poke, catched)
     end
     table.insert(msg, " para"..(catched == false and " tentar" or "").." capturar:.")
 
-    addEvent(sendMsgToPlayer, 500, cid, 27, table.concat(msg))
-    --sendMsgToPlayer(cid, 27, table.concat(msg))
+    --addEvent(sendMsgToPlayer, 5, cid, 27, table.concat(msg))
+    sendMsgToPlayer(cid, 27, table.concat(msg))
 
     if catched then
         local ballsCatchedString = countN .. "-" .. countG .. "-" .. countS .. "-" .. countU .. "-" .. countS2 .. "-" .. maguCount .. "-" .. soraCount .. "-" .. yumeCount .. "-" .. duskCount .. "-" .. taleCount .. "-" .. moonCount .. "-" .. netCount .. "-" .. premierCount .. "-" .. tinkerCount .. "-" ..fastCount .. "-" .. heavyCount
@@ -431,7 +431,7 @@ function doSendPokeBall(cid, catchinfo, showmsg, fullmsg, typeee) --Edited broke
     local str = newpokedexCatchXpMasterx[name].stoCatch
     local Wast = getWastedBall(cid, str)
     local doCatch = false
-    
+
     local playerPoints = 0
     
     if Wast.normal > 0 then
