@@ -385,10 +385,15 @@
 -- }
 
 failmsgs = {
-"Sorry, you didn't catch that pokemon.",
-"Sorry, your pokeball broke.",
-"Sorry, the pokemon escaped.",
-} 
+    "Desculpe, você não conseguiu capturar aquele Pokémon.",
+    "Desculpe, sua Pokébola quebrou!",
+    "Desculpe, o Pokémon escapou.",
+    "Que pena, o Pokémon era rápido demais para você!",
+    "Ops, parece que a sorte não está ao seu lado dessa vez.",
+    "Infelizmente, o Pokémon preferiu ficar selvagem.",
+    "Tente novamente, essa captura foi um fracasso total!",
+}
+
 local doubleCatch = 1
 function sendBrokesMsg2(cid, name)                       --alterado v1.9 \/ TUDO!!
     if not isCreature(cid) then return false end
@@ -861,6 +866,7 @@ function doNotCapturePokemon(cid, poke, typeee, typeBall)
 	end
 
 	addEvent(doPlayerSendTextMessage, 3000, cid, 27, failmsgs[math.random(#failmsgs)])
+	addEvent(sendBrokesMsg2, 3000, cid, poke)
 
 	if #getCreatureSummons(cid) >= 1 then
 		addEvent(doSendMagicEffect, 3000, getThingPos(getCreatureSummons(cid)[1]), 166)

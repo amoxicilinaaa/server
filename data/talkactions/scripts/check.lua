@@ -34,7 +34,7 @@ function onSay(cid, words, param)
 	end
 
 	if #getCreatureSummons(cid) <= 0 then
-		doPlayerSendCancel(cid, "You need a pokemon to use this command.")
+		doPlayerSendCancel(cid, "Você precisa de um Pokémon para usar este comando.")
 	return true
 	end
 

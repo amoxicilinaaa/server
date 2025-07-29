@@ -33,7 +33,6 @@
 	<event type="logout" name="PlayerLogout" event="script" value="goback.lua"/>
 
 	<event type="traderequest" name="T2" event="script" value="trade system.lua"/>
-
 	<event type="tradeaccept" name="T1" event="script" value="trade system.lua"/>
 
 </creaturescripts>
