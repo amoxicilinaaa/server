@@ -62,10 +62,8 @@ local ignored = {POISONEDDAMAGE, BURNEDDAMAGE}                --alterado v1.6
 local cannotkill = {BURNEDDAMAGE, POISONEDDAMAGE}
 
 function onStatsChange(cid, attacker, type, combat, value)
-
     if combat == FLYSYSTEMDAMAGE then return false end
     if isPlayer(cid) and getCreatureOutfit(cid).lookType == 814 then return false end -- TV
-
     if not isCreature(attacker) then  --alterado v1.5 cid == attacker
 	    if not isInArray(fixdamages, combat) and combats[combat] then
 		    --vk--doSendAnimatedText(getThingPos(cid), value, combats[combat].cor)
@@ -127,7 +125,6 @@ function onStatsChange(cid, attacker, type, combat, value)
 	    if #getCreatureSummons(attacker) >= 1 and not isInArray({POISONEDDAMAGE, BURNEDDAMAGE}, combat) then
 		    --doPlayerSendTextMessage(attacker, cid, 20, "Seu "..getPokeName(getCreatureSummons(attacker)[1]).." causou "..valor.." de dano no "..getSomeoneDescription(cid)..".")
 	    end
-
         return true
     end
     --------------------------------------------------
@@ -147,7 +144,6 @@ function onStatsChange(cid, attacker, type, combat, value)
     --end
     --------------------------------------------------
 	if isPlayer(cid) and #getCreatureSummons(cid) <= 0 and type == STATSCHANGE_HEALTHLOSS then
- 
 		if isSummon(attacker) or isPlayer(attacker) then
    			if canAttackOther(cid, attacker) == "Cant" then return false end
 		end

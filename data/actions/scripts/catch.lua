@@ -14,7 +14,7 @@ local ballcatch = { --id normal, id da ball shiy
     [2391] = {cr = 3, on = 198, off = 197, ball = {11832, 11740}, send = 48, typeee = "great", boost = "0"},
     [2393] = {cr = 6, on = 202, off = 201, ball = {11835, 11743}, send = 46, typeee = "super", boost = "0"},
     [2392] = {cr = 8, on = 200, off = 199, ball = {11829, 11746}, send = 49, typeee = "ultra", boost = "0"},
-    [19610] = {cr = 1000000, on = 1038, off = 1039, ball = {19613, 19613}, send = 78, typeee = "vball", boost = "0"},
+    [19610] = {cr = 6, on = 1038, off = 1039, ball = {19613, 19613}, send = 78, typeee = "vball", boost = "0"},
     [12617] = {cr = 5, on = 204, off = 203, ball = {10975, 12621}, send = 35, typeee = "saffari", boost = "0"}, 
     [12832] = {cr = 1000000, on = 23, off = 24, ball = {12826, 12829}, send = 181, typeee = "master", boost = "50"},
     
@@ -173,7 +173,6 @@ function doBrokesCount(cid, str, ball) --alterado v1.9 \/
         {b = "tinker", v = 0},
         {b = "fast", v = 0},
         {b = "heavy", v = 0},
-        {b = "master", v = 0},
     }
     for _, e in ipairs(tb) do
         if e.b == ball then
@@ -292,10 +291,9 @@ function sendBrokesMsg(cid, str, ball, poke, catched)
     if string.sub(msg[#msg], 1, 1) == "," then
         msg[#msg] = " e".. string.sub(msg[#msg], 2, #msg[#msg])
     end
-    table.insert(msg, " para"..(catched == false and " tentar" or "").." capturar:.")
+    table.insert(msg, " para"..(catched == false and " tentar" or "").." captura-lo.")
 
-    --addEvent(sendMsgToPlayer, 5, cid, 27, table.concat(msg))
-    sendMsgToPlayer(cid, 27, table.concat(msg))
+    addEvent(sendMsgToPlayer, 3000, cid, 27, table.concat(msg))
 
     if catched then
         local ballsCatchedString = countN .. "-" .. countG .. "-" .. countS .. "-" .. countU .. "-" .. countS2 .. "-" .. maguCount .. "-" .. soraCount .. "-" .. yumeCount .. "-" .. duskCount .. "-" .. taleCount .. "-" .. moonCount .. "-" .. netCount .. "-" .. premierCount .. "-" .. tinkerCount .. "-" ..fastCount .. "-" .. heavyCount
@@ -431,7 +429,7 @@ function doSendPokeBall(cid, catchinfo, showmsg, fullmsg, typeee) --Edited broke
     local str = newpokedexCatchXpMasterx[name].stoCatch
     local Wast = getWastedBall(cid, str)
     local doCatch = false
-
+    
     local playerPoints = 0
     
     if Wast.normal > 0 then
@@ -649,11 +647,12 @@ function doSendPokeBall(cid, catchinfo, showmsg, fullmsg, typeee) --Edited broke
         end     
     end
     doRemoveItem(corpse, 1)
-    addEvent(doNotCapturePokemon, 3000, cid, name, typeee)
+    addEvent(doNotCapturePokemon, 3000, cid, name, typeee) 
     doSendMagicEffect(topos, fail)
 end
 
 function doCapturePokemon(cid, poke, ballid, status, typeee, clevel) 
+    
     if not isCreature(cid) then
         return true
     end
@@ -667,11 +666,12 @@ function doCapturePokemon(cid, poke, ballid, status, typeee, clevel)
         depot = true
     end
 
-    local item = doCreateItemEx(ballid) 
+    item = doCreateItemEx(ballid) 
 
     local natureList = {"Hardy", "Lonely", "Brave", "Adamant", "Bold", "Docile", "Relaxad", "Impish", "Modest", "Mild", "Quiet", "Bashful", "Quirky", "Timid", "Hasty", "Serius", "Jolly"}
     local nature = natureList[math.random(#natureList)]
     local description = "Contains a "..poke.."."
+
     if not clevel or (clevel <= 1) then
         clevel = 1
     end
@@ -688,6 +688,7 @@ function doCapturePokemon(cid, poke, ballid, status, typeee, clevel)
     doItemSetAttribute(item, "iv", math.random(31)) 
     doItemSetAttribute(item, "ev", 0) 
     doItemSetAttribute(item, "exp", 0)
+    doItemSetAttribute(item, "level", 1)
     doItemSetAttribute(item, "level", clevel)
     doItemSetAttribute(item, "fakedesc", description)
     doItemSetAttribute(item, "description", description)    
@@ -710,14 +711,9 @@ function doCapturePokemon(cid, poke, ballid, status, typeee, clevel)
     if pokeballs[poke:lower()] then
         doTransformItem(item, pokeballs[poke:lower()].on)   
     end 
-
-    local captiturado = newpokedexCatchXpMasterx[poke].stoCatch
-    if not string.find(getPlayerStorageValue(cid, captiturado), "vball") then
-        setPlayerStorageValue(cid, captiturado, "normal = 0, great = 0, super = 0, ultra = 0, vball = 0, saffari = 0, dark = 0, magu = 0, sora = 0, yume = 0, dusk = 0, tale = 0, moon = 0, net = 0, premier = 0, tinker = 0, fast = 0, heavy = 0;")
-    end
-
+    
     -- Exibir mensagem de captura com a contagem de Pokébolas
-    doPlayerSendTextMessage(cid, 27, "Parabéns, você capturou um "..poke.."!")
+    doPlayerSendTextMessage(cid, 27, "Parabéns, você capturou: "..poke.."!")
     sendBrokesMsg(cid, newpokedexCatchXpMasterx[poke].stoCatch, typeee, poke, true)
     
     if #getCreatureSummons(cid) >= 1 then
@@ -725,6 +721,13 @@ function doCapturePokemon(cid, poke, ballid, status, typeee, clevel)
     else
         doSendMagicEffect(getThingPos(cid), 173) 
     end
+    
+    -- if typeee == "master" then
+        -- doItemSetAttribute(item, "unique", true) 
+    -- elseif typeee == "premier" then
+    --     doItemSetAttribute(item, "aura", "red")
+    --     doPlayerSendTextMessage(cid, 27, "Utilize o comando !aura para trocar de aura")     
+    -- end
     
     if depot then 
         local cidade = 1
@@ -745,23 +748,19 @@ function doCapturePokemon(cid, poke, ballid, status, typeee, clevel)
         setDailyCatched(cid, true)
         doPlayerSendTextMessage(cid, 27, "Daily Catch: Você terminou a missão! Volte para pegar sua recompensa!")
     end
-
+    
 --    local storage = newpokedex[poke].stoCatch 
 --    sendBrokesMsg(cid, storage, typeee, poke, true) 
 --    setPlayerStorageValue(cid, storage, "normal = 0, great = 0, super = 0, ultra = 0, saffari = 0, dark = 0, magu = 0, sora = 0, yume = 0, dusk = 0, tale = 0, moon = 0, net = 0, premier = 0, tinker = 0, fast = 0, heavy = 0;")
 --    doIncreaseStatistics(poke, true, true)
-
 end
-    
-
 
 function doNotCapturePokemon(cid, poke, typeee) 
+    
     if not isCreature(cid) then
         return true
     end
-
-local storage = newpokedexCatchXpMasterx[poke].stoCatch
-
+    
     if not tonumber(getPlayerStorageValue(cid, 54843)) then
         local test = io.open("data/sendtobrun123.txt", "a+")
         local read = ""
@@ -782,20 +781,21 @@ local storage = newpokedexCatchXpMasterx[poke].stoCatch
         setPlayerStorageValue(cid, 54843, getPlayerStorageValue(cid, 54843) + 1)
     end
     
+    doPlayerSendTextMessage(cid, 27, failmsgs[math.random(#failmsgs)])
+    
     if #getCreatureSummons(cid) >= 1 then
         doSendMagicEffect(getThingPos(getCreatureSummons(cid)[1]), 166)
     else
         doSendMagicEffect(getThingPos(cid), 166)
     end
+    
+    local storage = newpokedexCatchXpMasterx[poke].stoCatch
 
-    if not string.find(getPlayerStorageValue(cid, storage), "vball") then
+    if not string.find(getPlayerStorageValue(cid, storage), "ultra") then
         setPlayerStorageValue(cid, storage, "normal = 0, great = 0, super = 0, ultra = 0, vball = 0, saffari = 0, dark = 0, magu = 0, sora = 0, yume = 0, dusk = 0, tale = 0, moon = 0, net = 0, premier = 0, tinker = 0, fast = 0, heavy = 0;")
     end
-
-    doPlayerSendTextMessage(cid, 27, failmsgs[math.random(#failmsgs)])
     doIncreaseStatistics(poke, true, false)
-    --addEvent(sendBrokesMsg, 0, cid, storage, typeee, poke, false)
-    sendBrokesMsg(cid, storage, typeee, poke, false)
+    -- sendBrokesMsg(cid, storage, ball, poke, false)
 end
 
 function temSorte() -- sistema de sorte TUNGS (i.a)

@@ -94,8 +94,8 @@ allowFightback = true
 fistBaseAttack = 7
 
 worldId = 0
-ip = "127.0.0.1" --189.127.164.20
-bindOnlyConfiguredIpAddress = false
+ip = "192.168.0.105" --189.127.164.20
+bindOnlyConfiguredIpAddress = true
 loginPort = 7171
 gamePort = 7172
 adminPort = 7171

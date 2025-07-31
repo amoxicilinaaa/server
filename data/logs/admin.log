@@ -87,3 +87,9 @@
 
 [30/06/2023 17:59:59] (Notice - virtual void ProtocolGame::parsePacket(NetworkMessage&)) PLAYER: Goth Neph sent unknown byte: 0x9
 
+[30/07/2025 13:31:24] (Error - void ServicePort::open(uint16_t)) NETWORK: Foi fornecido um argumento inválido
+[30/07/2025 17:00:35] (Error - void ServicePort::open(uint16_t)) NETWORK: Foi fornecido um argumento inválido
+[30/07/2025 17:02:39] (Error - void ServicePort::open(uint16_t)) NETWORK: O endereço solicitado não é válido no contexto
+[30/07/2025 17:05:09] (Error - void ServicePort::open(uint16_t)) NETWORK: O endereço solicitado não é válido no contexto
+[30/07/2025 17:06:25] (Error - void ServicePort::open(uint16_t)) NETWORK: O endereço solicitado não é válido no contexto
+[30/07/2025 17:09:12] (Error - void ServicePort::open(uint16_t)) NETWORK: O endereço solicitado não é válido no contexto
