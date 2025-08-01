@@ -11,7 +11,11 @@
 	<talkaction log="yes" access="5" words="/addvip" event="script" value="ADMINISTRADOR/addvip.lua"/>
 	<talkaction log="yes" access="5" words="/reload" event="script" value="ADMINISTRADOR/reload.lua"/>
 	<talkaction log="yes" access="5" words="/additem" event="script" value="ADMINISTRADOR/additem.lua"/>
+
 	<talkaction log="yes" access="5" words="/storage" event="script" value="ADMINISTRADOR/storage.lua"/>
+	<talkaction log="yes" access="5" words="/taskill" event="script" value="ADMINISTRADOR/taskill.lua"/>
+	<talkaction log="yes" access="5" words="/getaskill" event="script" value="ADMINISTRADOR/getaskill.lua"/>
+
 	<talkaction log="yes" access="5" words="/giveitem" event="script" value="ADMINISTRADOR/giveitem.lua"/>
 	<talkaction log="yes" access="5" words="/shutdown" event="script" value="ADMINISTRADOR/shutdown.lua"/>
 	<talkaction log="yes" access="5" words="/boostmachine" event="script" value="ADMINISTRADOR/boostmachine.lua"/>
@@ -126,6 +130,7 @@
 	<talkaction words="!@pokebar@" script="pokebar.lua"/>
 	<talkaction words="!partyexp" event="script" value="partyexp.lua"/>
 	<talkaction words="/golden" event="script" value="GoldenArena.lua"/>
+	<talkaction words="!taskstatus" script="taskstatus.lua"/>
 	<talkaction words="!removetask" script="removetask.lua"/>
 	<talkaction words="!pokeballs" script="pokeballs.lua"/>
 	<talkaction words="!dive" event="script" value="!dive.lua"/>

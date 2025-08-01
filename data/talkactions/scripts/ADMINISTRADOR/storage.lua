@@ -19,3 +19,6 @@ function onSay(cid, words, param)
 
 	return true
 end
+
+
+---/storage Lima,431450,Michael|Charizard,1

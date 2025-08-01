@@ -1071,101 +1071,133 @@ local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 NpcSystem.parseParameters(npcHandler)
 local talkState = {}
+
+-- Funções para uso no script
+function doConcatTable(t, sep, lastSep)
+    local result = ""
+    for i, v in ipairs(t) do
+        result = result .. v
+        if i < #t - 1 then
+            result = result .. sep
+        elseif i == #t - 1 then
+            result = result .. lastSep
+        end
+    end
+    return result
+end
+
+function doCorrectString(str)
+    -- Sua função doCorrectString, se você tiver uma
+    -- Se não, pode ser uma simples função para capitalizar a primeira letra
+    return str:sub(1,1):upper() .. str:sub(2):lower()
+end
+
 function onCreatureAppear(cid) npcHandler:onCreatureAppear(cid) end
 function onCreatureDisappear(cid) npcHandler:onCreatureDisappear(cid) end
 function onThink() npcHandler:onThink() end
 
 function onCreatureSay(cid, type1, msg)
+    local talkUser = NPCHANDLER_CONVBEHAVIOR == CONVERSATION_DEFAULT and 0 or cid
+    local cfg = config[getNpcName()]
 
-	local talkUser = NPCHANDLER_CONVBEHAVIOR == CONVERSATION_DEFAULT and 0 or cid
-	local cfg = config[getNpcName()]
-	
-	if msg:lower() == "hi" and getDistanceToCreature(cid) < 4 then
-		if getPlayerStorageValue(cid, cfg.storage) == -1 then
-			Taskstr[talkUser] = {}
-			for a, b in pairs(cfg.pokemons) do
-				table.insert(Taskstr[talkUser], b.." "..a.."s")
-			end
-			local KAKAMESSAGE = doConcatTable(Taskstr[talkUser], ", ", " e ")
-			selfSay("Preciso de sua ajuda, você poderia eliminar "..KAKAMESSAGE.."?", cid)
-			talkState[talkUser] = 1
-		elseif getPlayerStorageValue(cid, cfg.storage) == 1 then
-			selfSay("Não preciso mais da sua ajuda, obrigado!", cid)
-		else
-			local tab = string.explode(getPlayerStorageValue(cid, cfg.storage), "|")
-			selfSay("Você já terminou a minha task?", cid)
-			talkState[talkUser] = 3				
-		end
-		
-	elseif talkState[talkUser] == 1 and (cfg.pokemons[doCorrectString(msg)] or isInArray({"yes", "sim"}, msg:lower())) then
-		pName = doCorrectString(msg)
-		selfSay("Você tem certeza que pode dar conta?", cid)
-		talkState[talkUser] = 2
-		
-	elseif talkState[talkUser] == 2 then
-		if isInArray({"yes", "sim"}, msg:lower()) then
-		
-			Taskstr[talkUser] = {}
-			
-			for a, b in pairs(cfg.pokemons) do
-				table.insert(Taskstr[talkUser], a..","..b)
-			end
-			
-			setPlayerStorageValue(cid, cfg.storage, getNpcName().."|"..table.concat(Taskstr[talkUser], "|"))
-			selfSay("Ok, aguardo você!", cid)
-			
-		elseif isInArray({"no", "não", "nao"}, msg:lower()) then
-		
-			selfSay("Você quem sabe.", cid)
-			talkState[talkUser] = 0	
-		end
-	elseif talkState[talkUser] == 3 then
-		if isInArray({"yes", "sim"}, msg:lower()) then
-			local tab = string.explode(getPlayerStorageValue(cid, cfg.storage), "|")
-			if not tab[2] then
-				doPlayerAddExperience(cid, cfg.exp * 2)
-				doSendAnimatedText(getThingPos(cid), cfg.exp * 2, 215)
-				
-				for a, b in pairs(cfg.reward) do
-				if isItemStackable(b[1], b[2]) and (getPlayerItemCount(cid, b[1], b[2]) > 0) then
-					doPlayerAddItem(cid, b[1], b[2])
-				else
-					local item = doCreateItemEx(b[1], b[2])
-					doPlayerAddItemEx(cid, item, true)
-				end
-				end
-				
-				if cfg.doOnlyOne then
-					setPlayerStorageValue(cid, cfg.storage, 1)
-				else
-					setPlayerStorageValue(cid, cfg.storage, -1)
-				end
-						
-				selfSay("Muito obrigado pela ajuda, até mais.", cid)
-				talkState[talkUser] = 0
-			else
-				talkState[talkUser] = 0
-				local str1 = {}
-				local tab = string.explode(getPlayerStorageValue(cid, cfg.storage), "|")
-				
-				for i = 2, #tab do
-					expe = tab[i]:explode(",")				
-					table.insert(str1, expe[2].." "..expe[1]..(tonumber(expe[2]) > 1 and "s" or ""))
-				end			
+    if msg:lower() == "hi" and getDistanceToCreature(cid) < 4 then
+        if getPlayerStorageValue(cid, cfg.storage) == -1 then
+            Taskstr[talkUser] = {}
+            for a, b in pairs(cfg.pokemons) do
+                table.insert(Taskstr[talkUser], b.." "..a..(b > 1 and "s" or ""))
+            end
+            local KAKAMESSAGE = doConcatTable(Taskstr[talkUser], ", ", " e ")
+            selfSay("Preciso de sua ajuda, você poderia eliminar "..KAKAMESSAGE.."?", cid)
+            talkState[talkUser] = 1
+        elseif getPlayerStorageValue(cid, cfg.storage) == 1 then
+            selfSay("Não preciso mais da sua ajuda, obrigado!", cid)
+        else
+            local tab = string.explode(getPlayerStorageValue(cid, cfg.storage), "|")
+            selfSay("Você já terminou a minha task?", cid)
+            talkState[talkUser] = 3
+        end
 
-				selfSay("Está faltando você matar ".. doConcatTable(str1, ", ", " e ") .." desta espécie!", cid)
-			end
-			
-		elseif isInArray({"no", "não", "nao"}, msg:lower()) then
-			selfSay("Ok, então vá terminar de matá-los!", cid)
-			talkState[talkUser] = 0
-		elseif isInArray({"left", "leave", "desistir"}, msg:lower()) then
-			setPlayerStorageValue(cid, cfg.storage, -1)	
-			selfSay("Ok, pedirei ajuda a alguém mais corajoso!", cid)
-			talkState[talkUser] = 0			
-		end
-	end
+    elseif talkState[talkUser] == 1 and (isInArray({"yes", "sim"}, msg:lower())) then
+        selfSay("Você tem certeza que pode dar conta?", cid)
+        talkState[talkUser] = 2
+
+    elseif talkState[talkUser] == 2 then
+        if isInArray({"yes", "sim"}, msg:lower()) then
+            Taskstr[talkUser] = {}
+            for a, b in pairs(cfg.pokemons) do
+                table.insert(Taskstr[talkUser], a..","..b)
+            end
+            setPlayerStorageValue(cid, cfg.storage, getNpcName().."|"..table.concat(Taskstr[talkUser], "|"))
+            selfSay("Ok, aguardo você!", cid)
+            talkState[talkUser] = 0
+        elseif isInArray({"no", "não", "nao"}, msg:lower()) then
+            selfSay("Você quem sabe.", cid)
+            talkState[talkUser] = 0
+        end
+    elseif talkState[talkUser] == 3 then
+        if isInArray({"yes", "sim"}, msg:lower()) then
+            local tab = string.explode(getPlayerStorageValue(cid, cfg.storage), "|")
+            if not tab[2] then
+
+                local rewardMessage = {}
+                local finalExp = cfg.exp * 2
+                table.insert(rewardMessage, "Experiência: " .. finalExp)
+                doPlayerAddExperience(cid, finalExp)
+                doSendAnimatedText(getThingPos(cid), tostring(finalExp), 215)
+
+                for i = 1, #cfg.reward do
+                    local itemInfo = cfg.reward[i]
+                    local itemId = itemInfo[1]
+                    local itemCount = itemInfo[2]
+                    local itemName = getItemNameById(itemId)
+
+                    if itemName then
+                        table.insert(rewardMessage, itemName .. ": " .. itemCount)
+                    else
+                        table.insert(rewardMessage, "Item " .. itemId .. ": " .. itemCount)
+                    end
+
+                    if isItemStackable(itemId) then
+                        doPlayerAddItem(cid, itemId, itemCount)
+                    else
+                        for j = 1, itemCount do
+                            doPlayerAddItem(cid, itemId, 1)
+                        end
+                    end
+                end
+
+                if cfg.doOnlyOne then
+                    setPlayerStorageValue(cid, cfg.storage, 1)
+                else
+                    setPlayerStorageValue(cid, cfg.storage, -1)
+                end
+
+                local rewardsString = doConcatTable(rewardMessage, ", ", " e ")
+                selfSay("Muito obrigado pela ajuda! Como recompensa, você recebeu: " .. rewardsString .. ". Até mais.", cid)
+                talkState[talkUser] = 0
+            else
+                talkState[talkUser] = 0
+                local str1 = {}
+                local tab = string.explode(getPlayerStorageValue(cid, cfg.storage), "|")
+
+                for i = 2, #tab do
+                    expe = string.explode(tab[i], ",")
+                    table.insert(str1, expe[2].." "..expe[1]..(tonumber(expe[2]) > 1 and "s" or ""))
+                end
+
+                selfSay("Está faltando você matar ".. doConcatTable(str1, ", ", " e ") .." desta espécie!", cid)
+            end
+
+        elseif isInArray({"no", "não", "nao"}, msg:lower()) then
+            selfSay("Ok, então vá terminar de matá-los!", cid)
+            talkState[talkUser] = 0
+        elseif isInArray({"left", "leave", "desistir"}, msg:lower()) then
+            setPlayerStorageValue(cid, cfg.storage, -1)
+            selfSay("Ok, pedirei ajuda a alguém mais corajoso!", cid)
+            talkState[talkUser] = 0
+        end
+    end
 end
 
-npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
+npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, onCreatureSay)
 npcHandler:addModule(FocusModule:new())

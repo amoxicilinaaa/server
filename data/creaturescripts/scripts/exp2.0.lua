@@ -128,13 +128,13 @@ function onStatsChange(cid, attacker, type, combat, value)
         return true
     end
     --------------------------------------------------
-    if isPlayer(cid) and #getCreatureSummons(cid) >= 1 and type == STATSCHANGE_HEALTHLOSS then
+   -- if isPlayer(cid) and #getCreatureSummons(cid) >= 1 and type == STATSCHANGE_HEALTHLOSS then
         --if ehMonstro(attacker) and getClosestFreeTile(getCreatureSummons(cid)[1]) >= 1 then
             --doSendAnimatedText(getThingPosWithDebug(attacker), "Hmpfg!", 215)
             --doMonsterSetTarget(attacker, getCreatureSummons(cid)[1])
         --end
-        return false
-    end
+      --  return false
+    --end
     --if isPlayer(cid) and #getCreatureSummons(cid) >= 1 and type == STATSCHANGE_HEALTHLOSS then
         --if ehMonstro(attacker) and getClosestFreeTile(getCreatureSummons(cid)[1]) <= 0 then
             --doSendAnimatedText(getThingPosWithDebug(attacker), "Grrr!", 215)
@@ -261,18 +261,20 @@ function onStatsChange(cid, attacker, type, combat, value)
    			----------------------------------
 			if getPlayerSex(cid) == 1 then
 			    doSendMagicEffect(getThingPos(cid), 1035)
+				doSendMagicEffect(getThingPos(cid), 508)
 				--local corpse = doCreateItem(3058, 1, getThingPos(cid))
 				--doDecayItem(corpse)
-				--doItemSetAttribute(corpse, "name", "dead human (Vol:8). You recognize ".. getCreatureName(cid) ..". He was killed by a ".. getCreatureName(attacker) .."")
+				--doItemSetAttribute(corpse, "name", "Treinador Pokemon. You recognize ".. getCreatureName(cid) ..". He was killed by a ".. getCreatureName(attacker) .."")
 			elseif getPlayerSex(cid) == 0 then	
-				doSendMagicEffect(getThingPos(cid), 1035)			
+				doSendMagicEffect(getThingPos(cid), 1035)
+				doSendMagicEffect(getThingPos(cid), 508)			
 				--local corpse = doCreateItem(3065, 1, getThingPos(cid))
 				--doDecayItem(corpse)
 				--doItemSetAttribute(corpse, "name", "dead human (Vol:8). You recognize ".. getCreatureName(cid) ..". She was killed by a ".. getCreatureName(attacker) .."")
     		end
 			
 			-- if isPlayer(cid) and #getCreatureSummons(cid) <= 0 and #getCreatureGuardians(cid) <= 0 then
-			if isPlayer(cid) and #getCreatureSummons(cid) <= 0 then
+				if isPlayer(cid) and #getCreatureSummons(cid) <= 0 then
 				if getTileInfo(getThingPos(cid)).pvp then
 					pvp = true
 				else
@@ -289,7 +291,6 @@ function onStatsChange(cid, attacker, type, combat, value)
 				
 				local expAtual = getPlayerExperience(cid)
 				local expLevel = getPlayerExperienceLevel(cid, getPlayerLevel(cid))
-	
 				local expTotal = (getPlayerExperienceLevel(cid, getPlayerLevel(cid))/20) * 0.05
 	
 				if getPlayerLevel(cid) <= 50 or getPlayerStorageValue(cid, 53502) >= 1 or getPlayerStorageValue(attacker, 19850) >= 1 or pvp then
@@ -305,10 +306,6 @@ function onStatsChange(cid, attacker, type, combat, value)
 				else
 	    			expTotal = (getPlayerExperienceLevel(cid, getPlayerLevel(cid))/20) * 1
 				end
-
-				if isPremium(cid) then
-				    expTotal = expTotal * 0.90
-				end
 				
 				doPlayerAddExperience(cid, -math.floor(expTotal))
 				
@@ -317,16 +314,16 @@ function onStatsChange(cid, attacker, type, combat, value)
 					doPlayerSendTextMessage(cid, 27, "Voce desmaiou e perdeu sua bless.")
 				end
 
-				doPlayerSendTextMessage(cid, 27, "Voce desmaiou e perdeu "..math.floor(expTotal).." de experiencia.") 
-				local posPlayerLevel = getThingPosWithDebug(cid)
-				doSendMagicEffect({x=posPlayerLevel.x+1,y=posPlayerLevel.y+1,z=posPlayerLevel.z}, 508)
+				doPlayerSendTextMessage(cid, 27, "Você desmaiou e perdeu "..math.floor(expTotal).." de experiência.")
+				doPlayerSendTextMessage(cid, 27, "Efeitos negativos, como fogo, veneno ou intoxicação, foram tratados por um médico.")
+				doPlayerSendTextMessage(cid, 27, "Agora falta cuidar dos seus Pokémon, fale com Nurse Joy!")
+				doCureStatus(cid, "all", true)
 				doRegainSpeed(cid)  -- talvez tenha que tirar
 				if getPlayerMounted(cid) then  -- talvez tenha que tirar
 				   setPlayerStorageValue(cid, 63215, -1)     -- talvez tenha que tirar   
 				   setPlayerStorageValue(cid, 17001, -1)  -- talvez tenha que tirar
 				   setPlayerStorageValue(cid, 17000, -1)  -- talvez tenha que tirar
 			   	end
-
 				return false
         	end 
     	end
@@ -335,7 +332,7 @@ function onStatsChange(cid, attacker, type, combat, value)
 		if not isPlayer(cid) then
 			local owner = getCreatureMaster(cid)
 			doOTCSendPokemonHealth(owner)
-			addEvent(sendPlayerDmgMsg, 5, cid, "Você perdeu "..valor.." em pontos de vida por um attack de "..getSomeoneDescription(attacker)..".")
+			--addEvent(sendPlayerDmgMsg, 5, cid, "Você perdeu "..valor.." em pontos de vida por um attack de "..getSomeoneDescription(attacker)..".")
 		end
 		return false
 	end
@@ -422,7 +419,6 @@ function onStatsChange(cid, attacker, type, combat, value)
 
 		-- X-Attack --
 		local bonusatk = 1
-		
 	    if isSummon(attacker) and isPlayer(getCreatureMaster(attacker)) then
 
 	    	if not (getCreatureStorage(attacker, 10) == "guardian") then

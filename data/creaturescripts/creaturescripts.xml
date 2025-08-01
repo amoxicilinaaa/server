@@ -11,8 +11,6 @@
 	<event type="kill" name="PokeLevel" script="mixlort/pokelevel.lua"/>
 	<event type="think" name="Antibot" event="script" value="mixlort/antibot.lua"/>
 
-
-
     <event type="extendedopcode" name="ExtendedOpcode" event="script" value="extendedopcode.lua"/>
     <event type="openchannel" name="tokenMachina" event="script" value="tokenMachina.lua"/>
 	<event type="logout" name="BlockLogout" script="blocklogout.lua"/>

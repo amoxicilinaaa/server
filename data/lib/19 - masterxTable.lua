@@ -497,7 +497,6 @@ ballsTypesCatch = {
 
 
 pokeChance = {
-
 	-- 1 GENERATION	
 	
 	["Bulbasaur"] = {media = 43, balltype = "ultraball", minBallType = "pokeball"}, 

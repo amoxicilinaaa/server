@@ -15,14 +15,12 @@ local missions = { -- Use missionStorage to link the monsters to each mission. I
 
 function onKill(creature, target)
     local cid = creature
-    
     if isPlayer(creature) and isMonster(target) then
         for i = 1, #missions do
             if getCreatureName(target) == missions[i].name then
                 if getCreatureStorage(cid, missions[i].missionStorage) == 1 then
                     if getCreatureStorage(cid, missions[i].storage) < missions[i].amount then
                         doCreatureSetStorage(cid, missions[i].storage, getCreatureStorage(cid, missions[i].storage) + 1)
-                        
                         doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "Você matou "..getCreatureStorage(cid, missions[i].storage).." de "..missions[i].amount.." "..missions[i].name.."s")
                     end
                 end

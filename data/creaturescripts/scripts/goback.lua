@@ -183,7 +183,7 @@ function onDeath(cid, deathList)
 	doItemSetAttribute(thisball.uid, "hp", 0)
 	doUpdatePokemonsBar(cid)
 
-	doPlayerSendTextMessage(owner, 22, "Your pokemon fainted.")
+	doPlayerSendTextMessage(owner, 22, "Seu pokémon desmaiou.")
 
 	local say = deathtexts[math.random(#deathtexts)]
 		say = string.gsub(say, "POKENAME", getCreatureName(cid))

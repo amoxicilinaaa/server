@@ -436,7 +436,7 @@ pokeAddon = {
 --------
 pokeballsOLD = {
 ["normal"] =      {effect = 188, on = 11826, use = 11827, off = 11828, all = {11826, 11827, 11828}},
-["ultra"] =       {effect = 188, on = 11829, use = 11830, off = 11831, all = {11829, 11830, 11831}},
+["ultra"] =       {effect = 191, on = 11829, use = 11830, off = 11831, all = {11829, 11830, 11831}},
 ["super"] =       {effect = 190, on = 11835, use = 11836, off = 11837, all = {11835, 11836, 11837}},
 ["great"] =       {effect = 189, on = 11832, use = 11833, off = 11834, all = {11832, 11833, 11834}},
 ["saffari"] =     {effect = 195, on = 10975, use = 10976, off = 10977, all = {10975, 10976, 10977}},    --alterado v1.9

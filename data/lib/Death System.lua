@@ -38,13 +38,13 @@ local function playerAddExp(cid, exp)
     end
 
     local Tiers = {
-        [71] = {bonus = Exp1},
-        [72] = {bonus = Exp2},
-        [73] = {bonus = Exp3},
-        [74] = {bonus = Exp4},
-        [75] = {bonus = Exp5},
-        [76] = {bonus = Exp6},
-        [77] = {bonus = Exp7},
+        [71] = {bonus = Exp1}, --1.05
+        [72] = {bonus = Exp2}, --1.10
+        [73] = {bonus = Exp3}, --1.15
+        [74] = {bonus = Exp4}, --1.20
+        [75] = {bonus = Exp5}, --1.25
+        [76] = {bonus = Exp6}, --1.30
+        [77] = {bonus = Exp7}, --1.35
     }
     local ball = getPlayerSlotItem(cid, 8)
 	if ball and ball.uid then
@@ -52,23 +52,26 @@ local function playerAddExp(cid, exp)
         if Tier and Tier > 70 and Tier < 78 then
         	-- print(Tiers[Tier].bonus)
             doPlayerAddExp(cid, math.floor(((exp * Tiers[Tier].bonus) * vipexp)) * doublexp)
-	        doSendAnimatedText(getThingPos(cid), math.floor(((exp * Tiers[Tier].bonus) * vipexp) * doublexp), 215)
+	        doSendAnimatedText(getThingPos(cid), math.floor(((exp * Tiers[Tier].bonus) * vipexp) * doublexp), 31)
             sendMsgToPlayer(cid, MESSAGE_EVENT_DEFAULT, "Você ganhou "..math.floor(((exp * Tiers[Tier].bonus) * vipexp) * doublexp).." Pontos de Experiência.")
+				--doPlayerSendTextMessage(cid, 27, "1")
 		else
             doPlayerAddExp(cid, math.floor((exp * vipexp)) * doublexp)
             --print(math.floor((exp * vipexp)) * doublexp)
-	        doSendAnimatedText(getThingPos(cid), math.floor((exp * vipexp) * doublexp), 215)
+	        doSendAnimatedText(getThingPos(cid), math.floor((exp * vipexp) * doublexp), 31)
 			sendMsgToPlayer(cid, MESSAGE_EVENT_DEFAULT, "Você ganhou "..math.floor((exp * vipexp) * doublexp).." Pontos de Experiência.")
+			--doPlayerSendTextMessage(cid, 27, "2")
         end
 	else
 	    doPlayerAddExp(cid, math.floor((exp * vipexp)) * doublexp)
-	    doSendAnimatedText(getThingPos(cid), math.floor((exp * vipexp) * doublexp), 215)
+	    doSendAnimatedText(getThingPos(cid), math.floor((exp * vipexp) * doublexp), 31)
 		sendMsgToPlayer(cid, MESSAGE_EVENT_DEFAULT, "Você ganhou "..math.floor((exp * vipexp) * doublexp).." Pontos de Experiência.")
+		--doPlayerSendTextMessage(cid, 27, 22, "3")
 	end
 end
 
 local Exps = {
-  {minL = 1, maxL = 25, multipler = 40}, 
+  	{minL = 1, maxL = 25, multipler = 40}, 
     {minL = 26, maxL = 50, multipler = 35},
     {minL = 51, maxL = 75, multipler = 30},    
     {minL = 76, maxL = 100, multipler = 25},        

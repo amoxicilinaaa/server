@@ -22,7 +22,7 @@ function onTarget(cid, target)
         for a, b in pairs(ginasios) do
             if getPlayerStorageValue(target, ginasios[getPlayerStorageValue(target, 201)].storage) == 1 then
 	            if getPlayerStorageValue(cid, ginasios[getPlayerStorageValue(target, 201)].storage) ~= 1 then
-	                doPlayerSendCancel(cid, "You can't attack this pokemon.")
+	                doPlayerSendCancel(cid, "Você não pode atacar este pokémon.")
 	                return false
 	            end
             end

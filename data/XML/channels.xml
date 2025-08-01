@@ -34,8 +34,7 @@
 	<channel id="9" name="Help" level="20" muted="120" conditionId="3" conditionMessage="Can not reenter, please wait 2 minutes.">
 		<vocation id="1"/>
 	</channel>
-	<channel id="10" name="Catch-Channel" level="200000" muted="108000" conditionMessage="Nao pode falar nesse canal">
-		<vocation id="1"/>
+	<channel id="10" name="Catch-Channel" level="200000" conditionId="3" conditionMessage="Aviso: Você não pode enviar mensagens neste canal. Ele é apenas para visualização.">
 	</channel>
 	<channel id="11" name="Show Top Level">
 		<vocation id="1"/>
@@ -43,7 +42,7 @@
 <!-- 	<channel id="12" name="Show Top Fishing">
 		<vocation id="3"/>
 	</channel> mixlort -->
-	<channel id="12" name="Loot-Channel" level="200000" muted="108000" conditionMessage="Nao pode falar nesse canal">
+<channel id="12" name="Catch-Channel" level="200000" conditionId="3" conditionMessage="Aviso: Você não pode enviar mensagens neste canal. Ele é apenas para visualização.">
 		<vocation id="1"/>
 	</channel>
 	<channel id="449" name="Wiki Chat" talkEvent="1" level="2" muted="3" conditionId="3" conditionMessage="Can not reenter, please wait 3 seconds.">

@@ -16,7 +16,6 @@ end
 
                           --alterado v1.6 tabelas soh em configuration.lua;
 function onLogin(cid)
-
 	setPlayerStorageValue(cid, 43534, os.time() + 10)
 
 	-- if ( DailyRewards:getTimeWait(cid) >= DailyRewards.config.timerWait ) then
@@ -31,9 +30,9 @@ function onLogin(cid)
 	doPlayerSetLossPercent(cid, PLAYERLOSS_SKILLS, 0)]]
 	if getPlayerStorageValue(cid, 53502) >= 1 then 
 		--doPlayerSetLossPercent(cid, PLAYERLOSS_EXPERIENCE, 0)
-		doPlayerSendTextMessage(cid, 27, "You have a Bless.")
+		doPlayerSendTextMessage(cid, 27, "Você possui Bless.")
 	else
-	    doPlayerSendTextMessage(cid, 27, "you have not Bless.")
+	    doPlayerSendTextMessage(cid, 27, "Você não tem Bless.")
 	end
 
 	if not isFlying(cid) then
@@ -58,7 +57,7 @@ function onLogin(cid)
 	end
 	
 	if getPlayerStorageValue(cid, 45144) - os.time() > 1 then
-		sendMsgToPlayer(cid, 27, "Voc� ainda tem um Experience Booster ativo de "..getPlayerStorageValue(cid, 45145).."%. Ele ir� acabar em "..convertTime(getPlayerStorageValue(cid, 45144) - os.time())..".")
+		sendMsgToPlayer(cid, 27, "Você ainda tem um Experience Booster ativo de "..getPlayerStorageValue(cid, 45145).."%. Ele irá acabar em "..convertTime(getPlayerStorageValue(cid, 45144) - os.time())..".")
 	end
 
   if getPlayerStorageValue(cid, 4125) - os.time() > 0 then
@@ -71,11 +70,8 @@ function onLogin(cid)
 	
 	-- doCreatureSetDropLoot(cid, false) 
 
-	if not getPlayerGroupId(cid) == 6 then
-		doPlayerOpenChannel(cid, 5)---Game-Chat
-		doPlayerOpenChannel(cid, 6)---Trade
-		doPlayerOpenChannel(cid, 9)---Help
-	end
+
+
 	
 	-- if getPlayerStorageValue(cid, 5700) > 0 and getPlayerItemCount(cid, 12402) < 1 then
 	--     setPlayerStorageValue(cid, 5700, -1) 
@@ -103,7 +99,7 @@ function onLogin(cid)
 
 	-- if not isPremium(cid) then
 	-- 	doPlayerAddPremiumDays(cid,2)
-	--    doPlayerSendTextMessage(cid, 27, "Voc� acabou de ganhar 2 dias de vip pelo evento!!.")
+	--    doPlayerSendTextMessage(cid, 27, "Voc� acabou de ganhar 2 dias de vip pelo evento!!.")
 	-- end
 
 	
@@ -119,33 +115,18 @@ function onLogin(cid)
 		local lastLogin, str = getPlayerLastLoginSaved(cid), config.loginMessage
 		if(lastLogin > 0) then
 			doPlayerSendTextMessage(cid, MESSAGE_STATUS_DEFAULT, str)
-			str = "Sua ultima visita foi " .. os.date("%a %b %d %X %Y", lastLogin) .. "."
+			str = "Sua última visita foi " .. os.date("%a %b %d %X %Y", lastLogin) .. "."
 			-- str = "Seu Personagem sera salvo a cada 3 minutos para evitar rollbacks"
 		else
 			str = str
 		end
 
 		doPlayerSendTextMessage(cid, MESSAGE_STATUS_DEFAULT, str)
+		doPlayerOpenChannel(cid, 10)---Game-Chat
+		doPlayerOpenChannel(cid, 12)---Catch
+		doPlayerOpenChannel(cid, 9)---Help
+end
 
-	elseif(accountManager == MANAGER_NAMELOCK) then
-		doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_ORANGE, "Hello, it appears that your character has been namelocked, what would you like as your new name?")
-	elseif(accountManager == MANAGER_ACCOUNT) then
-		doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_ORANGE, "Hello, type 'account' to manage your account and if you want to start over then type 'cancel'.")
-	else
-		doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_ORANGE, "Hello, type 'account' to create an account or type 'recover' to recover an account.")
-	end
-
-	if getCreatureName(cid) == "Account Manager" then
-		local outfit = {}
-		if accountManagerRandomPokemonOutfit then
-			outfit = {lookType = getPokemonXMLOutfit(oldpokedex[math.random(151)][1])}
-		else
-			outfit = accountManagerOutfit
-		end
-	
-		doSetCreatureOutfit(cid, outfit, -1)
-	    return true
-	end
 
 	if(not isPlayerGhost(cid)) then
 		local posPlayerLevel = getThingPosWithDebug(cid)
@@ -278,7 +259,8 @@ function onLogin(cid)
 	-- registerCreatureEvent(cid, "sendStats") 
 	registerCreatureEvent(cid, "timeGuardian") 
 	registerCreatureEvent(cid, "pLoot")	
-	registerCreatureEvent(cid, "EffectWalk")	
+	registerCreatureEvent(cid, "EffectWalk")
+	registerCreatureEvent(cid, "exppoke")	
 	
 	
 	-- registerCreatureEvent(cid, "selecttv") --TV Viktor 
@@ -325,7 +307,7 @@ function onLogin(cid)
                  setPlayerStorageValue(cid, storages[s], -1) 
               end
            end
-           doPlayerSendTextMessage(cid, 27, "Sorry, but a problem occurred on the server, but now it's alright")
+           doPlayerSendTextMessage(cid, 27, "Desculpe, mas ocorreu um problema no servidor, mas agora está tudo bem.")
         end
     end
     --/////////////////////////////////////////////////////////////////////////--
@@ -469,7 +451,7 @@ function onLogin(cid)
     elseif getPlayerStorageValue(cid, 75846) >= 1 then     --alterado v1.9 \/
         doTeleportThing(cid, getTownTemplePosition(getPlayerTown(cid)), false)  
         setPlayerStorageValue(cid, 75846, -1)
-        sendMsgToPlayer(cid, 20, "You have been moved to your town!")
+        sendMsgToPlayer(cid, 20, "Você foi transferido para sua cidade!")
 	else
 		doRegainSpeed(cid)  
 	end
@@ -478,21 +460,14 @@ function onLogin(cid)
 --------------------------------------- Antibot
 
 	local timeStorage = 65117
-
 	local codeStorage = 65118
-
 	local kickStorage = 65119
-
 	local timesStorage = 65121
 
 	registerCreatureEvent(cid, "Antibot")
-
 	doCreatureSetStorage(cid, codeStorage, 0)
-
 	doCreatureSetStorage(cid, kickStorage, 0)
-
 	doCreatureSetStorage(cid, timesStorage, 0)
-
 	doCreatureSetStorage(cid, timeStorage, 0)
 
 --------------------------------------- Antibot

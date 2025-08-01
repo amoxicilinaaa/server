@@ -118,6 +118,7 @@ function addMixlortPokeXp(cid, target)
     if isPlayer(target) == FALSE and getItemAttribute(feet.uid, "level") < 100 and getItemAttribute(feet.uid, "exp") >= 0 and ((XPMixlort*2) + exp) < (level * 20) + (20 *(level - 1)) then
         doItemSetAttribute(feet.uid, "exp", chck + (XPMixlort*2))
         doPlayerSendTextMessage(cid, MESSAGE_EVENT_DEFAULT, "Seu "..getPokeName(getCreatureSummons(cid)[1]).." ganhou "..(XPMixlort*2).." de experiência por derrotar "..getCreatureName(target)..".")
+        doSendAnimatedText(getCreaturePosition(getCreatureSummons(cid)[1]), "EXP +"..(XPMixlort*2).."", 199)
         doUpdatePokeInfo(cid)
         return true
     end

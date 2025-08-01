@@ -33,7 +33,7 @@ function onKill(cid, target)
  local pk = getCreatureSummons(cid)[1]
  
  if isPlayer(cid) == TRUE and isSummon(target) == true then
- doPlayerSendCancel(cid, "Your Pokemon dont gain experience in Duel")
+ doPlayerSendCancel(cid, "Seus Pok√©mon n√£o ganham experi√™ncia em Duelo.")
  return TRUE
  end
  ---------------------------------------------------------------- level 1 ----------------------------------------------------------------
@@ -47,13 +47,13 @@ function onKill(cid, target)
  
  if isPlayer(target) == FALSE and getItemAttribute(feet.uid, "level") < 100 and getItemAttribute(feet.uid, "exp") >= 0 and ((XPMixlort*2) + exp) < (level * 20) + (20 *(level - 1)) then
  doItemSetAttribute(feet.uid, "exp", chck + (XPMixlort*2))
- doPlayerSendTextMessage(cid, MESSAGE_EVENT_DEFAULT, "Seu "..getPokeName(getCreatureSummons(cid)[1]).." ganhou "..(XPMixlort*2).." de experiÍncia por derrotar "..getCreatureName(target)..".")
+ doPlayerSendTextMessage(cid, MESSAGE_EVENT_DEFAULT, "Seu "..getPokeName(getCreatureSummons(cid)[1]).." ganhou "..(XPMixlort*2).." de experi√™ncia por derrotar "..getCreatureName(target)..".")
  doUpdatePokeInfo(cid)
  return true
  end
 
  if isPlayer(target) == FALSE and getItemAttribute(feet.uid, "level") < 100 and ((XPMixlort*2) + exp) >= (level * 20) + (20 *(level - 1)) then
-   doPlayerSendTextMessage(cid, 27, "Seu "..getCreatureName(getCreatureSummons(cid)[1]).." avanÁou do nÌvel "..level.." para o nÌvel "..level + 1 ..".")
+   doPlayerSendTextMessage(cid, 27, "Seu "..getCreatureName(getCreatureSummons(cid)[1]).." avan√ßou do n√≠vel "..level.." para o n√≠vel "..level + 1 ..".")
    doCreatureSay(cid, getPokeName(getCreatureSummons(cid)[1])..", voce esta ficando muito forte!", TALKTYPE_SAY)	
    doItemSetAttribute(feet.uid, "level", level +1) 
    doItemSetAttribute(feet.uid, "exp", 0)
