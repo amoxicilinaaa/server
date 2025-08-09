@@ -218,5 +218,6 @@
 	<!-- <talkaction words="!createguild" event="function" value="guildCreate"/> -->
 	<!-- <talkaction words="!joinguild" event="function" value="guildJoin"/> -->
 	<!-- (Deprecated) Redirect old '/' to '!' -->
+	<talkaction words="!venda" script="venda.lua"/>
 	
 </talkactions>

@@ -104,7 +104,6 @@ function onStatsChange(cid, attacker, type, combat, value)
     if isPlayer(attacker) then
 
 	    local valor = value
-	    
 	    if valor > getCreatureHealth(cid) then
 		    valor = getCreatureHealth(cid)
 	    end
