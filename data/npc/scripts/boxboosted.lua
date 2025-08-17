@@ -29,6 +29,6 @@ npcHandler:resetNpc()
 return true
 end
 local node1 = keywordHandler:addKeyword({'quest'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Nessa {quest} possui monstros muito fortes você esta pronto para enfrenta-los?? Mais antes guarde suas pokebolas no DP....ah você so tem 60 minutos de tempo para realizar essa quest!!!!'})
-node1:addChildKeyword({'yes'}, Saffari, {premium = no,price = 0,enter = {x=1235, y=630, z=8}, exit = {x=1235, y=630, z=8}, minutes = 60})
+node1:addChildKeyword({'yes'}, Saffari, {premium = false,price = 0,enter = {x=1235, y=630, z=8}, exit = {x=1235, y=630, z=8}, minutes = 60})
 node1:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Ok, then.', reset = true})
 npcHandler:addModule(FocusModule:new())

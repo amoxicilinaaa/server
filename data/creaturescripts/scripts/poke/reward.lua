@@ -42,11 +42,8 @@ local function func(cid, position, corpseid, effect)
         end
     end
 end
-function onKill(cid, target, lastHit)
-
-    if not ehMonstro(target) then return true end
+function onKill(cid, target, lastHit)    if not ehMonstro(target) then return true end
     local corpse = getMonsterInfo(getCreatureName(target)).lookCorpse
-    
     addEvent(func, 5, getCreatureSummons(cid)[1], getThingPos(target), corpse, effect)
 return true
 end

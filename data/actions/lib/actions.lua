@@ -44,7 +44,6 @@ function destroyItem(cid, itemEx, toPosition)
 		elseif(itemEx.itemid == 3805 or itemEx.itemid == 3806) then
 			doCreateItem(2259, 1, toPosition)
 		end
-
 		doRemoveItem(itemEx.uid, 1)
 	end
 

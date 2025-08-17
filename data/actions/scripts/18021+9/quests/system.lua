@@ -99,7 +99,6 @@ function onUse(cid, item, fromPosition, itemEx, toPosition)
 			doSendAnimatedText(getCreaturePosition(cid), questsExperience[storage], TEXTCOLOR_WHITE)
 		end
 	end
-
 	doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, result)
 	return true
 end

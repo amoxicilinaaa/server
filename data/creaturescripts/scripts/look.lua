@@ -227,7 +227,6 @@ local yhelds = {
 
 function onLook(cid, thing, position, lookDistance)                                                   
     local str = {} 
-
     -- doPlayerSendTextMessage(cid, 20, "ClientID: ["..getItemInfo(thing.itemid).clientId.."].\n")
 
     if not isCreature(thing.uid) then
@@ -242,7 +241,7 @@ function onLook(cid, thing, position, lookDistance)
                     str = "You are viewing "..getItemInfo(thing.itemid).article.." "..getItemInfo(thing.itemid).name.."."
                 end
 				
-                str = str.." Price: $"..price.."."
+                str = str.." Preço: $"..price.."."
                 if getItemAttribute(thing.uid, "description") then
                     str = str.."\n"..getItemAttribute(thing.uid, "description").."."
                 end
@@ -267,29 +266,26 @@ function onLook(cid, thing, position, lookDistance)
             local lock = getItemAttribute(thing.uid, "lock")        
             local pokename = getItemAttribute(thing.uid, "poke")
             local heldx = getItemAttribute(thing.uid, "heldx")
-            local heldy = getItemAttribute(thing.uid, "heldy")
-            if isGod(cid) then table.insert(str, "ItemID[".. thing.itemid .."] ".." ClientID: ["..getItemInfo(thing.itemid).clientId.."].\n") end
-            table.insert(str, ""..iname.article.." "..iname.name..".")
-		
-            if getItemAttribute(thing.uid, "unico") then               
-                table.insert(str, " It's an unique item.")   
-            end
-		
-            local level = getItemAttribute(thing.uid, "level")
-            table.insert(str, "[Level]: "..level..".\n")
-
+            local heldy = getItemAttribute(thing.uid, "heldy")		
             if getItemAttribute(thing.uid, "ehditto") == 1 then
-                table.insert(str, "\nIt contains "..getArticle(pokename).." "..pokename.." (Ditto).\n")
+                table.insert(str, "\nContém: "..pokename.." (Ditto).\n")
             elseif getItemAttribute(thing.uid, "ehshinyditto") == 1 then
-                table.insert(str, "\nIt contains "..getArticle(pokename).." "..pokename.." (Shiny Ditto).\n")
+                table.insert(str, "\nContém: "..pokename.." (Shiny Ditto).\n")
             else
-                table.insert(str, "\nIt contains "..getArticle(pokename).." "..pokename..".\n")
+                table.insert(str, "\nContém: "..pokename.." "..iname.name.."\n")
             end
-
+           -- table.insert(str, ""..iname.name.."")
+            
             if lock and lock > 0 then
                 table.insert(str, "It will unlock in ".. os.date("%d/%m/%y %X", lock)..".\n")  
             end
-	
+	        if getItemAttribute(thing.uid, "unico") then               
+                table.insert(str, " It's an unique item.")   
+            end
+
+            local level = getItemAttribute(thing.uid, "level")
+            table.insert(str, "[Level]: "..level..".\n")
+
             local boost = getItemAttribute(thing.uid, "boost") or 0
             if boost > 0 then
                 table.insert(str, "Boost level: +"..boost..".\n") 
@@ -304,9 +300,9 @@ function onLook(cid, thing, position, lookDistance)
             end
 		
 	  	    if prices[pokename] then
-                table.insert(str, " Price: $".. prices[pokename]..".\n")
+                table.insert(str, "Preço: $".. prices[pokename]..".\n")
             else 
-                table.insert(str, " Price: unsellable.\n")
+                table.insert(str, "Preço: unsellable.\n")
             end
 		
             if heldx and heldy then
@@ -326,16 +322,17 @@ function onLook(cid, thing, position, lookDistance)
 		    if getItemAttribute(thing.uid, "serial") then
 			    table.insert(str, "Serial: "..getItemAttribute(thing.uid, "serial")..".\n")
 		    end
-		
+		    if isGod(cid) then
+                table.insert(str, "ItemID[".. thing.itemid .."] & ".."ClientID: ["..getItemInfo(thing.itemid).clientId.."].")
+            end
 		
             doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, table.concat(str))
             return false
       
-        elseif string.find(iname.name, "fainted") or string.find(iname.name, "defeated") then     
-            if isGod(cid) then table.insert(str, "ItemID[".. thing.itemid .."] ".." ClientID: ["..getItemInfo(thing.itemid).clientId.."].\n") end
+        elseif string.find(iname.name, "Desmaiou") or string.find(iname.name, "Derrotado") then     
             table.insert(str, ""..string.lower(iname.name)..". ")     
             if isContainer(thing.uid) then
-                table.insert(str, "(Vol: "..getContainerCap(thing.uid)..")")
+                table.insert(str, "\n(Vol: "..getContainerCap(thing.uid)..")")
             end
             table.insert(str, "\n")
             if getItemAttribute(thing.uid, "gender") == SEX_MALE then
@@ -345,22 +342,24 @@ function onLook(cid, thing, position, lookDistance)
             else
                 table.insert(str, "")
             end
+            if isGod(cid) then table.insert(str, "ItemID[".. thing.itemid .."] ".." ClientID: ["..getItemInfo(thing.itemid).clientId.."].\n") end            
             doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, table.concat(str))
             return false
         elseif isContainer(thing.uid) then     --containers
 
-            if isGod(cid) then table.insert(str, "ItemID[".. thing.itemid .."] ".." ClientID: ["..getItemInfo(thing.itemid).clientId.."].\n") end
+            --if isGod(cid) then table.insert(str, "ItemID[".. thing.itemid .."] ".." ClientID: ["..getItemInfo(thing.itemid).clientId.."].\n") end
 
             if iname.name == "dead human" and getItemAttribute(thing.uid, "pName") then
                 table.insert(str, "dead human (Vol:"..getContainerCap(thing.uid).."). ")
                 table.insert(str, "You recognize ".. getItemAttribute(thing.uid, "pName")..". ".. getItemAttribute(thing.uid, "article").." was killed by a ")
                 table.insert(str, getItemAttribute(thing.uid, "attacker")..".")
             else   
-                table.insert(str, ""..iname.article.." "..iname.name..". (Vol:"..getContainerCap(thing.uid)..").")
+                table.insert(str, "Você esta vendo\n"..iname.name..".")
+                --table.insert(str, "Você esta vendo\n"..iname.name..".\n(Vol:"..getContainerCap(thing.uid)..").")
             end
 		
             if getPlayerGroupId(cid) >= 4 and getPlayerGroupId(cid) <= 6 then
-                table.insert(str, "ItemID[".. thing.itemid .."] ".." ClientID: ["..getItemInfo(thing.itemid).clientId.."].\n")  
+                table.insert(str, "\nItemID[".. thing.itemid .."] ".." ClientID: ["..getItemInfo(thing.itemid).clientId.."].")  
                 local pos = getThingPos(thing.uid)
                 table.insert(str, "\nPosition: [X: "..pos.x.."][Y: "..pos.y.."][Z: "..pos.z.."]")  
             end
@@ -424,8 +423,8 @@ function onLook(cid, thing, position, lookDistance)
 	end
 
     if not isSummon(thing.uid) then   --monstros
-        table.insert(str, "wild "..string.lower(getCreatureName(thing.uid))..".\n")
-        table.insert(str, "Hit Points: "..getCreatureHealth(thing.uid).." / "..getCreatureMaxHealth(thing.uid)..".\n")
+        table.insert(str, "Você está vendo\nPokémon "..string.lower(getCreatureName(thing.uid))..".\n")
+        table.insert(str, "Vida: "..getCreatureHealth(thing.uid).." / "..getCreatureMaxHealth(thing.uid)..".\n")
 		if getPokemonGender(thing.uid) == SEX_MALE then
             table.insert(str, "")
         elseif getPokemonGender(thing.uid) == SEX_FEMALE then
@@ -439,27 +438,31 @@ function onLook(cid, thing, position, lookDistance)
 	   
        doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, table.concat(str))
        return false
-    elseif isSummon(thing.uid) and not isPlayer(thing.uid) then  --summons
+elseif isSummon(thing.uid) and not isPlayer(thing.uid) then  --summons
         local boostlevel = getItemAttribute(getPlayerSlotItem(getCreatureMaster(thing.uid), 8).uid, "boost") or 0
         if getCreatureMaster(thing.uid) == cid then
             local myball = getPlayerSlotItem(cid, 8).uid
             if getItemAttribute(myball, "ehditto") then
-                table.insert(str, "your (Ditto) "..string.lower(getCreatureName(thing.uid))..".")
+                table.insert(str, "Você está vendo seu (Ditto)\nTransformado em "..string.gsub(string.lower(getCreatureName(thing.uid)), "^%l", string.upper)..".")
             else
-                table.insert(str, "your "..string.lower(getCreatureName(thing.uid))..".")
+                table.insert(str, "Você está vendo seu "..string.gsub(string.lower(getCreatureName(thing.uid)), "^%l", string.upper)..".") 
             end
             if boostlevel > 0 then
                 table.insert(str, "\nBoost level: +"..boostlevel..".")
             end
-            table.insert(str, "\nHit points: "..getCreatureHealth(thing.uid).."/"..getCreatureMaxHealth(thing.uid)..".")
-            -- table.insert(str, "\n"..getPokemonHappinessDescription(thing.uid))
+            table.insert(str, "\nVida: "..getCreatureHealth(thing.uid).."/"..getCreatureMaxHealth(thing.uid).."\nDono: "..getCreatureName(getCreatureMaster(thing.uid))..".")
+            if prices[getCreatureName(thing.uid)] then
+                table.insert(str, "\nPreço: $".. prices[getCreatureName(thing.uid)]..".")
+            else 
+                table.insert(str, "\nPreço: unsellable.")
+            end
             doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, table.concat(str))
         else
             local yball = getPlayerSlotItem(getCreatureMaster(thing.uid), 8).uid
             if getItemAttribute(yball, "ehditto") then
-                doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "(Ditto) "..string.lower(getCreatureName(thing.uid))..".\nIt belongs to "..getCreatureName(getCreatureMaster(thing.uid))..".")
+                doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você está vendo (Ditto)\nTransformado em "..string.gsub(string.lower(getCreatureName(thing.uid)), "^%l", string.upper)..".\nVida: "..getCreatureHealth(thing.uid).."/"..getCreatureMaxHealth(thing.uid).."\nDono: "..getCreatureName(getCreatureMaster(thing.uid))..".\nPreço: "..(prices[getCreatureName(thing.uid)] and "$"..prices[getCreatureName(thing.uid)] or "unsellable")..".")
             else
-                doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, ""..string.lower(getCreatureName(thing.uid))..".\nIt belongs to "..getCreatureName(getCreatureMaster(thing.uid))..".")
+                doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você está vendo\nPokémon "..string.gsub(string.lower(getCreatureName(thing.uid)), "^%l", string.upper)..".\nVida: "..getCreatureHealth(thing.uid).."/"..getCreatureMaxHealth(thing.uid).."\nDono: "..getCreatureName(getCreatureMaster(thing.uid))..".\nPreço: "..(prices[getCreatureName(thing.uid)] and "$"..prices[getCreatureName(thing.uid)] or "unsellable")..".")
             end
         end
         return false
