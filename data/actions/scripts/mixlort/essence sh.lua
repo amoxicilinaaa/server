@@ -1,8 +1,8 @@
 function onUse(cid, item, fromPosition, itemEx, toPosition, item2, corpseId, corpse, item3)
 
     local corpseName = getItemInfo(itemEx.itemid).name
-
-    if string.find(corpseName:lower(), "fainted") and not string.find(corpseName:lower(), "fainted shiny")   then
+   -- if string.find(corpseName:lower(), "Desmaiado") and not string.find(corpseName:lower(), "fainted shiny")   then
+if string.find(corpseName:lower(), "desmaiado") and not string.find(corpseName:lower(), "shiny")   then
 
         local randomEssence = math.random(1,100)
         if randomEssence <= 25 then
@@ -14,7 +14,7 @@ function onUse(cid, item, fromPosition, itemEx, toPosition, item2, corpseId, cor
         end
 
         local corpseName = getItemInfo(itemEx.itemid).name
-        local corpseNamePoke = string.gsub(corpseName, "fainted", "Shiny")
+        local corpseNamePoke = string.gsub(corpseName, "Desmaiado", "Shiny")
         local func = doCreateMonster
         local pid = cid
         local t = string.explode(corpseNamePoke, ",")

@@ -463,7 +463,6 @@ prices = {
 ["Sewing Thread"] = 1000,
 ["Sharp Leaves"] = 120,
 ["star gem"] = 103,
-
 ["Sheep Wool"] = 132,
 ["Shock Topknot"] = 132,
 ["Slow Tail"] = 225,

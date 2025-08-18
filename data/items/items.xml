@@ -17879,7 +17879,7 @@
 		<attribute key="description" value="Liquid lava inside a bottle that can be found on fire-type pokemon." />
 	</item>
 
-	<item id="12153" article="a" name="bag of pollem" plural="bags of pollem">
+	<item id="12153" article="a" name="bag of pollen" plural="bags of pollen">
 		<attribute key="weight" value="0" />
 		<attribute key="description" value="A little container that has pollem inside. Usually carried by grass-type pokemon." />
 	</item>
@@ -17979,7 +17979,7 @@
 		<attribute key="description" value="Remains of a bird like pokemon." />
 	</item>
 
-	<item id="12173" article="an" name="apple bite" plural="apple bites">
+	<item id="12173" article="an" name="bitten apple" plural="bitten apples">
 		<attribute key="weight" value="0" />
 		<attribute key="description" value="Someone bit this apple!" />
 	</item>
@@ -17989,7 +17989,7 @@
 		<attribute key="description" value="Remains of a rat like pokemon." />
 	</item>
 
-	<item id="12175" article="a" name="tooth" plural="teeth">
+	<item id="12175" article="a" name="tooth" plural="tooths">
 		<attribute key="weight" value="0" />
 		<attribute key="description" value="A pokemon must have broken it during a battle." />
 	</item>
@@ -18043,7 +18043,7 @@
 		<attribute key="description" value="It belongs to bug-type pokemon." />
 	</item>
 
-	<item id="17356" article="a" name="luck medalion" plural="luck medalions">
+	<item id="17356" article="a" name="luck medallion" plural="luck medallions">
 		<attribute key="weight" value="0" />
 		<attribute key="description" value="It might give you some luck!" />
 	</item>
