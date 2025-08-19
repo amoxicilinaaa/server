@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <npc name="Verudio" script="Verudio.lua" walkinterval="350000" floorchange="0" speed="100">
-<health now="100" max="100"/>
-<look type="587" head="150" body="20" legs="76" feet="66" addons="3"/>
-<parameters>
-<parameter key="message_greet" value="Hello |PLAYERNAME|.I need {help}...you help me?"/> </parameters>
+    <health now="100" max="100"/>
+    <look type="587" head="150" body="20" legs="76" feet="66" addons="3"/>
+    <parameters>
+        <parameter key="message_greet" value="Olá, |PLAYERNAME|! Estou esperando por você. Diga 'ajuda', 'help', 'quest' ou 'tarefa' para saber mais!"/>
+    </parameters>
 </npc>

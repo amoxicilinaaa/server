@@ -368,7 +368,10 @@ function onLook(cid, thing, position, lookDistance)
 
     local npcname = getCreatureName(thing.uid)
     if ehNPC(thing.uid) and NPCBattle[npcname] then
-        table.insert(str, "sss"..npcname..". "..NPCBattle[npcname].artig.." leader of the gym from "..NPCBattle[npcname].cidbat..".")
+        table.insert(str, "Você vê "..npcname..". "..NPCBattle[npcname].artig.." leader of the gym from "..NPCBattle[npcname].cidbat..".")
+        if descriNpc[npcname] then
+            table.insert(str, " "..descriNpc[npcname])
+        end
         doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, table.concat(str))
         return false
     end
@@ -383,6 +386,9 @@ function onLook(cid, thing, position, lookDistance)
     end
     if not isPlayer(thing.uid) and not isMonster(thing.uid) then
         table.insert(str, "NPC: "..getCreatureName(thing.uid)..".")
+        if descriNpc[npcname] then
+            table.insert(str, "\n"..descriNpc[npcname])
+        end
         doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, table.concat(str))
         return false
     end
