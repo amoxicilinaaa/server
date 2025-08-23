@@ -18,10 +18,12 @@ end
 
 local rate = 200
 
+--- MOSTRAR LOCAIS DE CAÇA MAPA ---
 local PosByPoke = {
 	['Charizard'] = {{x=1081, y=981, z=7, imagem="20", description = "teste"}, {x=1091, y=991, z=7, imagem="10", description = "teste"}}
 }
 
+--- DESCRIÇÃO MAGIAS POKÉMON ---
 local moveDescDex = {
 	["Ember"] = "Magia que causa dano!",
 	["Magia Name"] = "Magia que causa dano!"
@@ -97,7 +99,7 @@ local function volta(cid, init)
 		if isPokeBallOn(item.itemid) then
 			local pokename = getPokeballInfo(item.uid).name
 			if getPlayerLevel(cid) < (pokemons(pokename).level) then
-				doPlayerSendCancel(cid, "You need level "..(pokemons(pokename).level).." to use this pokemon.")
+				doPlayerSendCancel(cid, "Você precisa de nível "..(pokemons(pokename).level).." para usar este pokémon.")
 				return true
 			end
         	doSummonMonster(cid, pokename)
@@ -118,7 +120,7 @@ local function volta(cid, init)
 		end
 		
 		if isPokeBallOff(item.itemid) then
-			doPlayerSendCancel(cid, "Seu Pokemon esta Morto!")
+			doPlayerSendCancel(cid, "Seu pokémon está morto!")
 			return true
 		end
 	end
@@ -148,8 +150,8 @@ function onExtendedOpcode(cid, opcode, buffer)
 		end
 		doSendPlayerExtendedOpcode(cid, opcodes.OPCODE_PLAYER_SHOW_ONLINE, str)
 
-
-	elseif opcode == 53 then -- open nova dex
+--- NOVA POKEDEX --- 
+	elseif opcode == 53 then
 		local UID = tonumber(buffer)
 		if isMonster(UID) then
 			if getDistanceBetween(getCreaturePosition(cid), getCreaturePosition(UID)) <= 5 then
@@ -184,18 +186,18 @@ function onExtendedOpcode(cid, opcode, buffer)
 				end
 	
 				if isInArray({"Aporygon", "Abporygon", "Big Porygon", "Tangrowth", "Magmortar", "Electivire", "Dusknoir", "baby charmander", "baby squirtle", "baby bulbasaur"}, name) then
-					doPlayerSendCancel(cid, "Você não pode adicionar esse Pokémon à Pokédex.")
+					doPlayerSendCancel(cid, "Você não pode adicionar esse pokémon à Pokédex.")
 					return false
 				end
 	
 				local dexInfo = getPlayerDexInfo(cid, name)
 				if dexInfo.dex == 0 and not isShiny(UID) then
 					local exp = math.random(3000, 15000)
-					doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "You have unlocked ".. name.." in your Pokédex!")
-					doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "You have gained "..exp.." experience points.")
+					doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "Você desbloqueou ".. name.." na sua Pokédex!")
+					doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "Você ganhou "..exp.." pontos de experiência.")
 					doPlayerAddExperience(cid, exp)
 	
-					-- Verifica se o Pokémon está registrado no banco de dados
+					-- Verifica se o Pokémon está registrado no banco de dados Pokedex
 					local result = db.getResult("SELECT `"..name.."` FROM `player_pokedex` WHERE `player_id` = "..getPlayerGUID(cid).." LIMIT 1;")
 					if result:getID() == -1 then
 						-- O Pokémon não está cadastrado no banco de dados, então adicionamos
@@ -220,8 +222,8 @@ function onExtendedOpcode(cid, opcode, buffer)
 		if getPlayerStorageValue(cid, STORAGEMARCAMAPA) >= 1 then
 			doSendPlayerExtendedOpcode(cid, 63, print_table(PosByPoke[buffer]))
 		else
-			doPlayerSendCancel(cid, "You don't have permission to use that")
-			print("O player: "..getCreatureName(cid).." usou o botão de localização sem permissão")
+			doPlayerSendCancel(cid, "Você não tem permissão para usar isso")
+			print("O jogador: "..getCreatureName(cid).." usou o botão de localização sem permissão")
 			doSendPlayerExtendedOpcode(cid, 63, "false")
 		end
 	elseif opcode == 204 then
@@ -235,7 +237,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 					    doPlayerRemoveItem(cid, 2145, buyItem[tonumber(t[2])].diamonds)
 						doPlayerAddPremiumDays(cid, buyItem[tonumber(t[2])].count) 
 					else 
-					    doPlayerSendTextMessage(cid, 27, "You not have a "..buyItem[tonumber(t[2])].diamonds.." Diamonds.")
+					    doPlayerSendTextMessage(cid, 27, "Você não tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
 					    return true	
 					end
 			    elseif buyItem[tonumber(t[2])].type == "Item" then
@@ -243,7 +245,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 					    doPlayerRemoveItem(cid, 2145, buyItem[tonumber(t[2])].diamonds)
 					    doPlayerAddItem(cid, buyItem[tonumber(t[2])].itemId, buyItem[tonumber(t[2])].count)
 					else 
-					    doPlayerSendTextMessage(cid, 27, "You not have a "..buyItem[tonumber(t[2])].diamonds.." Diamonds.")
+					    doPlayerSendTextMessage(cid, 27, "Você não tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
 					    return true	
 					end
 			    elseif buyItem[tonumber(t[2])].type == "Pokemon" then
@@ -251,7 +253,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 					    doPlayerRemoveItem(cid, 2145, buyItem[tonumber(t[2])].diamonds)
 					    addPokeToPlayer(cid, doCorrectString(buyItem[tonumber(t[2])].name), 0, nil, "normal")	
 					else 
-					    doPlayerSendTextMessage(cid, 27, "You not have a "..buyItem[tonumber(t[2])].diamonds.." Diamonds.")
+					    doPlayerSendTextMessage(cid, 27, "Você não tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
 					    return true	
 					end
 				elseif buyItem[tonumber(t[2])].type == "Sex" then
@@ -263,7 +265,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 						    doPlayerSetSex(cid, 1)
                         end
                     else 
-					    doPlayerSendTextMessage(cid, 27, "You not have a "..buyItem[tonumber(t[2])].diamonds.." Diamonds.")
+					    doPlayerSendTextMessage(cid, 27, "Você não tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
 					    return true						
 					end
 			    end 
@@ -271,12 +273,12 @@ function onExtendedOpcode(cid, opcode, buffer)
 		elseif t[1] == "outfit" then  
 		    if buyOutfit[tonumber(t[2])] then
 			    if getPlayerSex(cid) == buyOutfit[tonumber(t[2])].sex then
-				    doPlayerSendTextMessage(cid, 27, "Outfit for "..buyOutfit[tonumber(t[2])].sex..".")
+				    doPlayerSendTextMessage(cid, 27, "Roupa para "..buyOutfit[tonumber(t[2])].sex..".")
 					return true
 				end
 			    if getPlayerItemCount(cid, 2145) >= buyOutfit[tonumber(t[2])].diamonds then
 					if getPlayerStorageValue(cid, buyOutfit[tonumber(t[2])].storage) == 1 then
-					    doPlayerSendTextMessage(cid, 27, "You, have this outfit.")
+					    doPlayerSendTextMessage(cid, 27, "Você tem essa roupa.")
 					    return true
 					end
 					doPlayerRemoveItem(cid, 2145, buyOutfit[tonumber(t[2])].diamonds)
@@ -284,7 +286,7 @@ function onExtendedOpcode(cid, opcode, buffer)
                     setPlayerStorageValue(cid, buyOutfit[tonumber(t[2])].storage, 1)
 					doPlayerSendTextMessage(cid, 27, "Obrigado por adiquir a outfit "..buyOutfit[tonumber(t[2])].name.." de nossa loja por "..buyOutfit[tonumber(t[2])].diamonds.." Dimaonds.")
                 else 
-					doPlayerSendTextMessage(cid, 27, "You not have a "..buyItem[tonumber(t[2])].diamonds.." Diamonds.")
+					doPlayerSendTextMessage(cid, 27, "You not have a "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
 					return true						
 				end
 			end

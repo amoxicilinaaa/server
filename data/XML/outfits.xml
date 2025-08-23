@@ -54,8 +54,8 @@
 <list gender="0" lookType="525" name="Hiker"/>
 <list gender="1" lookType="523" name="Hiker"/>
 </outfit> -->
-<!-- PROMOTE -->
 
+<!-- PROMOTE -->
 <outfit id="14" quest="181612">
 <list gender="0" lookType="1149" name="Naturia"/>
 <list gender="1" lookType="1159" name="Naturia"/>
@@ -94,7 +94,6 @@
 </outfit>
 
 <!-- PROMOTE RANK 5 -->
-
 <outfit id="23" quest="181621">
 <list gender="0" lookType="1437" name="Raibolt Master"/>
 <list gender="1" lookType="1421" name="Raibolt Master"/>
@@ -133,7 +132,6 @@
 </outfit>
 
 <!-- PROMOTE MASTER -->
-
 <outfit id="32" quest="181630">
 <list gender="0" lookType="1437" name="Raibolt Master"/>
 <list gender="1" lookType="1421" name="Raibolt Master"/>
@@ -172,7 +170,6 @@
 </outfit>
 
 <!-- GAMEMASTER -->
-
 <outfit id="41" access = "4">
 <list gender="0-3" lookType="664" name="GameMaster"/>
 </outfit>
@@ -182,40 +179,36 @@
 
 
 <!-- NATAL -->
-
-<!-- <outfit id="43">
+<outfit id="43" quest="181639">
 <list gender="0" lookType="661" name="Christmas"/>
 <list gender="1" lookType="662" name="Christmas"/>
 </outfit>
-<outfit id="44">
+<outfit id="44" quest="181640">
 <list gender="0" lookType="1084" name="Christmas 2"/>
 <list gender="1" lookType="1083" name="Christmas 2"/>
-</outfit> -->
+</outfit>
 
 <!-- HALLOWEEN -->
-
-<!-- <outfit id="45">
+<outfit id="45" quest="181641">
 <list gender="0" lookType="1682" name="Fantasma"/>
 <list gender="1" lookType="1681" name="Lobsomen"/>
-</outfit> -->
-<!-- <outfit id="46">
+</outfit> 
+<outfit id="46" quest="181642">
 <list gender="0" lookType="1190" name="Bruxa"/>
 <list gender="1" lookType="1191" name="Dracula"/>
-</outfit> -->
-<!-- <outfit id="47">
-<list gender="0" lookType="1188" name="Caveira"/>
-<list gender="1" lookType="1189" name="Diaba"/>
-</outfit> -->
+</outfit>
+<outfit id="47" quest="181643">
+<list gender="0" lookType="1188" name="Diaba"/>
+<list gender="1" lookType="1189" name="Caveira"/>
+</outfit>
 
 <!-- CATCHER -->
-
 <outfit id="48" quest="181644">
 <list gender="0" lookType="1414" name="Catcher"/>
 <list gender="1" lookType="1413" name="Catcher"/>
 </outfit>
 
 <!-- ESPECIAIS -->
-
 <!-- <outfit id="49">
 <list gender="0" lookType="1016" name="Hunter"/>
 <list gender="1" lookType="1015" name="Hunter"/>
@@ -388,6 +381,5 @@
 <list gender="0" lookType="2315" name="Articuno Event"/>
 <list gender="1" lookType="2315" name="Articuno Event"/>
 </outfit>
-
 
 </outfits>

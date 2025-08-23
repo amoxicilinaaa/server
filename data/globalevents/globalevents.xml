@@ -63,6 +63,5 @@
 	<!-- <globalevent name="InvasaoStart10" time="21:00" event="script" value="dugeon/invasao.lua"/> -->
 	<!-- <globalevent name="InvasaoStart11" time="21:05" event="script" value="dugeon/invasao.lua"/> -->
 	<!-- <globalevent name="InvasaoStart12" time="21:10" event="script" value="dugeon/invasao.lua"/> -->
-	<globalevent name="cleanup" interval="86400" script="venda.lua"/>
 
 </globalevents>

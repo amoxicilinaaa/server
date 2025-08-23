@@ -401,7 +401,7 @@ function onLook(cid, thing, position, lookDistance)
     end
     if not isSummon(thing.uid) then
         table.insert(str, "Você está vendo\nPokémon "..string.lower(getCreatureName(thing.uid))..".\n")
-        table.insert(str, "Vida: "..getCreatureHealth(thing.uid).." / "..getCreatureMaxHealth(thing.uid)..".\n")
+        table.insert(str, "Vida: ("..getCreatureHealth(thing.uid).." / "..getCreatureMaxHealth(thing.uid)..".\n)")
         if getPokemonGender(thing.uid) == SEX_MALE then
             table.insert(str, "")
         elseif getPokemonGender(thing.uid) == SEX_FEMALE then
@@ -425,7 +425,7 @@ function onLook(cid, thing, position, lookDistance)
             if boostlevel > 0 then
                 table.insert(str, "\nBoost level: +"..boostlevel..".")
             end
-            table.insert(str, "\nVida: "..getCreatureHealth(thing.uid).."/"..getCreatureMaxHealth(thing.uid)..".")
+            table.insert(str, "\nVida: ("..getCreatureHealth(thing.uid).."/"..getCreatureMaxHealth(thing.uid)..").")
             if prices[getCreatureName(thing.uid)] then
                 table.insert(str, "\nPreço: $".. prices[getCreatureName(thing.uid)]..".")
             else
@@ -435,9 +435,9 @@ function onLook(cid, thing, position, lookDistance)
         else
             local yball = getPlayerSlotItem(getCreatureMaster(thing.uid), 8).uid
             if getItemAttribute(yball, "ehditto") then
-                doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você está vendo (Ditto)\nTransformado em "..string.gsub(string.lower(getCreatureName(thing.uid)), "^%l", string.upper)..".\nVida: "..getCreatureHealth(thing.uid).."/"..getCreatureMaxHealth(thing.uid).."\nDono: "..getCreatureName(getCreatureMaster(thing.uid))..".\nPreço: "..(prices[getCreatureName(thing.uid)] and "$"..prices[getCreatureName(thing.uid)] or "unsellable")..".")
+                doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você está vendo (Ditto)\nTransformado em "..string.gsub(string.lower(getCreatureName(thing.uid)), "^%l", string.upper)..".\nVida: ("..getCreatureHealth(thing.uid).."/"..getCreatureMaxHealth(thing.uid)..")\nDono: "..getCreatureName(getCreatureMaster(thing.uid))..".\nPreço: "..(prices[getCreatureName(thing.uid)] and "$"..prices[getCreatureName(thing.uid)] or "unsellable")..".")
             else
-                doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você está vendo\nPokémon "..string.gsub(string.lower(getCreatureName(thing.uid)), "^%l", string.upper)..".\nVida: "..getCreatureHealth(thing.uid).."/"..getCreatureMaxHealth(thing.uid).."\nDono: "..getCreatureName(getCreatureMaster(thing.uid))..".\nPreço: "..(prices[getCreatureName(thing.uid)] and "$"..prices[getCreatureName(thing.uid)] or "unsellable")..".")
+                doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você está vendo\nPokémon "..string.gsub(string.lower(getCreatureName(thing.uid)), "^%l", string.upper)..".\nVida: ("..getCreatureHealth(thing.uid).."/"..getCreatureMaxHealth(thing.uid)..")\nDono: "..getCreatureName(getCreatureMaster(thing.uid))..".\nPreço: "..(prices[getCreatureName(thing.uid)] and "$"..prices[getCreatureName(thing.uid)] or "unsellable")..".")
             end
         end
         return false

@@ -8,12 +8,12 @@ descriNpc = {
     ["Namer"] = "Responsável por colocar apelidos nos pokémon.",
     ["Henry"] = "Compra todas pedras de evolução.",
     ["Tomy"] = "Comerciante de alimentos.",
-    ["Catch"] = "Gosta de conhecer Treinadores apaixonados por capturar pokémons.",
+    ["Catcher"] = "Gosta de conhecer Treinadores apaixonados por capturar pokémons.",
     ["Nike"] = "Um Organizador de Torneios (TO) diário.",
-    ["Daily Dalkon"] = "oferece desafios diários perfeitos para Treinadores iniciantes (nível 20 ao 50).\nComece sua jornada e ganhe recompensas essenciais para sua evolução.",
-    ["Daily Leticia"] = "Apresenta desafios diários ideais para Treinadores em ascensão (nível 50 ao 100).\nSupere missões mais difíceis e garanta recompensas melhores para o próximo nível.",
-    ["Daily Bernardo"] = "Oferece desafios diários robustos, feitos para Treinadores experientes (nível 100 ao 150).\nTeste suas habilidades e conquiste recompensas valiosas que o levarão ao topo.",
-    ["Daily Natasha"] = "Oferece desafio para os Treinadores mais poderosos (nível 150+).\nPrepare-se para missões extremamente difíceis e receba as maiores recompensas que existem.",
+    ["Daily Dalkon"] = "Oferece desafios diários perfeitos para Treinadores iniciantes (nível 20 ao 50).",
+    ["Daily Leticia"] = "Apresenta desafios diários ideais para Treinadores em ascensão (nível 50 ao 100).",
+    ["Daily Bernardo"] = "Oferece desafios diários robustos, feitos para Treinadores experientes (nível 100 ao 150).",
+    ["Daily Natasha"] = "Oferece desafio diários para os Treinadores mais poderosos (nível 150+).",
     ["Mr. John"] = "Sempre em busca de treinadores corajosos para aceitarem seus desafios de captura de Pokémon.",
 
 --- clã GrandMaster, Volcanic, raibolt, orebound, naturia, gardestrike, ironhard, wingeon, psycraft, seavell, malefic ---

@@ -9,6 +9,7 @@
     <!--movevent type="StepIn" uniqueid="1150" event="script" value="QUESTS/01.lua"/> 
     <movevent type="StepIn" uniqueid="65000-65004" event="script" value="QUESTS/01.lua"/--> 
 	<movevent type="StepIn" actionid="64700" event="script" value="continentes/doubleExp.lua"/> 
+	<movevent type="StepIn" actionid="8889-8890" event="script" value="continentes/tilesquest.lua"/> 
 
 	<movevent type="Equip" itemid="23454;23455;23450-23452;23481;17871" slot="ring" script="mixlort/bikes.lua" />
 	<movevent type="DeEquip" itemid="23454;23455;23450-23452;23481;17871" slot="ring" script="mixlort/bikes.lua" />
@@ -70,37 +71,7 @@
 	<movevent type="StepIn" actionid="7037" event="script" value="citys/blackcity.lua"/> -->
 
  <!-- PowerUp-->
-	<movevent type="StepIn" actionid="1803" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1804" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1805" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1806" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1807" event="script" value="PowerUp/powerup.lua"/>		
-	<movevent type="StepIn" actionid="1808" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1809" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1810" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1811" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1812" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1813" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1814" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1815" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1816" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1817" event="script" value="PowerUp/powerup.lua"/>		
-	<movevent type="StepIn" actionid="1818" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1819" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1820" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1821" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1822" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1823" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1824" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1825" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1826" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1827" event="script" value="PowerUp/powerup.lua"/>		
-	<movevent type="StepIn" actionid="1828" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1829" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1830" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1831" event="script" value="PowerUp/powerup.lua"/>
-	<movevent type="StepIn" actionid="1832" event="script" value="PowerUp/powerup.lua"/>	
-	<movevent type="StepIn" actionid="1833" event="script" value="PowerUp/powerup.lua"/>	
+ 	<movevent type="StepIn" actionid="1802-1833" event="script" value="PowerUp/todaspowers30.lua"/>
 
 
     <movevent type="StepOut" itemid="383;408;427;432;433;459;469;482;484;1385;1388;1390;1392;1394;1398;1400;1402;1404;3135;3679;3681;3683;3685;4835;4836;4837;5258;5259;5260;6128;6909;6911;6913;6915;8284; 16566; 16568; 16478;17491" event="script" value="teleport.lua"/>

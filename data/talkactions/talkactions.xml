@@ -2,6 +2,7 @@
 
 <talkactions>
 	<!-- ADMINISTRADOR ID = 6 -->
+	<talkaction log="yes" access="5" words="/exp" event="script" value="ADMINISTRADOR/exp.lua"/>
 	<talkaction log="yes" access="5" words="/m" event="script" value="ADMINISTRADOR/creature.lua"/>
 	<talkaction log="yes" access="5" words="/i"  event="script" value="ADMINISTRADOR/createitem.lua"/>
 	<talkaction log="yes" access="5" words="/s" event="script" value="ADMINISTRADOR/summon.lua"/>
@@ -11,6 +12,7 @@
 	<talkaction log="yes" access="5" words="/addvip" event="script" value="ADMINISTRADOR/addvip.lua"/>
 	<talkaction log="yes" access="5" words="/reload" event="script" value="ADMINISTRADOR/reload.lua"/>
 	<talkaction log="yes" access="5" words="/additem" event="script" value="ADMINISTRADOR/additem.lua"/>
+	<talkaction log="yes" access="5" words="/poss" event="script" value="ADMINISTRADOR/poss.lua"/>
 
 	<talkaction log="yes" access="5" words="/storage" event="script" value="ADMINISTRADOR/storage.lua"/>
 	<talkaction log="yes" access="5" words="/taskill" event="script" value="ADMINISTRADOR/taskill.lua"/>
@@ -154,18 +156,6 @@
 	<talkaction words="h1" case-sensitive="no" event="script" value="flyup.lua"/>
 	<talkaction words="!down" case-sensitive="no" event="script" value="flydown.lua"/>
 	<talkaction words="h2" case-sensitive="no" event="script" value="flydown.lua"/>
-	<talkaction words="m1" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m2" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m3" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m4" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m5" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m6" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m7" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m8" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m9" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m10" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m11" case-sensitive="no" event="script" value="move1.lua"/>
-	<talkaction words="m12" case-sensitive="no" event="script" value="move1.lua"/>
 	<talkaction words="!cd" case-sensitive="no" event="script" value="cd.lua"/>
 	<talkaction words="/cd" case-sensitive="no" event="script" value="cd.lua"/>
 	<talkaction words="!love" case-sensitive="no" event="script" value="love.lua"/>
@@ -176,6 +166,21 @@
 	<talkaction words="/pokeread" case-sensitive="no" event="script" value="cdbar.lua"/>
 	<talkaction words="/clanshop" hide="yes" event="script" value="clan.lua"/>
 	<talkaction log = "yes" words = "!revert" hide="yes" event = "script" value = "dittorevert.lua"/>
+
+
+	<!-- ATAQUES DOS POKEMONS -->
+	<talkaction words="m1" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m2" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m3" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m4" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m5" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m6" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m7" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m8" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m9" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m10" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m11" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
+	<talkaction words="m12" case-sensitive="no" event="script" value="MOVESPOKEMON/move1.lua"/>
 
 	<!-- INICIO-GAME -->
 	<talkaction hide="yes" words="#Charmanderwiner#" event="script" value="INICIOGAME/charmander.lua"/>
@@ -218,6 +223,7 @@
 	<!-- <talkaction words="!createguild" event="function" value="guildCreate"/> -->
 	<!-- <talkaction words="!joinguild" event="function" value="guildJoin"/> -->
 	<!-- (Deprecated) Redirect old '/' to '!' -->
-	<talkaction words="!venda" script="venda.lua"/>
+	<talkaction words="/powerupstatus" script="powerupstatus.lua"/>
+
 	
 </talkactions>

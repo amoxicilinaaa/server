@@ -1,9 +1,16 @@
 function onStepIn(cid, item, position, fromPosition)
-townId = 5
-doPlayerSetTown(cid, townId)
-doPlayerSendTextMessage(cid,25,"Você agora é cidadão de Fuchsia.")
+    local townId = 5
+    local townName = getTownName(townId)
 
-local cidade = getPlayerTown(cid)
-local pos = getTownTemplePosition(cidade) 
-doTeleportThing(cid, pos)
+    -- Define a cidade do jogador
+    doPlayerSetTown(cid, townId)
+
+    -- Mensagem aprimorada
+    doPlayerSendTextMessage(cid, MESSAGE_EVENT_ADVANCE,
+        "Parabéns! Você agora é oficialmente um cidadão de "..townName..".\nSeu templo foi atualizado e você será teleportado para lá.")
+
+    -- Teleporta o jogador para o templo da cidade
+    local templePos = getTownTemplePosition(townId)
+    doTeleportThing(cid, templePos)
+    doSendMagicEffect(templePos, CONST_ME_TELEPORT)
 end

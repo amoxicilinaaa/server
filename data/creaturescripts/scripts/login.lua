@@ -155,14 +155,15 @@ end
 			return true
 		end
 
-		doPlayerAddItem(cid, 1988, 1)
-		doPlayerAddItem(cid, 1987, 1)
-		doPlayerAddItem(cid, 2382, 1)
-		doPlayerAddItem(cid, 2120, 1)
-		doPlayerAddItem(cid, 2550, 1)
-		doPlayerAddItem(cid, 2580, 1)
-		doPlayerAddItem(cid, 2395, 1)
-		
+		doPlayerAddItem(cid, 1988, 1) --case de insignas
+		doPlayerAddItem(cid, 1987, 1) --mochila
+		doPlayerAddItem(cid, 2382, 1) --pokedex
+		doPlayerAddItem(cid, 2120, 1) --corda
+		doPlayerAddItem(cid, 2550, 1) --order
+		doPlayerAddItem(cid, 2580, 1) --vara de pesca
+		doPlayerAddItem(cid, 2395, 1) --portati
+
+		-- case add insignas dentro
 		local bag = getPlayerItemById(cid, false, 1988).uid
 		doAddContainerItem(bag, 12267, 1)
 		doAddContainerItem(bag, 12266, 1)
@@ -175,11 +176,11 @@ end
 
 		-- first items --		
 
-		local item1 = doCreateItemEx(2152, 3)
-		local item2 = doCreateItemEx(2394, 30)
-		local item3 = doCreateItemEx(12346, 25)
-		local item4 = doCreateItemEx(12344, 15)
-		local item6 = doCreateItemEx(12349, 35)	
+		local item1 = doCreateItemEx(2152, 3) -- dinheiro
+		local item2 = doCreateItemEx(2394, 30) --pokeball
+		local item3 = doCreateItemEx(12346, 25) --ultra potion
+		local item4 = doCreateItemEx(12344, 15) -- revive
+		local item6 = doCreateItemEx(12349, 35)	 -- Medicine
 	    doItemSetAttribute(item1, "unico", 1)
 		doItemSetAttribute(item2, "unico", 1)
 		doItemSetAttribute(item3, "unico", 1)
