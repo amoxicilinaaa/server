@@ -20181,7 +20181,7 @@
         <attribute key="duration" value="300" />
     </item>
 
-	<item id="12745" article="a" name="darkness gem" plural="darkness gems">
+	<item id="12745" article="a" name="dark gem" plural="dark gems">
 		<attribute key="weight" value="0" />
 		<attribute key="description" value="Dark/Ghost-type pokemon most of the time are carrying some of these with them." />
 	</item>
@@ -28117,7 +28117,7 @@
 		<item id="17344" article="a" name="dark beak" plural="dark beaks">
 		<attribute key="weight" value="0" />
 	</item>
-		<item id="17348" article="a" name="dark gem" plural="dark gems">
+		<item id="17348" article="a" name="darkness gems" plural="darkness gems">
 		<attribute key="weight" value="0" />
 	</item>
 		<item id="17291" article="a" name="cat ear" plural="cat ears">

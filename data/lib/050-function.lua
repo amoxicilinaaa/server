@@ -13,7 +13,6 @@ function doPlayerGiveItem(cid, itemid, amount, subType)
 			end
 		end
 	end
-
 	return true
 end
 
@@ -28,7 +27,6 @@ function doPlayerGiveItemContainer(cid, containerid, itemid, amount, subType)
 			return false
 		end
 	end
-
 	return true
 end
 
@@ -50,9 +48,8 @@ function doPlayerSellItem(cid, itemid, count, cost)
 	end
 
 	if(not doPlayerAddMoney(cid, cost)) then
-		error('[doPlayerSellItem] Could not add money to: ' .. getPlayerName(cid) .. ' (' .. cost .. 'gp).')
+		error('[doPlayerSellItem] Não foi possível adicionar dinheiro a: ' .. getPlayerName(cid) .. ' (' .. cost .. 'gp).')
 	end
-
 	return true
 end
 
@@ -95,7 +92,6 @@ function getMonthDayEnding(day)
 	elseif(day == "03" or day == "23") then
 		return "rd"
 	end
-
 	return "th"
 end
 
@@ -149,7 +145,6 @@ function getTibiaTime()
 		hours = hours + 1
 		minutes = minutes - 60
 	end
-
 	return {hours = hours, minutes = minutes}
 end
 
@@ -268,11 +263,9 @@ function getTileZoneInfo(pos)
 	if(tmp.pvp) then
 		return 2
 	end
-
 	if(tmp.nopvp) then
 		return 1
 	end
-
 	return 0
 end
 
@@ -295,7 +288,6 @@ function getOnlinePlayers()
 	for i, cid in ipairs(tmp) do
 		table.insert(players, getCreatureName(cid))
 	end
-
 	return players
 end
 
@@ -312,7 +304,6 @@ function isPlayerGhost(cid)
 	if(not isPlayer(cid)) then
 		return false
 	end
-
 	return getCreatureCondition(cid, CONDITION_GAMEMASTER, GAMEMASTER_INVISIBLE) or getPlayerFlagValue(cid, PLAYERFLAG_CANNOTBESEEN)
 end
 
@@ -339,7 +330,6 @@ function doPlayerAddLevel(cid, amount, round)
 	else
 		experience = -((round and getPlayerExperience(cid) or getExperienceForLevel(level)) - getExperienceForLevel(level + amount))
 	end
-
 	return doPlayerAddExperience(cid, experience)
 end
 
@@ -359,7 +349,6 @@ function doPlayerAddSkill(cid, skill, amount, round)
 	elseif(skill == SKILL__MAGLEVEL) then
 		return doPlayerAddMagLevel(cid, amount)
 	end
-
     for i = 1, amount do
 	    doPlayerAddSkillTry(cid, skill, (getPlayerRequiredSkillTries(cid, skill, getPlayerSkillLevel(cid, skill) + 1) - getPlayerSkillTries(cid, skill)) / getConfigInfo('rateSkill'))
     end
@@ -371,7 +360,6 @@ function getPartyLeader(cid)
 	if(type(party) ~= 'table') then
 		return 0
 	end
-
 	return party[1]
 end
 
@@ -392,18 +380,15 @@ function getBooleanFromString(input)
 	if(tmp == 'boolean') then
 		return input
 	end
-
 	if(tmp == 'number') then
 		return input > 0
 	end
-
 	local str = string.lower(tostring(input))
 	return (str == "yes" or str == "true" or (tonumber(str) ~= nil and tonumber(str) > 0))
 end
 
 function doCopyItem(item, attributes)
 	local attributes = attributes or false
-
 	local ret = doCreateItemEx(item.itemid, item.type)
 	if(attributes) then
 		if(item.actionid > 0) then
@@ -419,7 +404,6 @@ function doCopyItem(item, attributes)
 			end
 		end
 	end
-
 	return getThing(ret)
 end
 
@@ -427,7 +411,6 @@ function doRemoveThing(uid)
 	if(isCreature(uid)) then
 		return doRemoveCreature(uid)
 	end
-
 	return doRemoveItem(uid)
 end
 
@@ -446,7 +429,6 @@ function doChangeTypeItem(uid, subtype)
 	if(thing.itemid < 100) then
 		return false
 	end
-
 	local subtype = subtype or 1
 	return doTransformItem(thing.uid, thing.itemid, subtype)
 end
@@ -464,7 +446,6 @@ function doSetItemText(uid, text, writer, date)
 			doItemSetAttribute(uid, "date", tonumber(date))
 		end
 	end
-
 	return true
 end
 
@@ -620,7 +601,6 @@ function getMonsterSummonList(name)
 	return monster and monster.summons or false
 end
 
-
 function getSerialInvalid(item)
  --    local serial = getItemAttribute(item, "serial")
 	-- local query = db.getResult("select * from pokemon_serial where serial = '" ..serial.."'") 
@@ -668,4 +648,109 @@ function setSerial(item, poke, nick, boost, heldx, heldy, nature)
  --    local serial = generateSerial()
  --    db.executeQuery("INSERT INTO `pokemon_serial` (`pokemon`, `nick`, `boost`, `heldx`, `heldy`, `nature`, `serial`) VALUES ('"..poke.."', '"..nick.."', ".. boost ..", ".. heldx ..", ".. heldy ..", '"..nature.."', '"..serial.."')")
  --    doItemSetAttribute(item, "serial", serial)
+end
+
+----- ADD AMOXICILINA NA CAIXIINHA -----
+
+function getTimeString(self) 
+    local format = {
+        {'ano', self / 60 / 60 / 24 / 365},
+        {'mês', self / 60 / 60 / 24 / 30 % 12},
+        {'dia', self / 60 / 60 / 24 % 30},
+        {'hora', self / 60 / 60 % 24},
+        {'minuto', self / 60 % 60},
+        {'segundo', self % 60}
+    }
+    
+    local out = {}
+    for k, t in ipairs(format) do
+        local v = math.floor(t[2])
+        if v > 0 then
+            table.insert(out, (k < #format and (#out > 0 and ', ' or '') or ' e ') .. v .. ' ' .. t[1] .. (v ~= 1 and 'es' or ''))
+        end
+    end
+    local ret = table.concat(out)
+    if ret:len() < 16 and ret:find('segundo') then
+        local a, b = ret:find(' e ')
+        ret = ret:sub(b+1)
+    end
+    return ret
+end
+
+function isPlayerOnline(name)
+	local queryResult = db.storeQuery("SELECT `online` FROM `players` WHERE `name` = '"..name.."'")
+	local result = result.getDataInt(queryResult, "online") > 0 and true or false
+	return result
+end
+
+function getOfflinePlayerStorage(guid, storage)
+	if not isPlayerOnline(getPlayerNameByGUID(guid)) then
+		local queryResult = db.storeQuery("SELECT `value` FROM `player_storage` WHERE `key` = '"..storage.."' and `player_id` = "..guid.."")
+		local result = queryResult and result.getDataInt(queryResult, "value") or -1
+		return result
+	end
+end
+
+function setOfflinePlayerStorage(guid, storage, value)
+	if not isPlayerOnline(getPlayerNameByGUID(guid)) then
+		db.query("UPDATE `player_storage` SET `value` = '"..value.."' WHERE `key` = '"..storage.."' and `player_id` = "..guid.."")
+	end
+end
+
+function getItemNameByCount(itemID, count)
+	if tonumber(count) and count > 1 and isItemStackable(itemID) then
+		return getItemInfo(itemID).plural
+	end
+	return getItemNameById(itemID)
+end
+
+function printTable(_table)
+	local function getTable(_table, expand, tabs)
+		
+		local aux = ""
+		if not type(_table) == "table" then
+			return _table
+		else
+			for key,value in pairs(_table) do
+				if type(value) == "table" then
+				
+					for i = 1, tabs -1 do
+						aux = aux.."\t"
+					end
+					
+					if type(key)  == "string" then
+						aux = aux.. '["'..key..'"] =\t{ \n'..getTable(value, true, tabs +1)
+					else
+						aux = aux.. "["..key.."] =\t{ \n"..getTable(value, true, tabs +1)
+					end
+					
+					for i = 1, tabs do
+						aux = aux.. "\t"
+					end
+					
+					aux = aux.."},\n"				
+				else
+					if expand then
+						for i = 1, tabs -1 do
+							aux = aux.. "\t"
+						end
+					end
+					if type(key)  == "string" then
+						aux = aux.. '["'..key..'"] = '..(type(value) == "string" and '"'..value..'"' or tostring(value))..",\n"
+					else
+						aux = aux.. '['..key..'] = '..(type(value) == "string" and '"'..value..'"' or tostring(value))..",\n"
+					end
+				end
+			end
+		end
+
+		return aux
+	end
+    if type(_table) == "table" then
+        print(getTable(_table, false, 1))
+        return true
+    else
+        error("Parameter is not a table!")
+        return false
+    end
 end
