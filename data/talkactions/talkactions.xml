@@ -190,7 +190,14 @@
 	<!-- HOUSES -->
 	<talkaction words="!buyhouse" filter="word-spaced" event="function" value="houseBuy"/> 
 	<talkaction words="!sellhouse" event="function" value="houseSell"/>
+	<talkaction words="!kickhouse" filter="word-spaced" event="function" value="houseKick" description="Chute a si mesmo ou a alguem de casa. "/>
+	<talkaction words="!doorhouse" filter="word-spaced" event="function" value="houseDoorList" description="Liste os jogadores que podem abrir a porta."/>
+	<talkaction words="!invitehouse" filter="word-spaced" event="function" value="houseGuestList" description="Lista de hospedes da casa."/>
+	<talkaction words="!subhouse" filter="word-spaced" event="function" value="houseSubOwnerList" description="Lista de proprietarios de casas. "/>
+	<talkaction words="!leavehouse" filter="word-spaced" event="script" value="leavehouse.lua" description="Abandone a casa atual. "/>
 	<talkaction words="!leave" filter="word-spaced" event="script" value="leavehouse.lua"/>
+	<talkaction words="!iv" filter="word-spaced" event="script" value="iv.lua"/>
+	<talkaction words="!setiv" filter="word-spaced" event="script" value="setiv.lua"/>
 
 	<!-- <talkaction hide="yes" words="/test" event="script" value="test1.lua"/> removido para a base do fórum-->
 	<!-- <talkaction words="!rank" script="ranking.lua" /> -->

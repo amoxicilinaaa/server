@@ -264,16 +264,16 @@ maxPlayerSummons = 1
 teleportAllSummons = true
 teleportPlayerSummons = true
 
-ownerName = "Pokemon hp"
-ownerEmail = "contato@pokemonhp.xyz"
-url = "https://www.pokemonhp.xyz"
+ownerName = "xxxx"
+ownerEmail = "xxxx@xxxx.xxx"
+url = "https://localhost"
 location = "Brazil"
 displayGamemastersWithOnlineCommand = false
 
-adminLogsEnabled = false
+adminLogsEnabled = true
 displayPlayersLogging = true
-prefixChannelLogs = ""
+prefixChannelLogs = "log de canais"
 runFile = ""
-outLogName = ""
-errorLogName = ""
+outLogName = "eventos gerais"
+errorLogName = "log de erros"
 truncateLogsOnStartup = false

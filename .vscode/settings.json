@@ -1,4 +1,7 @@
 {
     "Lua.diagnostics.workspaceDelay": -1,
-    "vscodeGoogleTranslate.preferredLanguage": "Portuguese"
+    "vscodeGoogleTranslate.preferredLanguage": "Portuguese",
+    "files.associations": {
+        "list": "cpp"
+    }
 }

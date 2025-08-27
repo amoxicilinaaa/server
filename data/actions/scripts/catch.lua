@@ -292,7 +292,7 @@ function sendBrokesMsg(cid, str, ball, poke, catched)
     if string.sub(msg[#msg], 1, 1) == "," then
         msg[#msg] = " e".. string.sub(msg[#msg], 2, #msg[#msg])
     end
-    table.insert(msg, " para"..(catched == false and " tentar" or "").." capturar:.")
+    table.insert(msg, " para"..(catched == false and " tentar" or "").." capturar: "..poke..".")
 
     --addEvent(sendMsgToPlayer, 5, cid, 27, table.concat(msg))
     sendMsgToPlayer(cid, 27, table.concat(msg))

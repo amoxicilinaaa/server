@@ -201,7 +201,7 @@ function addPokeToPlayer(cid, pokemon, ball, pokemonName, _boost, gender, ball, 
     boost = _boost
   end
 
-  local natureList = {"Hardy", "Lonely", "Brave", "Adamant", "Bold", "Docile", "Relaxad", "Impish", "Modest", "Mild", "Quiet", "Bashful", "Quirky", "Timid", "Hasty", "Serius", "Jolly"}
+  local natureList = {"Hardy", "Lonely", "Brave", "Adamant", "Naughty", "Bold", "Docile", "Relaxad", "Impish", "Lax", "Modest", "Mild", "Quiet", "Bashful", "Rash", "Calm", "Gentle", "Sassy", "Careful", "Quirky", "Timid", "Hasty", "Serius", "Jolly", "Naive"}
   local nature = natureList[math.random(#natureList)]
 
   local genders = {

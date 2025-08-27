@@ -6,8 +6,8 @@
 	<!-- Continentes -->
 	
   <!-- PokeVKS -->
-    <!--movevent type="StepIn" uniqueid="1150" event="script" value="QUESTS/01.lua"/> 
-    <movevent type="StepIn" uniqueid="65000-65004" event="script" value="QUESTS/01.lua"/--> 
+    <!--movevent type="StepIn" uniqueid="1150" event="script" value="QUESTS/01.lua"/> -->
+    <movevent type="StepIn" uniqueid="59999-65004" event="script" value="QUESTS/01.lua"/>
 	<movevent type="StepIn" actionid="64700" event="script" value="continentes/doubleExp.lua"/> 
 	<movevent type="StepIn" actionid="8889-8890" event="script" value="continentes/tilesquest.lua"/> 
 
