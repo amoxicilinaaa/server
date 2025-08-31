@@ -54,19 +54,22 @@ local function playerAddExp(cid, exp)
             doPlayerAddExp(cid, math.floor(((exp * Tiers[Tier].bonus) * vipexp)) * doublexp)
 	        doSendAnimatedText(getThingPos(cid), math.floor(((exp * Tiers[Tier].bonus) * vipexp) * doublexp), 31)
             sendMsgToPlayer(cid, MESSAGE_EVENT_DEFAULT, "Você ganhou "..math.floor(((exp * Tiers[Tier].bonus) * vipexp) * doublexp).." Pontos de Experiência.")
-				--doPlayerSendTextMessage(cid, 27, "1")
+			--doSendAnimatedText(getCreaturePosition((cid)), "EXP +"..math.floor(((exp * Tiers[Tier].bonus) * vipexp) * doublexp).."", 31)
+			--doPlayerSendTextMessage(cid, 27, "1")
 		else
             doPlayerAddExp(cid, math.floor((exp * vipexp)) * doublexp)
             --print(math.floor((exp * vipexp)) * doublexp)
 	        doSendAnimatedText(getThingPos(cid), math.floor((exp * vipexp) * doublexp), 31)
 			sendMsgToPlayer(cid, MESSAGE_EVENT_DEFAULT, "Você ganhou "..math.floor((exp * vipexp) * doublexp).." Pontos de Experiência.")
+			--doSendAnimatedText(getCreaturePosition((cid)), "EXP +"..math.floor((exp * vipexp) * doublexp).."", 31)
 			--doPlayerSendTextMessage(cid, 27, "2")
         end
 	else
 	    doPlayerAddExp(cid, math.floor((exp * vipexp)) * doublexp)
 	    doSendAnimatedText(getThingPos(cid), math.floor((exp * vipexp) * doublexp), 31)
 		sendMsgToPlayer(cid, MESSAGE_EVENT_DEFAULT, "Você ganhou "..math.floor((exp * vipexp) * doublexp).." Pontos de Experiência.")
-		--doPlayerSendTextMessage(cid, 27, 22, "3")
+		--doSendAnimatedText(getCreaturePosition((cid)), "EXP +"..math.floor((exp * vipexp) * doublexp).."", 31)
+		--doPlayerSendTextMessage(cid, 27, "3")
 	end
 end
 

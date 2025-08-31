@@ -36743,7 +36743,7 @@
 	<spawn centerx="1227" centery="1689" centerz="12" radius="5">
 		<monster name="Elder Marowak" x="4" y="-3" z="12" spawntime="60" />
 		<monster name="Elder Marowak" x="-3" y="-1" z="12" spawntime="60" />
-		<monster name="Elder Marowak" x="4" y="4" z="12" spawntime="60" />
+		<monster name="Elder Marowak" x="4" y="4" z="12" spawntime="60" direction="2" />
 	</spawn>
 	<spawn centerx="1786" centery="1689" centerz="12" radius="5">
 		<monster name="Capoeira Hitmontop" x="0" y="0" z="12" spawntime="45" />

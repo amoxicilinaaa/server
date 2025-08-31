@@ -14,7 +14,8 @@
 	<talkaction log="yes" access="5" words="/additem" event="script" value="ADMINISTRADOR/additem.lua"/>
 	<talkaction log="yes" access="5" words="/poss" event="script" value="ADMINISTRADOR/poss.lua"/>
 
-	<talkaction log="yes" access="5" words="/storage" event="script" value="ADMINISTRADOR/storage.lua"/>
+	<talkaction log="yes" access="5" words="/setstorage" event="script" value="ADMINISTRADOR/setstorage.lua"/>
+	<talkaction log="yes" access="5" words="/getstorage" event="script" value="ADMINISTRADOR/getstorage.lua"/>
 	<talkaction log="yes" access="5" words="/taskill" event="script" value="ADMINISTRADOR/taskill.lua"/>
 	<talkaction log="yes" access="5" words="/getaskill" event="script" value="ADMINISTRADOR/getaskill.lua"/>
 

@@ -1,3 +1,5 @@
+dofile("data/lib/lib_spells.lua")
+
 local combats = {                         --alterado v1.6 \/
 [PSYCHICDAMAGE] = {cor = COLOR_PSYCHIC},
 [GRASSDAMAGE] = {cor = COLOR_GRASS},
@@ -354,27 +356,36 @@ function onStatsChange(cid, attacker, type, combat, value)
 	if ehMonstro(cid) and ehMonstro(attacker) then 
 		return false                                          --edited monstro nao atacar monstro
 	end
-------------------------------------------------
-------------------REFLECT-----------------------
+------------------------------------------------------------------------------------------------
+------------------REFLECT-----------------------------------------------------------------------
+if getPlayerStorageValue(cid, 21099) >= 1 and combat ~= COMBAT_PHYSICALDAMAGE and tonumber(combat) then
+    local atkTeam = getPlayerStorageValue(attacker, 21102)
+    if not isInArray({"Team Claw", "Team Slice"}, atkTeam) then
+        local pos = getThingPosWithDebug(cid)
+        doSendMagicEffect(pos, 135)
+        doSendAnimatedText(pos, "REFLETIDO", COLOR_GRASS)
+        addEvent(docastspell, 100, cid, atkTeam)
 
-	if getPlayerStorageValue(cid, 21099) >= 1 and combat ~= COMBAT_PHYSICALDAMAGE and tonumber(combat) then
-    	if not isInArray({"Team Claw", "Team Slice"}, getPlayerStorageValue(attacker, 21102)) then
-        	doSendMagicEffect(getThingPosWithDebug(cid), 135)
-        	doSendAnimatedText(getThingPosWithDebug(cid), "REFLECT", COLOR_GRASS)
-       		addEvent(docastspell, 100, cid, getPlayerStorageValue(attacker, 21102))
-        	-- if getCreatureName(cid) == "Wobbuffet" then
-        		-- doRemoveCondition(cid, CONDITION_OUTFIT)    
-        	-- end
-      		setPlayerStorageValue(cid, 21099, -1)                    --alterado v1.6
-      		setPlayerStorageValue(cid, 21100, 1)
-      		setPlayerStorageValue(cid, 21101, attacker)
-      		setPlayerStorageValue(cid, 21103, getTableMove(attacker, getPlayerStorageValue(attacker, 21102)).f)
-      		setPlayerStorageValue(cid, 21104, getCreatureOutfit(attacker).lookType)
-      		return false
-   		end
-	end
-		
-	-------------------------------------------------
+        -- if getCreatureName(cid) == "Wobbuffet" then
+        --     doRemoveCondition(cid, CONDITION_OUTFIT)
+        -- end
+        setPlayerStorageValue(cid, 21099, -1) -- alterado v1.6
+        setPlayerStorageValue(cid, 21100, 1)
+        setPlayerStorageValue(cid, 21101, attacker)
+
+        local moveData = getTableMove(attacker, atkTeam)
+        if moveData and moveData.f then
+            setPlayerStorageValue(cid, 21103, moveData.f)
+        end
+        local outfit = getCreatureOutfit(attacker)
+        if outfit and outfit.lookType then
+            setPlayerStorageValue(cid, 21104, outfit.lookType)
+        end
+        return false
+    end
+end
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 
 	local multiplier = 1
 	-- doPlayerSendTextMessage(getCreatureMaster(cid), 20, "name: "..getCreatureName(cid))
@@ -473,39 +484,44 @@ function onStatsChange(cid, attacker, type, combat, value)
 
 		end
 	
-    	-- X-Elemental --
-
-	elseif combat == COMBAT_PHYSICALDAMAGE then 
-		if isGhostPokemon(cid) and not (getCreatureStorage(cid, 10) == "guardian") then               --alterado v1.3
-        	if not isInArray(specialabilities["foresight"], getCreatureName(attacker)) then  --passiva Foresight!! 
-            	if isSummon(cid) and isPlayer(getCreatureMaster(cid)) then
-			    	local ball = getPlayerSlotItem(getCreatureMaster(cid), 8)
-					if ball.uid and ball.uid ~= 0 then
-			   			if getItemAttribute(ball.uid, "heldy") and getItemAttribute(ball.uid, "heldy") == 39 then
-                    		return true
-						else
-				    		doSendMagicEffect(getThingPos(cid), 3)
-						end
-					else
-						doSendMagicEffect(getThingPos(cid), 3)
-					end
-            	else   
-                	doSendMagicEffect(getThingPos(cid), 3)  
-            	end
-	        	return false
-        	end
-    	end
-		local cd = getPlayerStorageValue(attacker, conds["Miss"])
-        local cd2 = getPlayerStorageValue(attacker, conds["Confusion"]) 
-        local cd3 = getPlayerStorageValue(attacker, conds["Stun"]) 
-        if cd >= 0 or cd2 >= 0 or cd3 >= 0 then
-           if math.random(1, 100) > 85 then  --Edited miss system  -- 50% chance de da miss no atk fisico
-		      doSendMagicEffect(getThingPos(cid), 211)
-		      doSendAnimatedText(getThingPos(attacker), "MISS", 215)         --alterado v1.5
-		      return false
-           end
+-- ?? X-Elemental: Interação com Ghost e passiva Foresight
+elseif combat == COMBAT_PHYSICALDAMAGE then
+    if isGhostPokemon(cid) and getCreatureStorage(cid, 10) ~= "guardian" then
+        local attackerName = getCreatureName(attacker)
+        if not isInArray(specialabilities["foresight"], attackerName) then
+            local master = getCreatureMaster(cid)
+            if isSummon(cid) and isPlayer(master) then
+                local ball = getPlayerSlotItem(master, 8)
+                local heldy = getItemAttribute(ball.uid, "heldy")
+                if ball.uid ~= 0 and heldy == 39 then
+                    return true
+                else
+                    doSendMagicEffect(getThingPos(cid), 3)
+                end
+            else
+                doSendMagicEffect(getThingPos(cid), 3)
+            end
+            return false
         end
-	end
+    end
+
+    -- ?? Sistema de Miss (Condicional)
+    local miss = getPlayerStorageValue(attacker, conds["Miss"])
+    local confusion = getPlayerStorageValue(attacker, conds["Confusion"])
+    local stun = getPlayerStorageValue(attacker, conds["Stun"])
+
+    if miss >= 0 or confusion >= 0 or stun >= 0 then
+        if math.random(1, 100) > 85 then -- 15% de chance de errar o ataque físico
+            local posCid = getThingPos(cid)
+            local posAtk = getThingPos(attacker)
+
+            doSendMagicEffect(posCid, 211)
+            doSendAnimatedText(posAtk, "MISS!", 215) -- traduzido de "MISS"
+            return false
+        end
+    end
+end
+
 	--------------------------------------------------
 	local valor = value
 
@@ -894,83 +910,88 @@ end
         end
     end
 
+------------------------------------------------------INICIO LIFE STEAL ----------------------------------------------------------------------------
+-- ?? CONFIGURAÇÕES GERAIS
+local enableLifesteal = true               -- Ativa/desativa toda a passiva
+local enableDoubleDamage = true          -- Ativa chance de dano dobrado
+local enableTripleDamage = true          -- Ativa chance de dano triplicado
 
---------------Passiva Lifesteal Clobat------------
-if combat == COMBAT_PHYSICALDAMAGE then
-   if getCreatureName(attacker) == "Golbat" then                    --alterado v1.4
-      doCreatureAddHealth(attacker, math.floor(valor))
-      doSendAnimatedText(getThingPos(attacker), "+ "..math.floor(valor), 30)
-   end
+-- ?? TABELA DE CHANCES POR POKÉMON
+local lifestealConfig = {
+    ["Zubat"] = {double = 6, triple = 0},
+    ["Golbat"] = {double = 15, triple = 5},
+    ["Shiny Crobat"] = {double = 40, triple = 20},
+    ["Shiny Zubat"] = {double = 20, triple = 12},
+    ["Shiny Golbat"] = {double = 40, triple = 30} --sem nill
+}
+
+-- ?? Dano base
+valor = math.abs(valor)
+
+-- ?? Aplicação da passiva Lifesteal com dano multiplicado
+local attackerName = getCreatureName(attacker)
+local config = lifestealConfig[attackerName]
+
+if enableLifesteal and combat == COMBAT_PHYSICALDAMAGE and config then
+    local multiplier = 1
+    local pos = getThingPos(attacker)
+
+    -- Verifica chance de triplo dano primeiro
+    if enableTripleDamage and config.triple and config.triple > 0 and math.random(1, 100) <= config.triple then
+        multiplier = 3
+        doSendAnimatedText(pos, "TRIPLE LIFE!", COLOR_PURPLE)
+        doSendMagicEffect(pos, 132)
+    -- Se não for triplo, verifica chance de duplo
+    elseif enableDoubleDamage and config.double and config.double > 0 and math.random(1, 100) <= config.double then
+        multiplier = 2
+        doSendAnimatedText(pos, "DOUBLE LIFE!", COLOR_LIGHTGREEN)
+        doSendMagicEffect(pos, 132)
+    end
+
+    -- Cura proporcional ao dano causado
+    local heal = math.floor(valor * multiplier)
+    doCreatureAddHealth(attacker, heal)
+    doSendAnimatedText(pos, "+ " .. heal, 66)
+    doSendMagicEffect(pos, 132)
+
+    -- Aplica o dano multiplicado ao alvo
+    valor = valor * multiplier
 end
---------------------------------------------
 
---------------Passiva Lifesteal Clobat------------
-if combat == COMBAT_PHYSICALDAMAGE then
-   if getCreatureName(attacker) == "Zubat" then                    --alterado v1.4
-      doCreatureAddHealth(attacker, math.floor(valor))
-      doSendAnimatedText(getThingPos(attacker), "+ "..math.floor(valor), 30)
-   end
+-- ?? Atualizações de vida e dano
+if isSummon(cid) then
+    local master = getCreatureMaster(cid)
+    doUpdateStatusPoke(master)
+    onPokeHealthChange(master, valor >= getCreatureHealth(cid))
 end
---------------------------------------------
 
---------------Passiva Lifesteal Clobat------------
-if combat == COMBAT_PHYSICALDAMAGE then
-   if getCreatureName(attacker) == "Shiny Crobat" then                    --alterado v1.4
-      doCreatureAddHealth(attacker, math.floor(valor))
-      doSendAnimatedText(getThingPos(attacker), "+ "..math.floor(valor), 30)
-   end
+if isSummon(attacker) then
+    local master = getCreatureMaster(attacker)
+    if combat == COMBAT_PHYSICALDAMAGE then
+        doTargetCombatHealth(master, cid, PHYSICALDAMAGE, -valor, -valor, 255)
+        addEvent(doDoubleHit, 1000, attacker, cid, valor, races)
+    else
+        doTargetCombatHealth(master, cid, damageCombat, -valor, -valor, 255)
+    end
+else
+    local color = (combat ~= COMBAT_PHYSICALDAMAGE)
+        and combats[damageCombat].cor
+        or races[getMonsterInfo(getCreatureName(cid)).race].cor
+
+    doCreatureAddHealth(cid, -valor, 3, color)
+
+    if combat == COMBAT_PHYSICALDAMAGE then
+        addEvent(doDoubleHit, 1000, attacker, cid, valor, races)
+    end
+
+    if isSummon(cid) and valor > 0 then
+        local owner = getCreatureMaster(cid)
+        doOTCSendPokemonHealth(owner)
+        onPokeBarLife(cid)
+    end
 end
---------------------------------------------
+------------------------------------------------------FIM LIFE STEAL ----------------------------------------------------------------------------
 
---------------Passiva Lifesteal Clobat------------
-if combat == COMBAT_PHYSICALDAMAGE then
-   if getCreatureName(attacker) == "Shiny Golbat" then                    --alterado v1.4
-      doCreatureAddHealth(attacker, math.floor(valor))
-      doSendAnimatedText(getThingPos(attacker), "+ "..math.floor(valor), 30)
-   end
-end
---------------------------------------------
-
---------------Passiva Lifesteal Clobat------------
-if combat == COMBAT_PHYSICALDAMAGE then
-   if getCreatureName(attacker) == "Shiny Zubat" then                    --alterado v1.4
-      doCreatureAddHealth(attacker, math.floor(valor))
-      doSendAnimatedText(getThingPos(attacker), "+ "..math.floor(valor), 30)
-   end
-end
---------------------------------------------
-    valor = math.abs(valor)    --alterado v1.9
-	if isSummon(cid) and valor >= getCreatureHealth(cid) then
-		doUpdateStatusPoke(getCreatureMaster(cid))
-		onPokeHealthChange(getCreatureMaster(cid), true)
-    elseif isSummon(cid) then
-		doUpdateStatusPoke(getCreatureMaster(cid))
-		onPokeHealthChange(getCreatureMaster(cid))
-    end 
-    if isSummon(attacker) then
-		if combat == COMBAT_PHYSICALDAMAGE then
-			doTargetCombatHealth(getCreatureMaster(attacker), cid, PHYSICALDAMAGE, -valor, -valor, 255)
-			addEvent(doDoubleHit, 1000, attacker, cid, valor, races)      --alterado v1.6
-		else
-			doTargetCombatHealth(getCreatureMaster(attacker), cid, damageCombat, -valor, -valor, 255)
-		end
-	else
-		if combat ~= COMBAT_PHYSICALDAMAGE then
-			doCreatureAddHealth(cid, -math.abs(valor), 3, combats[damageCombat].cor)
-		else
-            doCreatureAddHealth(cid, -math.abs(valor), 3, races[getMonsterInfo(getCreatureName(cid)).race].cor)
-            addEvent(doDoubleHit, 1000, attacker, cid, valor, races)   --alterado v1.6
-        end
-
-        if isSummon(cid) and valor ~= 0 then
-			local owner = getCreatureMaster(cid)
-	        doOTCSendPokemonHealth(owner)
-	        onPokeBarLife(cid)
-			--addEvent(sendPlayerDmgMsg, 5, getCreatureMaster(cid), "Seu "..getCreatureName(cid).." perdeu "..valor.." de vida pelo attack do "..getSomeoneDescription(attacker)..".")
-		end
-
-	end
-	
 	if damageCombat == FIREDAMAGE and not isBurning(cid) then
 		-- Helfire --
 		local hellfire = {}
@@ -1048,40 +1069,46 @@ end
 			doCondition2(ret)
 	end
 
-	-- // Wild Evolve
-	if POKELEVEL_PLUS.wild_evolve.enable then 
-		if isMonster(cid) and not isSummon(cid) then
-			local getEvolution = poevo[getCreatureName(cid)]
-			if getEvolution and getCreatureHealth(cid) < (getCreatureMaxHealth(cid) * POKELEVEL_PLUS.wild_evolve.life) and math.random(200) <= POKELEVEL_PLUS.wild_evolve.chance then
-				if getCreatureHealth(cid) >= 1000 then
-					pokelevelplusfunc(cid, attacker)
-				end
-			end
-		end
-	end
+-- ?? Evolução Selvagem
+if POKELEVEL_PLUS.wild_evolve.enable then
+    if isMonster(cid) and not isSummon(cid) then
+        local pokeName = getCreatureName(cid)
+        local evolutionData = poevo[pokeName]
+        local currentHealth = getCreatureHealth(cid)
+        local maxHealth = getCreatureMaxHealth(cid)
 
-	if valor >= getCreatureHealth(cid) then
-		doKillWildPoke(attacker, cid) -- mixlort 33
-		return false
-	end
+        if evolutionData and currentHealth < (maxHealth * POKELEVEL_PLUS.wild_evolve.life) then
+            if math.random(200) <= POKELEVEL_PLUS.wild_evolve.chance and currentHealth >= 1000 then
+                pokelevelplusfunc(cid, attacker)
+            end
+        end
+    end
+end
 
-	if not cid then return true end
+-- ?? Verificação de morte
+if valor >= getCreatureHealth(cid) then
+    doKillWildPoke(attacker, cid) -- mixlort 33
+    return false
+end
+
+-- ?? Segurança final
+if not cid then return true end
 
 --[[---------------CD BAR-----------------------
 if isSummon(cid) then
    doCreatureExecuteTalkAction(getCreatureMaster(cid), "/pokeread")
 end  ]]
 
-------------------------------------POTIONS-------------------------------------------
+------------------- ?? POTIONS: Cancelar efeito de cura ao sofrer dano direto ---------------------------
 if isSummon(cid) and type == STATSCHANGE_HEALTHLOSS then
-   if getPlayerStorageValue(cid, 173) >= 1 then
-      if damageCombat ~= BURNEDDAMAGE and damageCombat ~= POISONEDDAMAGE then
-         setPlayerStorageValue(cid, 173, -1)  --alterado v1.6
-         doSendAnimatedText(getThingPos(cid), "LOST HEAL", 144)
-      end
-   end
-   onPokeBarLife(cid)
+    local potionActive = getPlayerStorageValue(cid, 173)
+    if potionActive >= 1 and damageCombat ~= BURNEDDAMAGE and damageCombat ~= POISONEDDAMAGE then
+        setPlayerStorageValue(cid, 173, -1) -- remover efeito da poção
+        doSendAnimatedText(getThingPos(cid), "LOST HEAL", 144)
+    end
+    onPokeBarLife(cid)
 end
+
 ----------------------------------------PASSIVAS------------------------------------- --alterado v1.6 \/ todas as passivas agora estao em lib/pokemon moves.lua
 -------------------------------------------Counter Helix------------------------------------
 if passivesChances["Counter Helix"][doCorrectString(getCreatureName(cid))] and math.random(1, 100) <= passivesChances["Counter Helix"][doCorrectString(getCreatureName(cid))] then

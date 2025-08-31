@@ -9,11 +9,9 @@ local function checkDex(cid)
 end
 
 local rate = 200
-
 local sto = 63999
 
 function onUse(cid, item, fromPos, item2, toPos)
-	
 	if not isCreature(item2.uid) then
 		return true
 	end
@@ -21,11 +19,9 @@ function onUse(cid, item, fromPos, item2, toPos)
 	local poke = getCreatureName(item2.uid)
 	
 	if isMonster(item2.uid) then
-	
 		if isInArray({"Aporygon", "Abporygon", "Hoodeasy", "Hoodeasyf", "Hoodmedium", "Hoodmediumf", "Hoodhard", "Hoodhardf", "Hoodexpert", "Hoodexpertf", "Hoodlendary", "Hoodlendaryf", "baby charmander", "baby squirtle", "baby bulbasaur"}, poke) then
 			return true
 		end
-		
 		
 		local name = doCorrectString(getCreatureName(item2.uid))
 		local this = newpokedex[name]
@@ -42,18 +38,16 @@ function onUse(cid, item, fromPos, item2, toPos)
 			doAddPokemonInDexList(cid, poke)
 			local name = doCorrectString(getCreatureName(item2.uid))
 			doShowPokedexRegistration(cid, name, myball, item2)
-			--doSendPlayerExtendedOpcode(cid, 179, name)
+			doSendPlayerExtendedOpcode(cid, 179, name)
 		else
 			local name = doCorrectString(getCreatureName(item2.uid))
 			doShowPokedexRegistration(cid, name, myball, item2)
-			--doSendPlayerExtendedOpcode(cid, 179, name)
-
+			doSendPlayerExtendedOpcode(cid, 179, name)
 		end
 		return true
 	end
 	
 	if not isPlayer(item2.uid) then return true end
-	
 	local kanto = 0
 	local johto = 0
 	
@@ -66,6 +60,5 @@ function onUse(cid, item, fromPos, item2, toPos)
 			end
 		end
 	end ]]--
-	
 	return true
 end

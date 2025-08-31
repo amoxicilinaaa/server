@@ -1386,3 +1386,19 @@ function doDanoInTargetWithDelay(cid, target, combat, min, max, eff) --alterado 
     local delay = getDistanceBetween(getThingPosWithDebug(cid), getThingPosWithDebug(target)) * const_distance_delay
     addEvent(doDanoInTarget, delay, cid, target, combat, min, max, eff)
 end
+
+
+------------------------------------------------- nova dfunção trarget IA ---------------------------
+function getOffsetPos(pos, dir, distance)
+    local offset = {
+        [0] = {x = 0, y = -distance}, -- NORTH
+        [1] = {x = distance, y = 0},  -- EAST
+        [2] = {x = 0, y = distance},  -- SOUTH
+        [3] = {x = -distance, y = 0}, -- WEST
+    }
+    return {
+        x = pos.x + offset[dir].x,
+        y = pos.y + offset[dir].y,
+        z = pos.z
+    }
+end

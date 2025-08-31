@@ -26,50 +26,50 @@ return true
 end
 
 if #getCreatureSummons(cid) == 0 then
-   doPlayerSendCancel(cid, "You need a pokemon to surf.")
+   doPlayerSendCancel(cid, "Você precisa de um pokémon para surfar.")
    doTeleportThing(cid, fromPosition, false)
    return true
 end
                        --alterado v1.6
 if (not isInArray(specialabilities["surf"], getPokemonName(getCreatureSummons(cid)[1]))) then 
-   doPlayerSendCancel(cid, "This pokemon cannot surf.")
+   doPlayerSendCancel(cid, "Este pokémon não sabe surfar.")
    doTeleportThing(cid, fromPosition, false)
    return true
 end
 
 if getPlayerStorageValue(cid, 5700) >= 1 then
-   doPlayerSendCancel(cid, "You can't do that while is mount in a bike!")
+   doPlayerSendCancel(cid, "Você não pode fazer isso enquanto ele estiver montado numa bicicleta!")
    doTeleportThing(cid, fromPosition, false)
    return true
 end
 
 if getPlayerStorageValue(cid, 212124) >= 1 then         --alterado v1.6
-   doPlayerSendCancel(cid, "You can't do it with a pokemon with mind controlled!")
+   doPlayerSendCancel(cid, "Você não pode fazer isso com um pokémon com a mente controlada!")
    doTeleportThing(cid, fromPosition, false)
    return true
 end
 
 if getPlayerStorageValue(cid, 52480) >= 1 then
-   doPlayerSendCancel(cid, "You can't do it while a duel!")  --alterado v1.6
+   doPlayerSendCancel(cid, "Você não pode fazer isso durante um duelo!")  --alterado v1.6
    doTeleportThing(cid, fromPosition, false)
    return true
 end
 
 if getPlayerStorageValue(cid, 6598754) == 1 or getPlayerStorageValue(cid, 6598755) == 1 then 
-   doPlayerSendCancel(cid, "You can't do it while in the PVP Zone!")   --alterado v1.7
+   doPlayerSendCancel(cid, "Você não pode fazer isso enquanto estiver na Zona PVP!")   --alterado v1.7
    doTeleportThing(cid, fromPosition, false)
    return true
 end
 
 if getPlayerStorageValue(cid, 84929) >= 1 then --torneio viktor
-   doPlayerSendCancel(cid, "You can't do it while in the Torneio PVP Zone!")
+   doPlayerSendCancel(cid, "Você não pode fazer isso enquanto estiver na Zona PVP do Torneio!")
    doTeleportThing(cid, fromPosition, false)
    return true
 end
                                         --alterado v1.6
 doSetCreatureOutfit(cid, {lookType = surfs[getPokemonName(getCreatureSummons(cid)[1])].lookType + 351}, -1) 
 
-doCreatureSay(cid, ""..getPokeName(getCreatureSummons(cid)[1])..", lets surf!", 1)
+doCreatureSay(cid, ""..getPokeName(getCreatureSummons(cid)[1])..", vamos surfar!", 1)
 doChangeSpeed(cid, -(getCreatureSpeed(cid)))
 
 local speed = (PlayerSpeed+300) + getSpeed(getCreatureSummons(cid)[1])
@@ -151,7 +151,7 @@ if isPlayer(cid) and getCreatureOutfit(cid).lookType == 814 then return false en
 		if not isCreature(pk) then
 			pk = doCreateMonster(pokemon, backupPos)
 			if not isCreature(pk) then
-				doPlayerSendCancel(cid, "You can't stop surfing here.")
+				doPlayerSendCancel(cid, "Você não pode parar de surfar aqui.")
 				doTeleportThing(cid, fromPosition, false)
 			return true
 			end

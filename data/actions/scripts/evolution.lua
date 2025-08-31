@@ -151,17 +151,17 @@ local pevo = poevo[getCreatureName(item2.uid)]
 
 if not isInArray(specialevo, getCreatureName(item2.uid)) then
    if not pevo then
-      doPlayerSendTextMessage(cid, 27, "This pokemon can't evolve.")
+      doPlayerSendTextMessage(cid, 27, "Este pokémon não pode evoluir.")
       doSendMagicEffect(getPlayerPosition(cid), 2)   
       return true
    end
    if not isPlayer(getCreatureMaster(item2.uid)) or getCreatureMaster(item2.uid) ~= cid then
-      doPlayerSendTextMessage(cid, 27, "You can only use stones on pokemons you own.")
+      doPlayerSendTextMessage(cid, 27, "Você só pode usar pedras em pokémons de sua propriedade.")
       doSendMagicEffect(getPlayerPosition(cid), 2)   
       return true
    end
    if pevo.stoneid ~= item.itemid and pevo.stoneid2 ~= item.itemid then 
-      doPlayerSendTextMessage(cid, 27, "This isn't the needed stone to evolve this pokemon.")
+      doPlayerSendTextMessage(cid, 27, "Esta não é a pedra necessária para evoluir este pokémon.")
       doSendMagicEffect(getPlayerPosition(cid), 2)   
       return true
    end
@@ -177,14 +177,14 @@ local minlevel = 0
 if getPokemonName(item2.uid) == "Eevee" then
    local eevee = specEvos["Eevee"][item.itemid]
    if not eevee then
-      doPlayerSendTextMessage(cid, 27, "This isn't the required stone to evolve this pokemon.")
+      doPlayerSendTextMessage(cid, 27, "Esta não é a pedra necessária para evoluir este pokémon.")
       return true
    end   
 
    minlevel = pokes[eevee].level
 
    if getPlayerLevel(cid) < minlevel then
-      doPlayerSendTextMessage(cid, 27, "You don't have enough level to evolve this pokemon ("..minlevel..").")
+      doPlayerSendTextMessage(cid, 27, "Você não possui level necessário para evoluir esse pokémon ("..minlevel..").")
       return true
    end
 
@@ -210,7 +210,7 @@ if isInArray(specialevo, getPokemonName(item2.uid)) then
       evolution = punch
       theevo = "Poliwrath"
          else
-            doPlayerSendTextMessage(cid, 27, "You need a water stone and a punch stone (Poliwrath) or a King's Rock (Politoed) to evolve this pokemon.")
+            doPlayerSendTextMessage(cid, 27, "Você precisa de uma Water Stone e uma Punch Stone (Poliwrath) ou uma King's Rock (Politoed) para evoluir este pokémon.")
             doSendMagicEffect(getPlayerPosition(cid), 2)   
             return true
          end
@@ -218,12 +218,12 @@ if isInArray(specialevo, getPokemonName(item2.uid)) then
          minlevel = pokes[theevo].level
          
          if getPlayerLevel(cid) < minlevel then
-            doPlayerSendTextMessage(cid, 27, "You don't have enough level to evolve this pokemon ("..minlevel..").")
+            doPlayerSendTextMessage(cid, 27, "Você não possui level necessário para evoluir esse pokémon ("..minlevel..").")
             doSendMagicEffect(getPlayerPosition(cid), 2)   
       return true
          end
          if getPlayerItemCount(cid, punch) >= 1 and getPlayerItemCount(cid, king) >= 1 then
-            doPlayerSendTextMessage(cid, 27, "Please, use your Punch Stone to evolve this pokemon to a Poliwrath, or a King's Rock to a Politoed.")
+            doPlayerSendTextMessage(cid, 27, "Por favor, use sua Punch Stone para evoluir este pokémon para um Poliwrath, ou uma King's Rock para um Politoed.")
             doSendMagicEffect(getPlayerPosition(cid), 2)   
       return true
          end
@@ -237,12 +237,12 @@ if isInArray(specialevo, getPokemonName(item2.uid)) then
          minlevel = pokes["Poliwrath"].level
          
          if getPlayerLevel(cid) < minlevel then
-      doPlayerSendTextMessage(cid, 27, "You don't have enough level to evolve this pokemon ("..minlevel..").")
+      doPlayerSendTextMessage(cid, 27, "Você não possui level necessário para evoluir esse pokémon ("..minlevel..").")
       doSendMagicEffect(getPlayerPosition(cid), 2)   
       return true
          end
          if getPlayerItemCount(cid, water) <= 0 then
-      doPlayerSendTextMessage(cid, 27, "You need at least one Punch Stone and one Water Stone to evolve this pokemon.")
+      doPlayerSendTextMessage(cid, 27, "Você precisa de pelo menos uma Punch Stone e uma Water Stone para evoluir este pokémon.")
       doSendMagicEffect(getPlayerPosition(cid), 2)   
       return true
          end
@@ -258,12 +258,12 @@ if isInArray(specialevo, getPokemonName(item2.uid)) then
          minlevel = pokes["Politoed"].level
 
          if getPlayerLevel(cid) < minlevel then
-      doPlayerSendTextMessage(cid, 27, "You don't have enough level to evolve this pokemon ("..minlevel..").")
+      doPlayerSendTextMessage(cid, 27, "Você não possui level necessário para evoluir esse pokémon ("..minlevel..").")
       doSendMagicEffect(getPlayerPosition(cid), 2)   
       return true
          end
          if getPlayerItemCount(cid, water) <= 0 then
-      doPlayerSendTextMessage(cid, 27, "You need at least one Punch Stone and one King's Rock to evolve this pokemon.")
+      doPlayerSendTextMessage(cid, 27, "Você precisa de pelo menos uma Punch Stone e uma King's Rock para evoluir este pokémon.")
       doSendMagicEffect(getPlayerPosition(cid), 2)   
       return true
          end
@@ -286,7 +286,7 @@ if isInArray(specialevo, getPokemonName(item2.uid)) then
              theevo = "Bellossom"
        evolution = leaf
           else
-             doPlayerSendTextMessage(cid, 27, "You need at least one Leaf Stone (2) (Bellossom) or a Venom Stone (Vileplume) to evolve this pokemon.")
+             doPlayerSendTextMessage(cid, 27, "Você precisa de pelo menos uma Leaf Stone (2) (Bellossom) ou uma Venom Stone (Vileplume) para evoluir este pokémon.")
              doSendMagicEffect(getPlayerPosition(cid), 2)   
        return true
         end
@@ -294,12 +294,12 @@ if isInArray(specialevo, getPokemonName(item2.uid)) then
         minlevel = pokes[theevo].level
         
         if getPlayerLevel(cid) < minlevel then
-           doPlayerSendTextMessage(cid, 27, "You don't have enough level to evolve this pokemon ("..minlevel..").")
+           doPlayerSendTextMessage(cid, 27, "Você não possui level necessário para evoluir esse pokémon ("..minlevel..").")
            doSendMagicEffect(getPlayerPosition(cid), 2)   
        return true
         end
           if getPlayerItemCount(cid, venom) >= 1 and getPlayerItemCount(cid, sun) >= 1 then
-           doPlayerSendTextMessage(cid, 27, "Please, use your Venom Stone to evolve this pokemon to a Vileplume, or a Sun Stone to a Bellossom.")
+           doPlayerSendTextMessage(cid, 27, "Por favor, use sua Venom Stone para evoluir este pokémon para um Vileplume, ou uma Sun Stone para um Bellossom.")
            doSendMagicEffect(getPlayerPosition(cid), 2)   
        return true
         end
@@ -314,12 +314,12 @@ if isInArray(specialevo, getPokemonName(item2.uid)) then
           minlevel = pokes["Vileplume"].level
 
           if getPlayerLevel(cid) < minlevel then
-             doPlayerSendTextMessage(cid, 27, "You don't have enough level to evolve this pokemon ("..minlevel..").")
+             doPlayerSendTextMessage(cid, 27, "Você não tem nível suficiente para evoluir este pokémon ("..minlevel..").")
              doSendMagicEffect(getPlayerPosition(cid), 2)   
        return true
           end
           if getPlayerItemCount(cid, leaf) <= 0 then
-       doPlayerSendTextMessage(cid, 27, "You need at least one Leaf Stone and one Venom Stone to evolve this pokemon.")
+       doPlayerSendTextMessage(cid, 27, "Você precisa de pelo menos uma Leaf Stone e uma Venom Stone para evoluir este pokémon.")
        doSendMagicEffect(getPlayerPosition(cid), 2)   
        return true
           end
@@ -333,12 +333,12 @@ if isInArray(specialevo, getPokemonName(item2.uid)) then
           minlevel = pokes["Bellossom"].level
 
           if getPlayerLevel(cid) < minlevel then
-             doPlayerSendTextMessage(cid, 27, "You don't have enough level to evolve this pokemon ("..minlevel..").")
+             doPlayerSendTextMessage(cid, 27, "Você não possui level necessário para evoluir esse pokémon ("..minlevel..").")
              doSendMagicEffect(getPlayerPosition(cid), 2)   
              return true
           end
           if getPlayerItemCount(cid, leaf) <= 0 then
-       doPlayerSendTextMessage(cid, 27, "You need at least one Leaf Stone and one Sun Stone to evolve this pokemon.")
+       doPlayerSendTextMessage(cid, 27, "Você precisa de pelo menos uma Leaf Stone e uma Sun Stone para evoluir este pokémon.")
        doSendMagicEffect(getPlayerPosition(cid), 2)   
        return true
           end
@@ -384,7 +384,7 @@ if isInArray(specialevo, getPokemonName(item2.uid)) then
     minlevel = pokes[evolution].level
 
     if getPlayerLevel(cid) < minlevel then
-       doPlayerSendTextMessage(cid, 27, "You don't have enough level to evolve this pokemon ("..minlevel..").")
+       doPlayerSendTextMessage(cid, 27, "Você não tem nível suficiente para evoluir este pokémon ("..minlevel..").")
        doSendMagicEffect(getPlayerPosition(cid), 2)   
        return true
     end
@@ -403,7 +403,7 @@ local stnid2 = poevo[getPokemonName(item2.uid)].stoneid2
 local evo = poevo[getPokemonName(item2.uid)].evolution
 
 if stnid2 > 1 and (getPlayerItemCount(cid, stnid2) < count or getPlayerItemCount(cid, stnid) < count) then
-   doPlayerSendTextMessage(cid, 27, "You need at least one "..getItemNameById(stnid).." and one "..getItemNameById(stnid2).." to evolve this pokemon!")
+   doPlayerSendTextMessage(cid, 27, "Você precisa de pelo menos uma "..getItemNameById(stnid).." e uma "..getItemNameById(stnid2).." para evoluir este pokémon!")
    doSendMagicEffect(getPlayerPosition(cid), 2)   
    return true
 end
@@ -414,13 +414,13 @@ if getPlayerItemCount(cid, stnid) < count then
       str = "s"
    end
 doSendMagicEffect(getPlayerPosition(cid), 2)   
-return doPlayerSendTextMessage(cid, 27, "You need at least "..count.." "..getItemNameById(stnid)..""..str.." to evolve this pokemon!")
+return doPlayerSendTextMessage(cid, 27, "Você precisa de pelo menos "..count.." "..getItemNameById(stnid)..""..str.." para evoluir este pokémon!")
 end
 
 minlevel = pokes[evo].level
 
 if getPlayerLevel(cid) < minlevel then
-   doPlayerSendTextMessage(cid, 27, "You don't have enough level to evolve this pokemon ("..minlevel..").")
+   doPlayerSendTextMessage(cid, 27, "Você não tem nível suficiente para evoluir este pokémon ("..minlevel..").")
    doSendMagicEffect(getPlayerPosition(cid), 2)   
    return true
 end

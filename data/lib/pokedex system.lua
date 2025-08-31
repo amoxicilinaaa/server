@@ -207,40 +207,40 @@ function getPokemonEvolutionDescription(name, next)
 	if specialEvo[name] then
 		if name == "Poliwhirl" then
 			if next then
-				return "\nPoliwrath or Politoed, requires level 65."
+				return "\nPoliwrath e Politoed, requer nível 65."
 			end 
-			table.insert(stt, "Evolve Stone: Water Stone and Punch Stone (Poliwrath) or King's Rock (Politoed)\n\n")
-			table.insert(stt, "Evolutions:\nPoliwrath, requires level 65.\nPolitoed, requires level 65.")
+			table.insert(stt, "Pedra de evolução: Water Stone and Punch Stone (Poliwrath) or King's Rock (Politoed)\n\n")
+			table.insert(stt, "Evoluções:\nPoliwrath, requer nível 65.\nPolitoed, requer nível 65.")
 		elseif name == "Gloom" then
 			if next then
-				return "\nVileplume or Bellossom, requires level 50."
+				return "\nVileplume or Bellossom, requer nível 50."
 			end
-			table.insert(stt, "Evolve Stone: 1 Leaf Stone and 1 Sun Stone (Bellossom) or Leaf Stone and Venom Stone (Vileplume)\n\n")
-			table.insert(stt, "Evolutions:\nVileplume, requires level 50.\nBellossom, requires level 50.")
+			table.insert(stt, "Pedra de evolução: 1 Leaf Stone and 1 Sun Stone (Bellossom) or Leaf Stone and Venom Stone (Vileplume)\n\n")
+			table.insert(stt, "Evoluções:\nVileplume, requer nível 50.\nBellossom, requer nível 50.")
 		elseif name == "Slowpoke" then
 			if next then
-				return "\nSlowbro, requires level 45.\nSlowking, requires level 100."
+				return "\nSlowbro, requer nível 45.\nSlowking, requer nível 100."
 			end
-			table.insert(stt, "Evolve Stone: Enigma Stone (Slowbro) or Ancient Stone (2) (Slowking)\n\n")
-			table.insert(stt, "Evolutions:\nSlowbro, requires level 45.\nSlowking, requires level 100.")
+			table.insert(stt, "Pedra de evolução: Enigma Stone (Slowbro) or Ancient Stone (2) (Slowking)\n\n")
+			table.insert(stt, "Evoluções:\nSlowbro, requer nível 45.\nSlowking, requer nível 100.")
 		elseif name == "Eevee" then
 			if next then
-				return "\nVaporeon, requires level 55.\nJolteon, requires level 55.\nFlareon, requires level 55.\nUmbreon, requires level 55.\nEspeon, requires level 55."
+				return "\nVaporeon, requer nível 55.\nJolteon, requer nível 55.\nFlareon, requer nível 55.\nUmbreon, requer nível 55.\nEspeon, requer nível 55."
 			end
-			table.insert(stt, "Evolve Stone: Water Stone or Thunder Stone or Fire Stone or Darkness Stone or Enigma Stone\n\n")
-			table.insert(stt, "Evolutions:\nVaporeon, requires level 55.\nJolteon, requires level 55.\nFlareon, requires level 55.\nUmbreon, requires level 55.\nEspeon, requires level 55.")
+			table.insert(stt, "Pedra de evolução: Water Stone or Thunder Stone or Fire Stone or Darkness Stone or Enigma Stone\n\n")
+			table.insert(stt, "Evoluções:\nVaporeon, requer nível 55.\nJolteon, requer nível 55.\nFlareon, requer nível 55.\nUmbreon, requer nível 55.\nEspeon, requer nível 55.")
 		elseif name == "Tyrogue" then
 			if next then
-				return "\nHitmonlee, requires level 60.\nHitmonchan, requires level 60.\nHitmontop, requires level 60."
+				return "\nHitmonlee, requer nível 60.\nHitmonchan, requer nível 60.\nHitmontop, requer nível 60."
 			end
-			table.insert(stt, "Evolve Stone: Punch Stone and 500 Spin Machines (Hitmontop), Punch Stone and 500 Kick Machines (Hitmonlee), Punch Stone and 500 Punch Machines (Hitmonchan)\n\n") 
-			table.insert(stt, "Evolutions:\nHitmonlee, requires level 60.\nHitmonchan, requires level 60.\nHitmontop, requires level 60.")
+			table.insert(stt, "Pedra de evolução: Punch Stone and 500 Spin Machines (Hitmontop), Punch Stone and 500 Kick Machines (Hitmonlee), Punch Stone and 500 Punch Machines (Hitmonchan)\n\n") 
+			table.insert(stt, "Evoluções:\nHitmonlee, requer nível 60.\nHitmonchan, requer nível 60.\nHitmontop, requer nível 60.")
 		end
 	elseif hasEvolution(name) and poevo[name] and POKELEVEL_PLUS.evolution_tab[name] then
 		-- pokes[evoTab.to].level
 		local evoTab = getPokemonEvolutionTab(name)
 		if next then
-			table.insert(stt, "\n"..evoTab.to..", voc? precisa ser level ".. pokes[evoTab.to].level ..".")
+			table.insert(stt, "\n"..evoTab.to..", você precisa ser level ".. pokes[evoTab.to].level ..".")
 			return table.concat(stt)
 		end
 		local evostone = {}
@@ -255,15 +255,15 @@ function getPokemonEvolutionDescription(name, next)
 	    local levelEvolution = getEvolution.level
 	    local levelEvolutionStone = math.floor(getEvolution.level / 3)
 
-		table.insert(stt, "Evolve Stone: ".. doConcatTable(evostone, ", ", " and ") .."\n\n")
-		table.insert(stt, "Evolutions:\n".. evoTab.to ..", voc? precisa ser level ".. pokes[evoTab.to].level ..".\n")
-		table.insert(stt, "Seu pok?mon precisa ser level ".. levelEvolution .." para evoluir por level!\n")
-		table.insert(stt, "Para evolu??o por Stone, seu pok?mon precisa ser level ".. levelEvolutionStone ..".")
+		table.insert(stt, "Pedra de evolução: ".. doConcatTable(evostone, ", ", " e ") .."\n\n")
+		table.insert(stt, "Evoluções:\n".. evoTab.to ..", você precisa ser level ".. pokes[evoTab.to].level ..".\n")
+		table.insert(stt, "Seu pokémon precisa ser level ".. levelEvolution .." para evoluir por level!\n")
+		table.insert(stt, "Para evolução por Stone, seu pokémon precisa ser level ".. levelEvolutionStone ..".")
 		--table.insert(stt, getPokemonEvolutionDescription(kev.evolution, true))
 	elseif hasEvolution(name) then
 		local evoTab = getPokemonEvolutionTab(name)
 		if next then
-			table.insert(stt, "\n"..evoTab.to..", voc? precisa ser level ".. pokes[evoTab.to].level ..".")
+			table.insert(stt, "\n"..evoTab.to..", você precisa ser level ".. pokes[evoTab.to].level ..".")
 			return table.concat(stt)
 		end
 		local evostone = {}
@@ -274,11 +274,11 @@ function getPokemonEvolutionDescription(name, next)
 			table.insert(evostone, getItemNameById(stoneId)..(total > 1 and " ("..total.."x)" or ""))
 		end
 	
-		table.insert(stt, "Evolve Stone: ".. doConcatTable(evostone, ", ", " and ") .."\n\n")
-		table.insert(stt, "Evolutions:\n".. evoTab.to ..", voc? precisa ser level ".. pokes[evoTab.to].level ..".\n")
+		table.insert(stt, "Pedra de evolução: ".. doConcatTable(evostone, ", ", " e ") .."\n\n")
+		table.insert(stt, "Evoluções:\n".. evoTab.to ..", você precisa ser level ".. pokes[evoTab.to].level ..".\n")
 	else
 		if not next then
-			table.insert(stt, "Evolutions:\nIt doen't evolve.")
+			table.insert(stt, "Evoluções:\nNão evolui.")
 		end
 	end 
 	return table.concat(stt)
@@ -293,10 +293,10 @@ local function getMoveDexDescr(name, number)
 	local y = tables[number]
 	if not y then return "" end
 	
-	local txt = ""..z..""..y.name.." - m"..number.." - level "..y.level.." - "..(y.t) 
+	local txt = ""..z..""..y.name.." - m"..number.." - nível "..y.level.." - "..(y.t) 
 	
 	if y.passive then
-    txt = ""..z..""..y.name.." - passive".." - "..(y.t) 
+    txt = ""..z..""..y.name.." - passiva".." - "..(y.t) 
     end	
 
 	return txt
@@ -369,23 +369,23 @@ function doShowPokedexRegistration(cid, pokemon)
 	table.insert(stt, "Name: "..name.."\n")
 	
 	if pokes[name].type2 and pokes[name].type2 ~= "no type" then
-		table.insert(stt, "Type: "..pokes[name].type.."/"..pokes[name].type2)
+		table.insert(stt, "Tipo: "..pokes[name].type.."/"..pokes[name].type2)
 	else
-		table.insert(stt, "Type: "..pokes[name].type)
+		table.insert(stt, "Tipo: "..pokes[name].type)
 	end
 	
 	if virtual then
-		table.insert(stt, "\nRequired level: "..pokes[name].level.."\n")
+		table.insert(stt, "\nNível necessário: "..pokes[name].level.."\n")
 	else
-		table.insert(stt, "\nRequired level: ".. getPokemonLevelD(name) .."\n") --alterado v1.9
+		table.insert(stt, "\nNível necessário: ".. getPokemonLevelD(name) .."\n") --alterado v1.9
 	end
 	
 	table.insert(stt, "\n"..getPokemonEvolutionDescription(name).."\n")
 	
-	table.insert(stt, "\nMoves:")
+	table.insert(stt, "\nMovimentos:")
 	
 	if name == "Ditto" then
-		table.insert(stt, "\nIt doesn't use any moves until transformed.")
+		table.insert(stt, "\nEle não usa nenhum movimento até ser transformado.")
 	else
 		for a = 1, 15 do
 			table.insert(stt, getMoveDexDescr(name, a))
@@ -404,7 +404,7 @@ function doShowPokedexRegistration(cid, pokemon)
 	end
 --]]
 	
-	table.insert(stt, "\n\nAbility:\n") 
+	table.insert(stt, "\n\nHabilidade:\n") 
 	local abilityNONE = true --alterado v1.8 \/
 	
 	for b, c in pairs(skills) do
@@ -420,8 +420,8 @@ function doShowPokedexRegistration(cid, pokemon)
 	end
 	
 	if string.len(table.concat(stt)) > 8192 then
-		print("Error while making pokedex info with pokemon named "..name..".\n Pokedex registration has more than 8192 letters (it has "..string.len(stt).." letters), it has been blocked to prevent fatal error.")
-		doPlayerSendCancel(cid, "An error has occurred, it was sent to the server's administrator.") 
+		print("Erro ao criar informações de pokédex com pokémon chamado "..name..".\n O registro da Pokédex tem mais de 8192 letras (tem "..string.len(stt).." letras), foi bloqueado para evitar erro fatal.")
+		doPlayerSendCancel(cid, "Ocorreu um erro, ele foi enviado ao administrador do servidor.") 
 		return true
 	end	
 	

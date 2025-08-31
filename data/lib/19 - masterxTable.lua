@@ -1955,7 +1955,6 @@ pokesMasterX = {
 }
 
 newpokedexCatchXpMasterx = {
-
 ["Bulbasaur"] = {gender = 875, level = 1, storage = 1001, stoCatch = 666001, expCatch = 50000},
 ["Ivysaur"] = {gender = 875, level = 40, storage = 1002, stoCatch = 666002, expCatch = 75000},
 ["Venusaur"] = {gender = 875, level = 85, storage = 1003, stoCatch = 666003, expCatch = 1000000},

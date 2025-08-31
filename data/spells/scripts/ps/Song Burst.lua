@@ -1,7 +1,7 @@
 function onCastSpell(cid, var)
-    -----------------\/padrão para todos os arquivos------------
+    -----------------\/padrÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£o para todos os arquivos------------
     
-     --Posições--
+     --PosiÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂµes--
     ---------------\/---------------------\/----------------------\/---------------------------------------------------------
     posC = getThingPosWithDebug(cid) PosC = posC PosCid = posC posCid = posC
     posT = getThingPosWithDebug(target) PosT = posT PosTarget = posT posTarget = posT 
@@ -58,7 +58,7 @@ local movestable = getTableMove(cid, spell) --alterado v1.6
     
             local mutiplay = 0.1
 
-            --clã masterx
+            --clÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£ masterx
             local master = getCreatureMaster(cid)
             if isSummon(cid) then
                 if getPlayerClanName(master) ~= 'No Clan!' then
@@ -72,7 +72,7 @@ local movestable = getTableMove(cid, spell) --alterado v1.6
                     end
                 end 
             end
-            --clã masterx
+            --clÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£ masterx
 
             if getSpecialAttack(cid) and movestable.f then
                 min = getSpecialAttack(cid) * movestable.f * mutiplay
@@ -151,7 +151,7 @@ if getPlayerStorageValue(cid, 999457) >= 1 and type(movestable) == 'table' and m
     posC1 = getThingPosWithDebug(cid) posC1.x = posC1.x+1 posC1.y = posC1.y+1 PosC1 = posC1 posCid1 = posC1 PosCid1 = posC1 
     posT1 = getThingPosWithDebug(target) posT1.x = posT1.x+1 posT1.y = posT1.y+1 PosT1 = posT1 posTarget1 = posT1 PosTarget1 = posT1
 
-    ---------------------fim da padrão /\ e aparti daqui \/ é o code da spell------------------------------
+    ---------------------fim da padrÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£o /\ e aparti daqui \/ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© o code da spell------------------------------
 
 
 
@@ -165,7 +165,7 @@ if getPlayerStorageValue(cid, 999457) >= 1 and type(movestable) == 'table' and m
 		
 		local pos = getThingPosWithDebug(cid)
 		--local areas = {rock5, rock4, rock3, rock2, rock1, rock5, rock4, rock3, rock2, rock1, rock5, rock4, rock3, rock2, rock1} -- invertido, igual wild charge.
-		local areas = {rock1, rock2, rock3, rock4, rock5, rock1, rock2, rock3, rock4, rock5} -- fiz ao contrário do wild charge
+		local areas = {rock1, rock2, rock3, rock4, rock5, rock1, rock2, rock3, rock4, rock5} -- fiz ao contrÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¡rio do wild charge
 		
 		
 		for i = 0, 14 do
@@ -178,3 +178,11 @@ if getPlayerStorageValue(cid, 999457) >= 1 and type(movestable) == 'table' and m
     
 return true
 end
+
+
+
+
+
+
+
+

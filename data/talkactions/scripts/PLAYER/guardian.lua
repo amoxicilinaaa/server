@@ -6,7 +6,7 @@ function onSay(cid, words, param, channel)
     doSendPlayerExtendedOpcode(cid, 164, (math.ceil(exhaustion.get(getPlayerCurrentGuardian(cid), 11) / 60) .. " Minutos|" .. getPokemonXMLOutfit(getCreatureName(getCreatureGuardians(cid)[1]))) )
     -- print(exhaustion.get(getPlayerCurrentGuardian(cid), 11))
   else
-    doPlayerSendTextMessage(cid, 27, "VocÃª nÃ£o tem um guardian ativo.")
+    doPlayerSendTextMessage(cid, 27, "Você não tem um guardian ativo.")
   end
   return true
 end  

@@ -22,6 +22,7 @@ local questConfig = {
     [1870] = {storage = 1870, minLevel = 20, exp = 4000, items = {[12344]=5, [2393]=15}},
     [1871] = {storage = 1871, minLevel = 20, exp = 4000, items = {[25208]=1}},
     [1872] = {storage = 1872, minLevel = 20, exp = 4000, items = {[11444]=1}},
+    -----
     [28010] = {storage = 28010, maxLevel = 50, exp = 4000, items = {[11445]=1}},
     [28011] = {storage = 28011, minLevel = 30, exp = 4000, items = {[11443]=1}, effect = 586},
     [21014] = {storage = 21014, minLevel = 25, exp = 4000, items = {[11445]=1}, effect = 586},

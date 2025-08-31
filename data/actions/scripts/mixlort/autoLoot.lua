@@ -246,7 +246,6 @@ function getContainerBackpack(containeruid)
             table.insert(containers, x)
         end
     end
-    
     return containers
 end
 
@@ -277,7 +276,6 @@ function getContainerItems(containeruid)
             table.insert(items, x)
         end
     end
-    
     return items
 end
 
@@ -303,7 +301,6 @@ function getCorpsesPosition(position)
         
         position.stackpos = position.stackpos + 1
     end
-    
     return toret
 end
 
@@ -411,7 +408,6 @@ function getContainerBackpacks(containeruid)
             end
         end
     end
-    
     return backpacks
 end
 
@@ -439,7 +435,6 @@ function getContainerItemsRecursive(containeruid)
         
         table.insert(items, item)
     end
-    
     return items
 end
 
@@ -469,7 +464,6 @@ function checkLoot(cid, corpse, SemMensagem)
             end
         end
     end
-    
     return true
 end
 
@@ -513,6 +507,5 @@ function onUse(cid, item, frompos, item2, topos)
         doPlayerSendCancel(cid, "KGT," .. getItemAttribute(item.uid, "ballorder") .. "|" .. "0")
         doPlayerSendCancel(cid, "")
     end
-    
     return true
 end

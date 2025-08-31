@@ -54,7 +54,7 @@ end
 
 function doRemoveGuardian(cid)
     if isCreature(cid) and isPlayer(getCreatureMaster(cid)) then
-        doPlayerSendTextMessage(getCreatureMaster(cid), 27, "Seu guardiao foi removido.")
+        doPlayerSendTextMessage(getCreatureMaster(cid), 27, "Seu guardião foi removido.")
         doPlayerSetStorageValue(getCreatureMaster(cid), 9005, 0)
         doPlayerSetStorageValue(getCreatureMaster(cid), 9006, 0)
         doSendPlayerExtendedOpcode(getCreatureMaster(cid), 164, "close")

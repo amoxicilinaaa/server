@@ -1,4 +1,4 @@
-function onCastSpell(cid, var)
+﻿function onCastSpell(cid, var)
 
 	if isSummon(cid) then return true end
 
@@ -6,3 +6,11 @@ function onCastSpell(cid, var)
 
 return true
 end
+
+
+
+
+
+
+
+

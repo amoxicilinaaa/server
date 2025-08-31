@@ -1,6 +1,6 @@
 local condition = createConditionObject(CONDITION_HASTE)
 setConditionParam(condition, CONDITION_PARAM_TICKS, 11000)
-setConditionFormula(condition, 0.2, -50, 0.2, -50)
+setConditionFormula(condition, 1.6, -50, 1.6, -50)
 
 local store = 19290 -- storage q salva o delay
 local delay = 12 -- tempo em segundos de delay

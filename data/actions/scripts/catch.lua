@@ -718,6 +718,7 @@ function doCapturePokemon(cid, poke, ballid, status, typeee, clevel)
 
     -- Exibir mensagem de captura com a contagem de Pokébolas
     doPlayerSendTextMessage(cid, 27, "Parabéns, você capturou um "..poke.."!")
+    doRegisterPokemonToCatch(cid, poke) -- registro pokemon para dex
     sendBrokesMsg(cid, newpokedexCatchXpMasterx[poke].stoCatch, typeee, poke, true)
     
     if #getCreatureSummons(cid) >= 1 then

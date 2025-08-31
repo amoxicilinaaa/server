@@ -18,12 +18,12 @@ end
 
 local rate = 200
 
---- MOSTRAR LOCAIS DE CAÇA MAPA ---
+--- MOSTRAR LOCAIS DE CAÃ‡A MAPA ---
 local PosByPoke = {
 	['Charizard'] = {{x=1081, y=981, z=7, imagem="20", description = "teste"}, {x=1091, y=991, z=7, imagem="10", description = "teste"}}
 }
 
---- DESCRIÇÃO MAGIAS POKÉMON ---
+--- DESCRIÃ‡ÃƒO MAGIAS POKÃ‰MON ---
 local moveDescDex = {
 	["Ember"] = "Magia que causa dano!",
 	["Magia Name"] = "Magia que causa dano!"
@@ -68,8 +68,8 @@ end
 
 local function volta(cid, init)
 	if getPlayerSlotItem(cid, CONST_SLOT_FEET).uid then
-		local back_messages = {"Muito bom, ",    "Foi impecável, ",    "Volte, ", "Chega, ", "Grande, "}
-		local go_messages = {"Hora do duelo, ", "Vai, ",    "Faça seu trabalho, ", "Prepare-se, ", "Chegou sua hora, "}
+		local back_messages = {"Muito bom, ",    "Foi impecÃ¡vel, ",    "Volte, ", "Chega, ", "Grande, "}
+		local go_messages = {"Hora do duelo, ", "Vai, ",    "FaÃ§a seu trabalho, ", "Prepare-se, ", "Chegou sua hora, "}
  
 		local item = getPlayerSlotItem(cid, CONST_SLOT_FEET)
 		local msg_back = back_messages[math.random(#back_messages)]
@@ -99,7 +99,7 @@ local function volta(cid, init)
 		if isPokeBallOn(item.itemid) then
 			local pokename = getPokeballInfo(item.uid).name
 			if getPlayerLevel(cid) < (pokemons(pokename).level) then
-				doPlayerSendCancel(cid, "Você precisa de nível "..(pokemons(pokename).level).." para usar este pokémon.")
+				doPlayerSendCancel(cid, "VocÃª precisa de nÃ­vel "..(pokemons(pokename).level).." para usar este pokÃ©mon.")
 				return true
 			end
         	doSummonMonster(cid, pokename)
@@ -120,7 +120,7 @@ local function volta(cid, init)
 		end
 		
 		if isPokeBallOff(item.itemid) then
-			doPlayerSendCancel(cid, "Seu pokémon está morto!")
+			doPlayerSendCancel(cid, "Seu pokÃ©mon estÃ¡ morto!")
 			return true
 		end
 	end
@@ -151,64 +151,50 @@ function onExtendedOpcode(cid, opcode, buffer)
 		doSendPlayerExtendedOpcode(cid, opcodes.OPCODE_PLAYER_SHOW_ONLINE, str)
 
 --- NOVA POKEDEX --- 
-	elseif opcode == 53 then
-		local UID = tonumber(buffer)
-		if isMonster(UID) then
-			if getDistanceBetween(getCreaturePosition(cid), getCreaturePosition(UID)) <= 5 then
-				local name = getCreatureName(UID)
-				if string.lower(name) == "farfetch'd" then
-					name = "farfetch_d"
-				end
-				if string.lower(name) == "cacturn" then
-					name = "cacturne"
-				end
-				if string.lower(name) == "nidoran male" then
-					name = "nidoran_m"
-				end
-				if string.lower(name) == "nidoran female" then
-					name = "nidoran_f"
-				end
-				if string.lower(name) == "shiny farfetch'd" then
-					name = "shiny farfetch_d"
-				end
-	
-				if string.find(name, "shiny") then 
-					local name2 = string.explode(name, " ") 
-					name = name2[2] 
-				end
-	
-				local prefixes = {"Magnet", "Elder", "Hard", "Brute", "Iron", "Brave", "Lava", "Enraged", "Capoeira", "Boxer", "Taekwondo", "Dragon", "Wardog", "Undefeated", "Furious", "War", "Tribal", "Charged", "Enigmatic", "Ancient", "Master", "Metal", "Dark", "Banshee", "Hungry", "Singer", "Aviator", "Psy", "Evil", "Roll", "Bone", "Octopus", "Moon", "Heavy"}
-				for _, prefix in ipairs(prefixes) do
-					if string.find(string.lower(name), prefix:lower()) == 1 then
-						name = string.sub(name, string.len(prefix) + 2)
-						break
-					end
-				end
-	
+	elseif opcode == 53 then-- open nova dex
+			local UID = tonumber(buffer)
+			if isMonster(UID) then
+				if getDistanceBetween(getCreaturePosition(cid), getCreaturePosition(UID)) <= 5 then
+					local name = getCreatureName(UID)
+						if string.lower(name) == "farfetch'd" then
+							name = "farfetch_d"
+						end
+						if string.lower(name) == "cacturn" then
+							name = "cacturne"
+						end
+						if string.lower(name) == "nidoran male" then
+							name = "nidoran_m"
+						end
+						if string.lower(name) == "nidoran female" then
+							name = "nidoran_f"
+						end
+						if string.lower(name) == "shiny farfetch'd" then
+							name = "shiny farfetch_d"
+						end
+						
+						if string.find(name, "shiny") then 
+							local name2 = string.explode(name, " ") 
+							name = name2[2] 
+						end
+					
 				if isInArray({"Aporygon", "Abporygon", "Big Porygon", "Tangrowth", "Magmortar", "Electivire", "Dusknoir", "baby charmander", "baby squirtle", "baby bulbasaur"}, name) then
-					doPlayerSendCancel(cid, "Você não pode adicionar esse pokémon à Pokédex.")
+					doPlayerSendCancel(cid, "VocÃª nÃ£o pode adicionar esse PokÃ©mon Ã  PokÃ©dex.")
 					return false
 				end
-	
-				local dexInfo = getPlayerDexInfo(cid, name)
-				if dexInfo.dex == 0 and not isShiny(UID) then
-					local exp = math.random(3000, 15000)
-					doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "Você desbloqueou ".. name.." na sua Pokédex!")
-					doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "Você ganhou "..exp.." pontos de experiência.")
-					doPlayerAddExperience(cid, exp)
-	
-					-- Verifica se o Pokémon está registrado no banco de dados Pokedex
-					local result = db.getResult("SELECT `"..name.."` FROM `player_pokedex` WHERE `player_id` = "..getPlayerGUID(cid).." LIMIT 1;")
-					if result:getID() == -1 then
-						-- O Pokémon não está cadastrado no banco de dados, então adicionamos
-						db.executeQuery("INSERT INTO player_pokedex (player_id, `"..name.."`) VALUES ("..getPlayerGUID(cid)..", '1-0');")
+					
+					-- print(getPlayerDexInfo(cid, name).dex)
+					if getPlayerDexInfo(cid, name).dex == 0 and not isShiny(UID) then
+						local exp = math.random(1500, 5000)
+						doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "You have unlocked ".. name.." in your pokedex!")
+						doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "You have gained "..exp.." experience points.")
+						doPlayerAddExperience(cid, exp)
+						doRegisterPokemonToDex(cid, name)
 					end
+				else
+					doPlayerSendCancel(cid, "You are too far away to scan this pokemon")
 				end
-			else
-				doPlayerSendCancel(cid, "You are too far away to scan this Pokémon.")
 			end
-		end
-		doSendPlayerExtendedOpcode(cid, 60, generateList(cid))
+			doSendPlayerExtendedOpcode(cid, 60, generateList(cid))
 	elseif opcode == 55 then
 			if isPlayer(cid) then
 				local data = string.explode(buffer, "*")
@@ -222,8 +208,8 @@ function onExtendedOpcode(cid, opcode, buffer)
 		if getPlayerStorageValue(cid, STORAGEMARCAMAPA) >= 1 then
 			doSendPlayerExtendedOpcode(cid, 63, print_table(PosByPoke[buffer]))
 		else
-			doPlayerSendCancel(cid, "Você não tem permissão para usar isso")
-			print("O jogador: "..getCreatureName(cid).." usou o botão de localização sem permissão")
+			doPlayerSendCancel(cid, "VocÃª nÃ£o tem permissÃ£o para usar isso")
+			print("O jogador: "..getCreatureName(cid).." usou o botÃ£o de localizaÃ§Ã£o sem permissÃ£o")
 			doSendPlayerExtendedOpcode(cid, 63, "false")
 		end
 	elseif opcode == 204 then
@@ -237,7 +223,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 					    doPlayerRemoveItem(cid, 2145, buyItem[tonumber(t[2])].diamonds)
 						doPlayerAddPremiumDays(cid, buyItem[tonumber(t[2])].count) 
 					else 
-					    doPlayerSendTextMessage(cid, 27, "Você não tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
+					    doPlayerSendTextMessage(cid, 27, "VocÃª nÃ£o tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
 					    return true	
 					end
 			    elseif buyItem[tonumber(t[2])].type == "Item" then
@@ -245,7 +231,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 					    doPlayerRemoveItem(cid, 2145, buyItem[tonumber(t[2])].diamonds)
 					    doPlayerAddItem(cid, buyItem[tonumber(t[2])].itemId, buyItem[tonumber(t[2])].count)
 					else 
-					    doPlayerSendTextMessage(cid, 27, "Você não tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
+					    doPlayerSendTextMessage(cid, 27, "VocÃª nÃ£o tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
 					    return true	
 					end
 			    elseif buyItem[tonumber(t[2])].type == "Pokemon" then
@@ -253,7 +239,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 					    doPlayerRemoveItem(cid, 2145, buyItem[tonumber(t[2])].diamonds)
 					    addPokeToPlayer(cid, doCorrectString(buyItem[tonumber(t[2])].name), 0, nil, "normal")	
 					else 
-					    doPlayerSendTextMessage(cid, 27, "Você não tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
+					    doPlayerSendTextMessage(cid, 27, "VocÃª nÃ£o tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
 					    return true	
 					end
 				elseif buyItem[tonumber(t[2])].type == "Sex" then
@@ -265,7 +251,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 						    doPlayerSetSex(cid, 1)
                         end
                     else 
-					    doPlayerSendTextMessage(cid, 27, "Você não tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
+					    doPlayerSendTextMessage(cid, 27, "VocÃª nÃ£o tem "..buyItem[tonumber(t[2])].diamonds.." Diamantes.")
 					    return true						
 					end
 			    end 
@@ -278,7 +264,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 				end
 			    if getPlayerItemCount(cid, 2145) >= buyOutfit[tonumber(t[2])].diamonds then
 					if getPlayerStorageValue(cid, buyOutfit[tonumber(t[2])].storage) == 1 then
-					    doPlayerSendTextMessage(cid, 27, "Você tem essa roupa.")
+					    doPlayerSendTextMessage(cid, 27, "VocÃª tem essa roupa.")
 					    return true
 					end
 					doPlayerRemoveItem(cid, 2145, buyOutfit[tonumber(t[2])].diamonds)
@@ -292,16 +278,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 			end
 		   
 		end
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		--------------------------------------------------- MARKET ------------------------------
 		if t[1] == "Vmarket" then
 		    if shopMarket[tonumber(t[2])] then
 			    if shopMarket[tonumber(t[2])].type == "Vip" then
@@ -549,7 +526,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 		    end
 		end
 		
-		doSendPlayerExtendedOpcode(cid, 155, "Desculpe mas sua venda não foi")
+		doSendPlayerExtendedOpcode(cid, 155, "Desculpe mas sua venda nÃ£o foi")
 				
 	elseif opcode == 154 then-- compra o item/ 100%
 		local msg = NetworkMessage.create()
@@ -637,7 +614,7 @@ function onExtendedOpcode(cid, opcode, buffer)
 		       return
 		    end
 		end]]
-		doSendPlayerExtendedOpcode(cid, 155, "você não pode selecionar esse item")	
+		doSendPlayerExtendedOpcode(cid, 155, "vocÃª nÃ£o pode selecionar esse item")	
     elseif opcode == 151 then--pontos de market
 	    local msg = NetworkMessage.create()
 		msg:setBuffer(buffer)
@@ -816,7 +793,7 @@ function onExtendedOpcode(cid, opcode, buffer)
         elseif isInArray({"use1", "use2", "use3"}, buffer) then
             local pokeToTransform = getItemAttribute(item.uid, "memoryDitto"..tonumber(buffer:explode("use")[1]))
 		    if not pokeToTransform or pokeToTransform == "?" then 
-			    doPlayerSendTextMessage(cid, 27, "esse slot não tem transformações salvas.")
+			    doPlayerSendTextMessage(cid, 27, "esse slot nÃ£o tem transformaÃ§Ãµes salvas.")
 			    return true
 			end
 			--if getItemAttribute(item.uid, "ehditto") and getItemAttribute(item.uid, "ehditto") ~= "" then

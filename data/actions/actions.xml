@@ -51,31 +51,8 @@
 
 	<action actionid="21012" event="script" value="mixlort/quests/Inicial1.lua"/>
 	<action actionid="21013" event="script" value="mixlort/quests/venomstone.lua"/>
-	<action actionid="1857" event="script" value="mixlort/quests/rockstone.lua"/>
 
-	<action uniqueid="1850" event="script" value="mixlort/quests/quest1.lua"/>
-	<action uniqueid="1851" event="script" value="mixlort/quests/quest2.lua"/>
-	<action uniqueid="1852" event="script" value="mixlort/quests/quest3.lua"/>
-	<action uniqueid="1853" event="script" value="mixlort/quests/quest4.lua"/>
-	<action uniqueid="1854" event="script" value="mixlort/quests/quest5.lua"/>
-	<action uniqueid="1855" event="script" value="mixlort/quests/quest6.lua"/>
-	<action uniqueid="1856" event="script" value="mixlort/quests/quest7.lua"/>
-	<action uniqueid="1857" event="script" value="mixlort/quests/quest8.lua"/>
-	<action uniqueid="1858" event="script" value="mixlort/quests/quest9.lua"/>
-	<action uniqueid="1859" event="script" value="mixlort/quests/quest10.lua"/>
-	<action uniqueid="1860" event="script" value="mixlort/quests/quest11.lua"/>
-	<action uniqueid="1861" event="script" value="mixlort/quests/quest12.lua"/>
-	<action uniqueid="1862" event="script" value="mixlort/quests/quest13.lua"/>
-	<action uniqueid="1863" event="script" value="mixlort/quests/quest14.lua"/>
-	<action uniqueid="1864" event="script" value="mixlort/quests/quest15.lua"/>
-	<action uniqueid="1865" event="script" value="mixlort/quests/quest16.lua"/>
-	<action uniqueid="1866" event="script" value="mixlort/quests/quest17.lua"/>
-	<action uniqueid="1867" event="script" value="mixlort/quests/quest18.lua"/>
-	<action uniqueid="1868" event="script" value="mixlort/quests/quest19.lua"/>
-	<action uniqueid="1869" event="script" value="mixlort/quests/quest20.lua"/>
-	<action uniqueid="1870" event="script" value="mixlort/quests/quest21.lua"/>
-	<action uniqueid="1871" event="script" value="mixlort/quests/quest22.lua"/>
-	<action uniqueid="1872" event="script" value="mixlort/quests/quest23.lua"/>
+	<action uniqueid="1850-1872" event="script" value="mixlort/quests/Quests.lua"/>
 	<!-- <action uniqueid="1873" event="script" value="mixlort/quests/quest24.lua"/> -->
 
 
@@ -85,7 +62,6 @@
 	<action itemid="17629" event="script" value="poke/expStar.lua" /> 
 	<action itemid="17828" event="script" value="poke/event_natal.lua" />  
 
-	<action uniqueid="65008" event="script" value="quests/alavanca.lua" allowfaruse="1"/>
 	<action uniqueid="65030" event="script" value="poke/DugeonPremio.lua" allowfaruse="1"/>
 
 
@@ -101,25 +77,8 @@
 
 
 	<!-- Quests System -->
-	<action uniqueid="2222" event="script" value="quests/Crystal_Stone.lua"/>
-	<action uniqueid="2221" event="script" value="quests/Ice_Stone.lua"/>
-	<action uniqueid="2223" event="script" value="quests/Thunder_Stone.lua"/>
-	<action uniqueid="2224" event="script" value="quests/Earth_Stone.lua"/>
-	<action uniqueid="2225" event="script" value="quests/Darkness_Stone.lua"/>
-	<action uniqueid="2226" event="script" value="quests/Crystal_Water_Stone.lua"/>
-	<action uniqueid="2227" event="script" value="quests/Venom_Stone.lua"/>
-	<action uniqueid="2228" event="script" value="quests/Coccon_Stone.lua"/>
-	<action uniqueid="2229" event="script" value="quests/Water_Stone.lua"/>
-	<action uniqueid="2230" event="script" value="quests/Earth2_Stone.lua"/>
-	<action uniqueid="2231" event="script" value="quests/Punch_Stone.lua"/>
-	<action uniqueid="2232" event="script" value="quests/Enigma_Stone.lua"/>
-	<action uniqueid="2233" event="script" value="quests/Heart_Stone.lua"/>
-	<action uniqueid="2234" event="script" value="quests/Metal_Stone.lua"/>
-	<action uniqueid="2235" event="script" value="quests/Coccon2_Stone.lua"/>
-	<action uniqueid="2236" event="script" value="quests/BOX3.lua"/>
-	<action uniqueid="2237" event="script" value="quests/Fire_Stone.lua"/> 
-	<action uniqueid="2238" event="script" value="quests/VaporeonQuest.lua"/>
-	<action uniqueid="2239-2243" event="script" value="quests/thonesQuest.lua"/>
+	<action uniqueid="2222-2243" event="script" value="quests/recompensas.lua"/>
+	<action uniqueid="65008" event="script" value="quests/alavanca.lua" allowfaruse="1"/>
 
 	<!-- Fishing System --> 
 	<action itemid="2580" event="script" value="Fishing_System/fishing.lua" allowfaruse="1"/>
@@ -586,7 +545,7 @@
 		<action actionid="19277" event="script" value="heldfusion.lua"/>
 
 	-- POKEDEX
-	<action itemid="2382" event="script" value="pokedex.lua" allowfaruse="1" blockwalls="1"/>
+	<!-- <action itemid="2382" event="script" value="pokedex.lua" allowfaruse="1" blockwalls="1"/> -->
 	<action itemid="7385" event="script" value="pokeinfo.lua"/>
 
 	-- LOJA DE ROUPAS

@@ -132,7 +132,6 @@ local config = {
 }
 
 function onUse(cid, item, fromPosition, itemEx, toPosition)
-	
 	if not config[item.actionid] then
 		return true
 	end
@@ -192,6 +191,5 @@ function onUse(cid, item, fromPosition, itemEx, toPosition)
 	else
 		doPlayerSendCancel(cid, "Você precisa ser do clan "..cfg.nameclan..".")
 	end
-	
 return true  
 end

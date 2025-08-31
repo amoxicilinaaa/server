@@ -1,0 +1,2 @@
+[31/08/2025 01:01:34] (Error - void ServicePort::open(uint16_t)) NETWORK: O endereço solicitado não é válido no contexto
+[31/08/2025 01:35:45] (Error - void ServicePort::open(uint16_t)) NETWORK: O endereço solicitado não é válido no contexto

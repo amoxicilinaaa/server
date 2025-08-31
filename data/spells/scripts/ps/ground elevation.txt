@@ -1,0 +1,80 @@
+local pokeConfig = {
+    ["Crystal Onix"] = {
+        area = BigArea1,
+        damageType = GROUNDDAMAGE,
+        eff = 494,
+        delay = {500, 1200, 1800},
+        bonusTypes = {"Fire", "Flying"}
+    },
+    ["Steelix"] = {
+        area = BigArea1,
+        damageType = GROUNDDAMAGE,
+        eff = 494,
+        delay = {600, 1300, 2000},
+        bonusTypes = {"Fire"}
+    },
+    ["Golem"] = {
+        area = BigArea2,
+        damageType = GROUNDDAMAGE,
+        eff = 497,
+        delay = {400, 800, 1600},
+        bonusTypes = {"Electric", "Fire"}
+    },
+    ["Machamp"] = {
+        area = BigArea2,
+        damageType = FIGHTINGDAMAGE,
+        eff = 255,
+        delay = {600, 900, 1500},
+        bonusTypes = {"Normal", "Ice"}
+    }
+    -- Adicione mais Pokémon aqui conforme necessário
+}
+
+function onCastSpell(cid, var)
+    local spellData = applyStandardSpellLogic(cid, var)
+    if not spellData then return false end
+
+    local spell = spellData.spell
+    if spell ~= "Ground Elevation" then return false end
+
+    local target = spellData.target
+    local min = tonumber(spellData.min) or 0
+    local max = tonumber(spellData.max) or 0
+    local pokeName = getCreatureName(cid)
+    local config = pokeConfig[pokeName] or {
+        area = BigArea2,
+        damageType = NORMALDAMAGE,
+        eff = 0,
+        delay = {500, 1000, 1500},
+        bonusTypes = {}
+    }
+
+    local ret = {
+        id = 0,
+        cd = 9,
+        eff = config.eff,
+        check = 0,
+        spell = spell,
+        cond = nil
+    }
+
+    -- Executa os ataques com delays personalizados
+    for _, t in ipairs(config.delay) do
+        addEvent(doMoveInArea2, t, cid, 0, config.area, config.damageType, min, max, spell, ret)
+    end
+
+    -- Verifica se o alvo é vulnerável ao tipo da spell
+    if isCreature(target) then
+        for _, typeName in ipairs(config.bonusTypes) do
+            if isPokeType(target, typeName) then
+                local bonusMin = math.floor(min * 0.25)
+                local bonusMax = math.floor(max * 0.25)
+                addEvent(doMoveInArea2, 2000, cid, 0, config.area, config.damageType, bonusMin, bonusMax, spell)
+                doSendAnimatedText(getThingPosWithDebug(target), "Super Effective!", 215)
+                break
+            end
+        end
+    end
+
+    return true
+end

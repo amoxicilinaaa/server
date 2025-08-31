@@ -353,7 +353,7 @@ function rockSmash(cid, itemEx, toPosition)
 
   if (targetPos and isSightClear(pos, targetPos, true) and getDistanceBetween(targetPos, toPosition) <= 1 and
     getPathToEx(pokemon, targetPos)) then
-    doCreatureSay(cid, getPokeName(pokemon)..", ".."rock smash!", TALKTYPE_MONSTER)
+    doCreatureSay(cid, getPokeName(pokemon)..", ".."quebra de rocha!", TALKTYPE_MONSTER)
     doCreatureWalkToPosition(pokemon, targetPos)
     checkRockSmash(pokemon, itemEx, toPosition, 20)
   else
@@ -420,7 +420,7 @@ function cut(cid, itemEx, toPosition)
     getPositionAdjacent(pokemon, toPosition, true))
     if (targetPos and isSightClear(pos, targetPos, true) and getDistanceBetween(targetPos, toPosition) <= 1 and
         getPathToEx(pokemon, targetPos)) then
-        doCreatureSay(cid, getPokeName(pokemon)..", ".."cut it!", TALKTYPE_MONSTER)
+        doCreatureSay(cid, getPokeName(pokemon)..", ".."corte!", TALKTYPE_MONSTER)
         doCreatureWalkToPosition(pokemon, targetPos)
         checkCut(pokemon, itemEx, toPosition, 20)
     else
@@ -432,7 +432,7 @@ local TRANSFORM_EXHAUST_CONDITION = createConditionObject(CONDITION_EXHAUST, 20 
 
 function doAbilitieTransform(cid, pokemon, target, targetName, afterDismount)
   if (getCreatureCondition(pokemon, CONDITION_EXHAUST, 6)) then
-    doPlayerSendCancel(cid, "Your Pokemon is exhaust.")
+    doPlayerSendCancel(cid, "Seu Pokémon está exausto.")
 
   else
 
@@ -456,7 +456,7 @@ function doAbilitieTransform(cid, pokemon, target, targetName, afterDismount)
 
         local x = pokes[getPokeName(pokemon)]
         if getPlayerLevel(cid) < x.level then   --alterado v1.8 \/
-            doPlayerSendCancel(cid, "You need level "..(x.level + boosts).." to use this pokemon.")
+            doPlayerSendCancel(cid, "Você precisa de nível "..(x.level + boosts).." para usar este pokémon.")
             return 
         end
 
@@ -470,7 +470,7 @@ end
 
 function light(cid)
   local pokemon = getCreatureSummons(cid)[1]
-  doCreatureSay(cid, getPokeName(pokemon)..", ".."turn on the lights!", TALKTYPE_MONSTER)
+  doCreatureSay(cid, getPokeName(pokemon)..", ".."acenda as luzes!", TALKTYPE_MONSTER)
   doAddCondition(pokemon, lightCondition)
   doSendMagicEffect(getCreaturePosition(pokemon), 14)
 end
@@ -478,7 +478,7 @@ end
 function deLight(cid)
   local pokemon = getCreatureSummons(cid)[1]
 
-  doCreatureSay(cid, getPokeName(pokemon)..", ".."turn off the lights!", TALKTYPE_MONSTER)
+  doCreatureSay(cid, getPokeName(pokemon)..", ".."apague as luzes!", TALKTYPE_MONSTER)
   doRemoveCondition(pokemon, CONDITION_LIGHT)
   doSendMagicEffect(getCreaturePosition(pokemon), 14)
 end
@@ -511,7 +511,7 @@ function dig(cid, itemEx, toPosition)
 
     if (targetPos and isSightClear(pos, targetPos, true) and getDistanceBetween(targetPos, toPosition) <= 1 and
       getPathToEx(pokemon, targetPos)) then
-      doCreatureSay(cid, getPokeName(pokemon)..", ".."dig it!", TALKTYPE_MONSTER)
+      doCreatureSay(cid, getPokeName(pokemon)..", ".."cavar!", TALKTYPE_MONSTER)
       doCreatureWalkToPosition(pokemon, targetPos)
       checkDig(pokemon, itemEx, toPosition, 20)
     else
@@ -619,12 +619,12 @@ local Wingspeed = {}
             local outfit = getCreatureOutfit(cid)
             local outHabil = {1035, 1034}
             if isInArray(outHabil, outfit.lookType) then 
-              doPlayerSendCancel(cid, "Sorry, but you can't fly this area.")
+              doPlayerSendCancel(cid, "Desculpe, mas você não pode voar nesta área.")
                 return true
             end
 
             local pokemonfly = flys[getCreatureName(pokemon)]
-            doPlayerSendTextMessage(cid, 27, "Type \"up\" or \"h1\" to fly/levitate higher and \"down\" or \"h2\" to fly/levitate lower.") --alterado v1.8
+            doPlayerSendTextMessage(cid, 27, "Tipo \"up\" or \"h1\" voar/levitar mais alto e \"down\" or \"h2\" voar/levitar mais baixo.") --alterado v1.8
             doChangeSpeed(cid, -getCreatureSpeed(cid))
             if Tier and Tier > 14 and Tier < 22 then
                Wingspeed = Tiers[Tier].speed
@@ -681,7 +681,7 @@ function fly(cid)
   if ((not targetPos and getDistanceBetween(pos, toPosition) <= 1) or
           (targetPos and isSightClear(pos, targetPos, true) and getDistanceBetween(targetPos, toPosition) <= 1 and
                   getPathToEx(pokemon, targetPos))) then
-    doCreatureSay(cid, getPokeName(pokemon)..", ".."let's fly!", TALKTYPE_MONSTER)
+    doCreatureSay(cid, getPokeName(pokemon)..", ".."vamos voar!", TALKTYPE_MONSTER)
 
         -- Guardian
     if getPlayerCurrentGuardian(cid) then
@@ -846,7 +846,7 @@ function ride(cid)
     if ((not targetPos and getDistanceBetween(pos, toPosition) <= 1) or
             (targetPos and isSightClear(pos, targetPos, true) and getDistanceBetween(targetPos, toPosition) <= 1 and
                     getPathToEx(pokemon, targetPos))) then
-        doCreatureSay(cid, getPokeName(pokemon)..", ".."let's ride!", TALKTYPE_MONSTER)
+        doCreatureSay(cid, getPokeName(pokemon)..", ".."vamos pedalar!", TALKTYPE_MONSTER)
         -- Guardian
         if getPlayerCurrentGuardian(cid) then                 
             doPlayerSendTextMessage(cid, 27, "Seu Guardian Possui (" .. math.ceil(exhaustion.get(getPlayerCurrentGuardian(cid), 11) / 60) .. ") Minutos Restantes.")
