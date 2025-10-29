@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<globalevents>
+
+	<globalevent name="save" interval="420" event="script" value="save.lua"/>
+	<globalevent name="playersrecord" type="record" event="script" value="record.lua"/>
+	<globalevent name="clean" interval="7200" event="script" value="clean.lua"/>
+        <globalevent name="resp" interval="80" event="script" value="resp.lua"/>
+	<globalevent name="autobroadcast" interval="600" event="script" value="cbar.lua"/>
+        <globalevent name="Monster Hunter Event1" time="10:00" event="script" value="Monster Hunter.lua"/>
+        <globalevent name="Monster Hunter Event2" time="13:30" event="script" value="Monster Hunter.lua"/>
+        <globalevent name="Monster Hunter Event3" time="17:00" event="script" value="Monster Hunter.lua"/> 
+        <globalevent name="Monster Hunter Event4" time="20:30" event="script" value="Monster Hunter.lua"/> 
+        <globalevent name="BoostLotery" interval="18000" event="script" value="boostlottery.lua"/>
+        <globalevent name="HouseClean" time="03:00" event="script" value="houseclean.lua"/>
+        <globalevent name="Teleport Automatico" time="18:00" event="script" value="Saturday.lua"/>
+		
+		 <!-- CTF -->
+     <globalevent name="CTFCheck" time="15:30" event="script" value="CTFMax.lua"/>  
+     <globalevent name="CTFCheck2" time="22:30" event="script" value="CTFMax.lua"/> 
+
+	<!-- Torneio de Kanto -->
+	<globalevent name="TournamentStart1" time="09:00" event="script" value="torneio.lua"/>
+	<globalevent name="TournamentStart2" time="12:30" event="script" value="torneio.lua"/>
+	<globalevent name="TournamentStart3" time="19:00" event="script" value="torneio.lua"/>
+	<globalevent name="TournamentStart4" time="23:00" event="script" value="torneio.lua"/>
+	<globalevent name="msg torneio" interval="60" event="script" value="msgtorneio.lua"/>
+	
+	 <globalevent name="texto" interval="2" script="texto.lua" />
+	 
+	 <!-- invasão -->
+     <globalevent name="raids" interval="60" event="script" value="Evento/raid.lua"/>
+     <globalevent name="rka" time="08:00" event="script" value="Evento/1.lua"/>
+     <globalevent name="rkb" time="08:00" event="script" value="Evento/2.lua"/>
+     <globalevent name="rkc" time="08:00" event="script" value="Evento/3.lua"/>
+     <globalevent name="rkd" time="08:00" event="script" value="Evento/4.lua"/>
+     <globalevent name="rke" time="08:00" event="script" value="Evento/5.lua"/>
+     <globalevent name="rkf" time="15:30" event="script" value="Evento/1.lua"/>
+     <globalevent name="rkg" time="15:30" event="script" value="Evento/2.lua"/>
+     <globalevent name="rkh" time="15:30" event="script" value="Evento/3.lua"/>
+     <globalevent name="rki" time="15:30" event="script" value="Evento/4.lua"/>
+     <globalevent name="rkj" time="15:30" event="script" value="Evento/5.lua"/>
+     <globalevent name="rkk" time="21:00" event="script" value="Evento/1.lua"/>
+     <globalevent name="rkl" time="21:00" event="script" value="Evento/2.lua"/>
+     <globalevent name="rkm" time="21:00" event="script" value="Evento/3.lua"/>
+     <globalevent name="rkn" time="21:00" event="script" value="Evento/4.lua"/>
+     <globalevent name="rko" time="21:00" event="script" value="Evento/5.lua"/>
+     <globalevent name="rkp" time="01:00" event="script" value="Evento/1.lua"/>
+     <globalevent name="rkq" time="01:00" event="script" value="Evento/2.lua"/>
+     <globalevent name="rkr" time="01:00" event="script" value="Evento/3.lua"/>
+     <globalevent name="rks" time="01:00" event="script" value="Evento/4.lua"/>
+     <globalevent name="rkt" time="01:00" event="script" value="Evento/5.lua"/>
+	 
+	 <!-- loteria -->
+     <globalevent name="loteriaa" time="19:05" event="script" value="loteria.lua"/>
+     <globalevent name="loteriab" time="00:05" event="script" value="loteria.lua"/>
+     <globalevent name="loteriao" time="05:05" event="script" value="loteria.lua"/>
+     <globalevent name="loterias" time="10:05" event="script" value="loteria.lua"/>
+     <globalevent name="loteriae" time="15:05" event="script" value="loteria.lua"/>
+     <globalevent name="loteriaf" time="20:05" event="script" value="loteria.lua"/>
+     <globalevent name="loteriag" time="01:05" event="script" value="loteria.lua"/>
+     <globalevent name="loteriah" time="06:05" event="script" value="loteria.lua"/>
+     <globalevent name="loteriai" time="11:05" event="script" value="loteria.lua"/>
+     <globalevent name="loteriaj" time="15:35" event="script" value="loteria.lua"/>
+     <globalevent name="loteriak" time="20:45" event="script" value="loteria.lua"/>
+     <globalevent name="loterial" time="01:05" event="script" value="loteria.lua"/>
+
+	<!-- <globalevent name="timer_example" time="21:35" event="script" value="my_script.lua"/> -->
+
+</globalevents>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0"?>
+<npc name="(NPC) Carol" script="start1.lua" walkinterval="350000" floorchange="0" speed="0">
+<health now="15" max="15"/>
+<look type="2209" head="87" body="119" legs="94" feet="126" corpse="3058"/>
+          <parameters>
+                    <parameter key="message_greet" value="Oi |PLAYERNAME|, Como pode ver meu hobbie é colecionar, adoro colecionar produtos que caem dos pokémons e preciso de uma seahorse tail para completar minha terceira coleção. Será que você poderia ir em busca de uma para mim? {(Caso já esteja com o produto em mãos diga yes)}" />
+                    <parameter key="message_farewell" value="Até mais! Espero que volte com a minha seahorse tail!" />
+          </parameters>
+</npc>

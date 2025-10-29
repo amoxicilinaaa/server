@@ -1,0 +1,9 @@
+﻿<?xml version="1.0"?>
+<npc name="Geraldo" script="futebol.lua" walkinterval="350000" floorchange="0" speed="0">
+<health now="15" max="15"/>
+<look type="1419" head="78" body="88" legs="0" feet="88" corpse="3058"/>
+          <parameters>
+                    <parameter key="message_greet" value="A vista daqui é incrível, da para ver toda a cidade. Mudando de assunto, você gosta de futebol?" />
+                    <parameter key="message_farewell" value="Obrigado! Boa sorte!" />
+          </parameters>
+</npc>

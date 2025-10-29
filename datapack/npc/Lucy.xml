@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lucy" script="default.lua" walkinterval="350000" floorchange="0" speed="0">
+<health now="150" max="150"/>
+<look type="2172" head="91" body="114" legs="86" feet="0"/>
+<parameters>
+<parameter key="message_greet" value="Olá querido(a) cliente! Aqui em minha loja vendo móveis de qualidade, como sofás, mesas. Também compro brinquedos de pokémon! Deseja ver minhas ofertas? Diga {trade}!"/>
+<parameter key="message_farewell" value="Good bye!"/>
+<parameter key="message_idletimeout" value="Good bye!"/>
+<parameter key="message_walkaway" value="Good bye!"/>
+<parameter key="module_shop" value="1"/>
+<parameter key="shop_buyable" value="Pacote de mobília,3902,75000;Pacote de mobília,3908,45000;Pacote de mobília,3914,86500;Pacote de mobília,3926,89500;Pacote de mobília,3927,110000;Pacote de mobília,3929,54000;Pacote de mobília,3932,46000;Pacote de mobília,3933,65000;Pacote de mobília,3934,25000;Pacote de mobília,3937,180000;Pacote de mobília,3938,86000;Pacote de mobília,5088,47000;Pacote de mobília,6114,170000;Pacote de mobília,6115,185000;Pacote de móbilia,6372,32000;Pacote de móbilia,6373,78500;Pacote de mobília,7503,150000;Pacote de móbilia,3936,32000;"/>
+<parameter key="shop_sellable" value="regice toy,3074,10;"/>
+</parameters>
+</npc>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Professor Carvalho" script="inicial.lua" walkinterval="0" speed="0" floorchange="0">
+<health now="100" max="100"/>
+<look type="528" head="19" body="113" legs="95" feet="115" addons="0"/>
+  <parameters>
+    <parameter key="message_greet" value="Olá |PLAYERNAME|, Você esta pronto pra escolher o seu primeiro pokemon, estao va ao lado da minha sala pra voce escolher. Tenha uma otima jornada." />
+									<parameter key="message_farewell" value="Até mais!" />
+
+								<parameter key="message_walkaway" value="Até mais, |PLAYERNAME|" />
+  </parameters>
+</npc>

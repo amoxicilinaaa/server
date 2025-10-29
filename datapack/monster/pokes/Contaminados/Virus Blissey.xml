@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Virus Blissey" nameDescription="a virus blissey" race="normal" experience="650" speed="237" manacost="0">
+    <health now="140" max="140"/>
+  <look type="2686" head="70" body="85" legs="95" feet="113" corpse="20929"/>
+	 <targetchange interval="2000" chance="0"/>
+    <strategy attack="100" defense="0"/>
+    <flags>
+        <flag summonable="1"/>
+        <flag attackable="1"/>
+        <flag hostile="1"/>
+        <flag passive="1"/>
+        <flag illusionable="1"/>
+        <flag convinceable="1"/>
+        <flag pushable="1"/>
+        <flag canpushitems="0"/>
+        <flag canpushcreatures="0"/>
+        <flag targetdistance="1"/>
+        <flag staticattack="97"/>
+        <flag runonhealth="0"/>
+        
+    </flags>
+    <attacks>
+        <attack name="melee" interval="2000" chance="100" range="1" min="-50" max="-100"/>
+        <attack name="Aromatherapy" interval="2617" chance="15" range="1"/>
+        <attack name="Pound" interval="2899" chance="28" range="2"/>
+        <attack name="Last Resort" interval="2946" chance="20" range="6"/>
+        <attack name="Take Down" interval="3134" chance="25" range="4"/>
+        <attack name="Refresh" interval="4920" chance="8" range="6"/>
+        <attack name="Heal Bell" interval="4920" chance="8" range="6"/>
+        <attack name="Heal Pulse" interval="4920" chance="8" range="6"/>
+        <attack name="Egg Bomb" interval="4920" chance="26" range="5"/>
+        <attack name="Healing Wish" interval="4920" chance="8" range="6"/>	
+        <attack name="Emergency Call" interval="4920" chance="15" range="1"/>
+        <attack name="Egg Rain" interval="4920" chance="20" range="6"/>	
+    </attacks>
+    <defenses armor="0" defense="0"/>
+  <voices interval="5000" chance="10">
+	<voice sentence="BLIII!"/>
+<voice sentence="SSEEEY!"/>
+<voice sentence="BLISSEY!"/>
+</voices>
+    <loot>
+        <item id="12179" chance="5000" count="1" countmax="1"/> --comb
+        <item id="12244" chance="70" count="1" countmax="1"/>
+        <item id="11453" chance="1000" count="1" countmax="1"/>
+        <item id="12338" chance="10" count="1"/> --bag box --bag box
+        <item id="12211" chance="2000" count="1" countmax="1"/> --big egg
+    </loot>
+    <script>
+        <event name="Spawn"/>
+    </script>
+</monster>
+

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Zook" script="Zook.lua" walkinterval="0" floorchange="0">
+<health now="100" max="100"/>
+<look type="2644" head="123" body="74" legs="123" feet="0" addons="0"/>
+<parameters>
+<parameter key="message_greet" value="Olá |PLAYERNAME|! Estou trabalhando em um projeto de uma nova poção mais eficiente que as já existentes, Preciso dos seguintes ingredientes: 37x twisted spoons;65x future orbs;23x combs e 155x pair of leaves. Será que você poderia me ajudar? Se sim, diga {ultimate}."/>
+</parameters>
+</npc>

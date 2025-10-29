@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<npc name="Leila" script="santadoll3.lua" walkinterval="350000" floorchange="0" speed="0">
+<health now="15" max="15"/>
+<look type="495" head="114" body="119" legs="114" feet="114" corpse="3058"/>
+          <parameters>
+                    <parameter key="message_greet" value="Oi |PLAYERNAME|. Tem anos que estou procurando meus tres tesouros desaparecidos desde que 'Aquilo' aconteceu. Você conhece a História?" />
+                    <parameter key="message_farewell" value="Obrigado! Boa sorte!" />
+          </parameters>
+</npc>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Gary" script="inicial.lua" walkinterval="0" speed="0" floorchange="0">
+<health now="100" max="100"/>
+<look type="507" head="19" body="113" legs="95" feet="115" addons="0"/>
+  <parameters>
+    <parameter key="Haviam 3 ilhas que os ancioes diziam ter uma foram surpreendente, cada ilha era dominada por os seguintes elementos Fogo,Agua e Trovao! Hoje,depois de muito tempo essas ilhas estoo abandonadas habitadas somente por Pokemons,mas o misterios desse Poder ainda existe... Descendentes desses ancioes ainda vivem no mundo Pokemon e podem te ajudar nessa aventura!" />
+									<parameter key="message_farewell" value="Ate mais!" />
+
+								<parameter key="message_walkaway" value="Ate mais, |PLAYERNAME|" />
+  </parameters>
+</npc>

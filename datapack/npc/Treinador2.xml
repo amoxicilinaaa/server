@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Akira" script="script5.lua" walkinterval="350000" floorchange="0" speed="0" skull="1">
+	<health now="150" max="150"/>
+	<look type="520" head="91" body="102" legs="83" feet="0"/>
+	<parameters>
+			<parameter key="message_greet" value="Eu Te Levo Para um Lugar Aonde Forja as famosa Shiny Stone Preciso De 300 Pikachu doll para lvl 500+ {ritual}!"/>
+			<parameter key="message_farewell" value="Adeus!"/>
+			<parameter key="message_idletimeout" value="Bye."/>
+			<parameter key="message_walkaway" value="Adeus!"/>
+	</parameters>
+</npc>

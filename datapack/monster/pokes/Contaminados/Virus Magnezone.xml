@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Virus Magnezone" nameDescription="a Virus Magnezone" race="electric" experience="450" speed="227" manacost="0">
+    <health now="120" max="120"/>
+    <look type="2717" head="35" body="60" legs="95" feet="113" corpse="20917"/>
+    <targetchange interval="2000" chance="0"/>
+    <strategy attack="100" defense="0"/>
+    <flags>
+        <flag summonable="1"/>
+        <flag attackable="1"/>
+        <flag hostile="1"/>
+        <flag illusionable="1"/>
+        <flag convinceable="1"/>
+        <flag pushable="1"/>
+        <flag canpushitems="0"/>
+        <flag canpushcreatures="0"/>
+        <flag targetdistance="1"/>
+        <flag staticattack="97"/>
+        <flag runonhealth="0"/>
+       
+    </flags>
+    <attacks>
+        <attack name="Discharge" interval="2664" chance="29" range="3"/>
+        <attack name="Tri Attack" interval="2852" chance="26" range="3"/>
+        <attack name="Zap Cannon" interval="4625" chance="18" range="6"/>
+        <attack name="Magnet Bomb" interval="2993" chance="20" range="6"/>
+        <attack name="Light Screen" interval="3040" chance="25" range="3"/>
+        <attack name="Flash Cannon" interval="4128" chance="27" range="3"/>
+ 	    <attack name="Gyro Ball" interval="4033" chance="22" range="3"/>
+	    <attack name="Metal Sound" interval="4033" chance="25" range="3"/>
+   	    <attack name="Thunderbolt" interval="4033" chance="28" range="4"/>	
+	    <attack name="Thunder" interval="4033" chance="22" range="6"/>
+    </attacks>
+    <defenses armor="0" defense="0"/>
+    <voices interval="5000" chance="10">
+        <voice sentence="ELECTRODE!"/>
+    </voices>
+    <loot>
+        <item id="12164" chance="10000" countmax="80"/> --screw
+        <item id="12176" chance="4000" countmax="1"/> --electric box
+        <item id="12198" chance="500" count="1" countmax="1"/>
+        <item id="11444" chance="150" countmax="1"/>
+        <item id="12338" chance="10" count="1"/> --bag box --bag box
+    </loot>
+    <script>
+        <event name="Spawn"/>
+    </script>
+</monster>

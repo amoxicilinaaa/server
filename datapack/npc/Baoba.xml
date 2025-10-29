@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?> 
+<npc name="Baoba" walkinterval="0" script="datapack/npc/scripts/default.lua" floorchange="0" access="1" level="1" maglevel="1">
+<health now="150" max="150"/>
+<look type="3095" head="123" body="31" legs="7" feet="231" addons="0" corpse="0"/>
+<parameters>
+<parameter key="module_travel" value="1"/>
+<parameter key="message_greet" value="Olá |PLAYERNAME|, Deseja Ir Para Zona safari? 50 HD {safari}?" />
+<parameter key="travel_destinations" value="safari,174,2604,7,500000;"/>
+</parameters>
+</npc>

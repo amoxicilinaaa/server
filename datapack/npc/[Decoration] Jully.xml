@@ -1,0 +1,8 @@
+﻿<?xml version="1.0"?>
+<npc name="Jully" script="decorations.lua" access="5" lookdir="2" walkinterval="0">
+  <health now="200" max="200" />
+   <look type="2219" head="95" body="95" legs="95" feet="95" addons="3" />
+  <parameters>
+    <parameter key="message_greet" value="Olá |PLAYERNAME|! Eu vendo itens de decorações, poções e addons em troca de event tokens. Caso esteja interessado(a) diga {trade}." />
+  </parameters>
+</npc>

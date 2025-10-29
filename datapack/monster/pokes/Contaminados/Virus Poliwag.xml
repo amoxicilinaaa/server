@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Virus Poliwag" nameDescription="a poliwag" race="water" experience="100" speed="207" manacost="0">
+    <health now="30" max="30"/>
+    <look type="2694" head="1" body="15" legs="95" feet="113" corpse="20939"/>
+    <targetchange interval="2000" chance="0"/>
+    <strategy attack="100" defense="0"/>
+    <flags>
+        <flag summonable="1"/>
+        <flag attackable="1"/>
+        <flag hostile="1"/>
+        <flag illusionable="1"/>
+        <flag convinceable="1"/>
+        <flag pushable="1"/>
+        <flag canpushitems="0"/>
+        <flag canpushcreatures="0"/>
+        <flag targetdistance="1"/>
+        <flag staticattack="97"/>
+        <flag runonhealth="0"/>
+       
+    </flags>
+    <attacks>
+        <attack name="melee" interval="2000" chance="100" range="1" min="-50" max="-100"/>
+        <attack name="Double Slap" interval="2476" chance="31" range="2"/>
+        <attack name="Hypnosis" interval="2570" chance="15" range="1"/>
+        <attack name="Bubble" interval="2758" chance="30" range="2"/>
+        <attack name="Water Gun" interval="2664" chance="26" range="4"/>
+        <attack name="Mud Shot" interval="4920" chance="28" range="2"/>
+    </attacks>
+    <defenses armor="0" defense="0"/>
+    <voices interval="5000" chance="10">
+        <voice sentence="POLIWAG!"/>
+    </voices>
+    <loot>
+        <item id="12161" chance="10000" countmax="80"/> --water gem
+        <item id="12170" chance="5000" count="1" countmax="1"/> --water pendant
+		        <item id="13865" chance="4000" count="1" countmax="1"/> --strange ting
+		        <item id="12338" chance="10" count="1"/> --bag box --bag box
+    </loot>
+    <script>
+        <event name="Spawn"/>
+    </script>
+</monster>

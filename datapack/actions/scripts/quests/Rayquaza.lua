@@ -1,0 +1,28 @@
+local btype = "normal"
+local pokemon = "Metagross"
+local pokemon2 = "Absol"
+ local storage = 243243
+ 
+ 
+function onUse(cid, item, frompos, item2, topos)
+
+if getPlayerStorageValue(cid, 54893) >= 1 then
+
+
+if pokemon == "" then return true end
+if getPlayerStorageValue(cid, storage) <= 0 then
+addPokeToPlayer(cid, pokemon, 0, nil, btype)
+addPokeToPlayer(cid, pokemon2, 0, nil, btype)
+doPlayerAddItem(cid, 2365)
+doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você terminou a Quest Rayquaza, e ambos são seus amigos!")
+doSendMagicEffect(getThingPos(cid), 29)
+doSendMagicEffect(getThingPos(cid), 27)
+doSendMagicEffect(getThingPos(cid), 29)
+setPlayerStorageValue(cid, storage, 1)
+else
+doPlayerSendCancel(cid, "Você já fez está quest")
+end
+return TRUE
+end
+return true
+end

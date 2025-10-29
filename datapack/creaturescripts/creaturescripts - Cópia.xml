@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creaturescripts>
+
+	<event type="joinchannel" name="ShowPokedex" event="script" value="newpokedex.lua"/>
+	<event type="leavechannel" name="ClosePokedex" event="script" value="newpokedex.lua"/>
+
+	<event type="kill" name="dropStone" script="dropStone.lua"/>
+
+	<event type="login" name="PlayerLogin" event="script" value="login.lua"/>
+
+        <event type="login" name="Test" event="script" value="test.lua"/>
+
+	<event type="receivemail" name="Mail" event="script" value="mail.lua"/>
+
+	<event type="reportbug" name="SaveReportBug" script="reportbug.lua"/>
+
+	<event type="think" name="Idle" event="script" value="idle.lua"/>
+	
+
+        <event type="login" name="magica" event="script" value="magica.lua"/>
+
+        <event type="login" name="Effect" event="script" value="effect.lua"/>
+
+    
+	<event type="death" name="Death" event="script" value="playerpdeath.lua"/>
+
+	<event type="death" name="Experience" event="script" value="pokeexp.lua"/>
+
+	<event type="spawn" name="Spawn" event="script" value="spawn.lua"/>
+
+	<event type="think" name="t" event="script" value="wildpoke.lua"/>
+
+	<event type="statschange" name="GeneralConfiguration" event="script" value="exp2.0.lua"/>
+	<event type="advance" name="EffectOnAdvance" event="script" value="levelup.lua"/>
+
+	<event type="target" name="WildAttack" event="script" value="playerattack.lua"/>
+
+
+	<event type="look" name="LookSystem" event="script" value="look.lua"/>
+
+
+	<event type="death" name="SummonDeath" event="script" value="goback.lua"/>
+	<event type="logout" name="PlayerLogout" event="script" value="goback.lua"/>
+
+
+	<event type="login" name="antinukemc" event="script" value="AntiNuke.lua"/>
+
+        <event type="extendedopcode" name="ExtendedOpcode" event="script" value="opcode.lua"/>
+
+	<event type="traderequest" name="T2" event="script" value="trade system.lua"/>
+
+	<event type="tradeaccept" name="T1" event="script" value="trade system.lua"/>
+
+        <event type="login" name="aloot_reg" event="script" value="aloot.lua"/>
+        <event type="kill" name="aloot_kill" event="script" value="aloot.lua"/>
+
+        <event type="death" name="removewall" event="script" value="removewall.lua"/>
+        <event type="death" name="removewall2" event="script" value="removewall2.lua"/>
+        <event type="death" name="removewall3" event="script" value="removewall3.lua"/>  
+</creaturescripts>

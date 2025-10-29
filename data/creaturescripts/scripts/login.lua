@@ -30,9 +30,9 @@ function onLogin(cid)
 	doPlayerSetLossPercent(cid, PLAYERLOSS_SKILLS, 0)]]
 	if getPlayerStorageValue(cid, 53502) >= 1 then 
 		--doPlayerSetLossPercent(cid, PLAYERLOSS_EXPERIENCE, 0)
-		doPlayerSendTextMessage(cid, 27, "Você possui Bless.")
+		doPlayerSendTextMessage(cid, 27, "Vocï¿½ possui Bless.")
 	else
-	    doPlayerSendTextMessage(cid, 27, "Você não tem Bless.")
+	    doPlayerSendTextMessage(cid, 27, "Vocï¿½ nï¿½o tem Bless.")
 	end
 
 	if not isFlying(cid) then
@@ -91,10 +91,10 @@ function onLogin(cid)
 	end
 	
 	if isPremium(cid) then 
-	    doPlayerSendTextMessage(cid, 27, "Obrigado por ser vip, você tem 10% de bonus no Catch e Exp.")
+	    doPlayerSendTextMessage(cid, 27, "Obrigado por ser vip, vocï¿½ tem 10% de bonus no Catch e Exp.")
         doCreatureSetSkullType(cid, 2)
 	else
-	    doPlayerSendTextMessage(cid, 27, "Seja vip e tenha 10% de bônus no Catch e Exp.")
+	    doPlayerSendTextMessage(cid, 27, "Seja vip e tenha 10% de bï¿½nus no Catch e Exp.")
 	end
 
 	-- if not isPremium(cid) then
@@ -115,7 +115,7 @@ function onLogin(cid)
 		local lastLogin, str = getPlayerLastLoginSaved(cid), config.loginMessage
 		if(lastLogin > 0) then
 			doPlayerSendTextMessage(cid, MESSAGE_STATUS_DEFAULT, str)
-			str = "Sua última visita foi " .. os.date("%a %b %d %X %Y", lastLogin) .. "."
+			str = "Sua ï¿½ltima visita foi " .. os.date("%a %b %d %X %Y", lastLogin) .. "."
 			-- str = "Seu Personagem sera salvo a cada 3 minutos para evitar rollbacks"
 		else
 			str = str

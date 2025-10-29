@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Azura" script="POWERAzura.lua" walkinterval="0" floorchange="0">
+<health now="100" max="100"/>
+<look type="2607" head="123" body="74" legs="123" feet="0" addons="0"/>
+<parameters>
+<parameter key="message_greet" value="Olá |PLAYERNAME|! Eu adoro colecionar cristais. Se me entregar 71x dark blue crystals, 65x red crystals, 68x green crystals e 75x light blue crystals te deixo passar. Caso já esteja com os cristais que pedi diga {power}. (Após minerados, os cristais se regeneram a cada 8 minutos)."/>
+</parameters>
+</npc>

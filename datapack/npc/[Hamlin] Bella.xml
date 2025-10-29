@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Bella" script="inicial.lua" walkinterval="0" speed="0" floorchange="0">
+<health now="100" max="100"/>
+<look type="2171" head="95" body="94" legs="95" feet="115" addons="0"/>
+  <parameters>
+    <parameter key="message_greet" value="Olá treinador(a)! Seja bem-vindo(a) á Hamlin Island! Uma bela ilha com pokémons elétricos, aproveite!" />
+									<parameter key="message_farewell" value="Até mais!" />
+
+								<parameter key="message_walkaway" value="Até mais, |PLAYERNAME|" />
+  </parameters>
+</npc>
